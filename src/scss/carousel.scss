@@ -1,0 +1,29 @@
+.image-categories-wrap {
+    background-color: #eef8ff !important;
+    border: 1px solid rgba(0, 0, 0, .05);
+    width: 98%!important;
+    .image-categories {
+        width: 60%;
+        padding-left: 20%;
+    }
+    .title-categories {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: rgb(68, 68, 68);
+        font-size: 14px;
+        text-decoration: none;
+    }
+}
+
+.appbarCategories {
+    background-color: #eef8ff!important;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    .name-categories-wrap {
+        color: rgb(0, 172, 193);
+    }
+}
+
+a {
+    text-decoration: none !important;
+}
