@@ -169,8 +169,17 @@ function ProductDetail(props) {
     );
 
     function addToCart(prop, quantity, checked) {
+
+
+        let pro = {
+            id:prop.id,
+            title :prop.title,
+            price:prop.price - prop.price * (prop.sale / 100),
+            imageUrl :prop.imageUrl,
+        }
+
         if (user) {
-            props.addToCart(prop, quantity, checked)
+            props.addToCart(pro, quantity, checked)
         }
         else {
             history.push("/sign-in");
