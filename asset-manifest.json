@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/shopsale/static/css/main.d58da3dd.chunk.css",
-    "main.js": "/shopsale/static/js/main.221dd41f.chunk.js",
-    "main.js.map": "/shopsale/static/js/main.221dd41f.chunk.js.map",
+    "main.css": "/shopsale/static/css/main.42b0a167.chunk.css",
+    "main.js": "/shopsale/static/js/main.6a8857d9.chunk.js",
+    "main.js.map": "/shopsale/static/js/main.6a8857d9.chunk.js.map",
     "runtime-main.js": "/shopsale/static/js/runtime-main.6cdce110.js",
     "runtime-main.js.map": "/shopsale/static/js/runtime-main.6cdce110.js.map",
-    "static/js/2.4c6c6bf4.chunk.js": "/shopsale/static/js/2.4c6c6bf4.chunk.js",
-    "static/js/2.4c6c6bf4.chunk.js.map": "/shopsale/static/js/2.4c6c6bf4.chunk.js.map",
+    "static/js/2.860d48c1.chunk.js": "/shopsale/static/js/2.860d48c1.chunk.js",
+    "static/js/2.860d48c1.chunk.js.map": "/shopsale/static/js/2.860d48c1.chunk.js.map",
     "index.html": "/shopsale/index.html",
-    "precache-manifest.7264c68514d49d15dbfc133123a70569.js": "/shopsale/precache-manifest.7264c68514d49d15dbfc133123a70569.js",
+    "precache-manifest.1e46bed1453829e3fc9002d7142ba27a.js": "/shopsale/precache-manifest.1e46bed1453829e3fc9002d7142ba27a.js",
     "service-worker.js": "/shopsale/service-worker.js",
-    "static/css/main.d58da3dd.chunk.css.map": "/shopsale/static/css/main.d58da3dd.chunk.css.map",
-    "static/js/2.4c6c6bf4.chunk.js.LICENSE.txt": "/shopsale/static/js/2.4c6c6bf4.chunk.js.LICENSE.txt"
+    "static/css/main.42b0a167.chunk.css.map": "/shopsale/static/css/main.42b0a167.chunk.css.map",
+    "static/js/2.860d48c1.chunk.js.LICENSE.txt": "/shopsale/static/js/2.860d48c1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6cdce110.js",
-    "static/js/2.4c6c6bf4.chunk.js",
-    "static/css/main.d58da3dd.chunk.css",
-    "static/js/main.221dd41f.chunk.js"
+    "static/js/2.860d48c1.chunk.js",
+    "static/css/main.42b0a167.chunk.css",
+    "static/js/main.6a8857d9.chunk.js"
   ]
 }
