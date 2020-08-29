@@ -41,9 +41,11 @@ function SearchProduct(props) {
     // const history = useHistory();
     let user = JSON.parse(localStorage.getItem("user"));
     const [product, setProductSearch] = useState([])
-    const [loading, setLoading] = useState(true)
-    let result 
+    const [loading, setLoading] = useState("Loading...")
+    const [noProduct, setNoProduct] = useState(false)
+    let result
     const fetchData = async () => {
+        setNoProduct(false)
         // setLoading(true)
         const callApiData = await callApi("product/find/?search=" + props.match.params.keyword).then(async (response) => {
             let data = await response.data
@@ -59,19 +61,30 @@ function SearchProduct(props) {
             return data
         })
 
-        setProductSearch(callApiData) 
-        
-       
+        console.log(callApiData)
+        if (callApiData.length > 0) {
+            setProductSearch(callApiData)
+        }
+        else {
+            setProductSearch([])
+            setLoading("")
+            setNoProduct(true)
+        }
+
+
+
+
+
     }
 
     useEffect(() => {
-       fetchData()
+        fetchData()
     }, [props.location.params]);
 
 
     result = product.map((item, index) => {
         return (
-            <Grid item xs={12} xs={10} sm={10} md={6} lg={2}>
+            <Grid item xs={12} xs={12} sm={10} md={6} lg={2}>
                 <ProductCard
                     key={index}
                     id={item._id}
@@ -93,8 +106,9 @@ function SearchProduct(props) {
         <div>
             <Header />
             <Container style={{ paddingTop: 120 }}>
-                <Grid container spacing={2} xs={3} sm={8} md={12} lg={12}>
-                    {result ? result : <div style={{textAlign:"center",color:"#e79413"}}><h2>Loading</h2></div>}
+                <Grid container spacing={1} xs={12} sm={6} md={6} lg={12}>
+                    {result.length > 0 ? result : <div style={{ textAlign: "center", color: "#e79413" }}><h2>{loading}</h2></div>}
+                    {noProduct === true ? <div style={{ textAlign: "center", color: "red" }}><h2>Không Có Sản Phẩm</h2></div> : ""}
                 </Grid>
             </Container>
 

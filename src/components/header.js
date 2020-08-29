@@ -22,6 +22,9 @@ import SearchField from '../components/searchLayout'
 
 
 
+
+
+
 const useStyles = makeStyles((theme) => ({
     grow: {
         flexGrow: 1,
@@ -106,9 +109,13 @@ const styleSearchField = {
 
 
 function Header(props) {
+
+    let user = JSON.parse(localStorage.getItem("userShopsale"));
+    
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const [userState, setUserState] = React.useState(user);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -116,6 +123,13 @@ function Header(props) {
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
+    const handleLogout =()=>{
+        console.log("log")
+        localStorage.removeItem("userShopsale");
+        localStorage.removeItem("cartProduct");
+        setUserState("")
+    }
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -141,8 +155,14 @@ function Header(props) {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            
+            {userState ? <MenuItem onClick={handleMenuClose}>Profile</MenuItem> :
+            <Link  to="/sign-in" style={{color:"black"}}><MenuItem onClick={handleMenuClose}>Sign-In</MenuItem></Link>            
+            }
+             {userState ? <MenuItem onClick={()=> handleLogout()} style={{color:"red"}}>LogOut</MenuItem> :
+           <Link to="/sign-up" style={{color:"black"}}><MenuItem onClick={handleMenuClose}>Sign-Up</MenuItem></Link>            
+            }
+              
         </Menu>
     );
 

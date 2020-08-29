@@ -9,7 +9,7 @@ import { Redirect } from 'react-router';
 
 export default function CartLayout() {
 
-  let userData = JSON.parse(localStorage.getItem("user"));
+  let userData = JSON.parse(localStorage.getItem("userShopsale"));
   const [user, setUser] = useState(userData);
 
   let result =   user ? <div>

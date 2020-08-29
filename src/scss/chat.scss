@@ -1,0 +1,21 @@
+.container-chat-wrap {
+    // width: 50%;
+    // height: 80vh;
+    // border: 1px solid gray;
+    // display: flex;
+    // align-items: flex-end;
+    // .container-input-wrap {
+    //     display: flex;
+    //     width: 100%;
+    // }
+}
+
+.chat-wrap {
+    background-color: "#ffffff";
+    width: 100vh;
+    height: 70vh;
+    .message-wrap {
+        height: 70%;
+        // overflow-y: scroll;
+    }
+}

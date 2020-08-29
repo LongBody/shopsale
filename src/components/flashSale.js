@@ -23,13 +23,11 @@ const useStyles = makeStyles({
         marginTop: 5,
     },
     media: {
-        height: 140,
+        width:"100%"
     },
 });
 
-const Style = {
-    width: "100%",
-};
+
 const StyleTitle = {
     height: 50
 };
@@ -68,17 +66,18 @@ function FlashSale(props) {
     let result = props.products.map(item => {
         return (
 
-            <Grid item xs={12} xs={10} sm={10} md={6} lg={2}>
+            <Grid item xs={12} xs={6} sm={3} md={4} lg={2}>
                 <Link to={{ pathname: "productFlashSale/" + item._id, query: { the: props.id } }} style={{ textDecoration: "none" }}>
                     <Card className={classes.root}>
                         <CardActionArea>
                             <CardMedia
                                 className={classes.media}
                                 title={item.title}
+                                style={StyleMedia}
                                 image={item.imageUrl} 
                             >
                                 {/* <img src={item.imageUrl} style={Style} /> */}
-                            </CardMedia>
+                            </CardMedia>                        
                             <CardContent style={StyleContent}>
                                 <Typography variant="body2" color="textSecondary" component="p" style={StyleTitle}>
                                     {item.title}

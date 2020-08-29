@@ -9,6 +9,8 @@ import SignInLayout from './components/signIn'
 import SignUpLayout from './components/signUp'
 import SearchProduct from './components/searchProduct'
 import CategoryLayout from './components/categoryLayout'
+import chatMessage from './components/chatMessage'
+
 
 
 class Routes extends Component {
@@ -27,12 +29,12 @@ class Routes extends Component {
         <Route path="/sign-in" exact component={SignInLayout}></Route>
         <Route path="/sign-up" exact  component={SignUpLayout}></Route>
         <Route path="/:keyword" exact component={SearchProduct} ></Route>
+        <Route path="/shopsaleChat/message" exact component={chatMessage} ></Route>
         <Route component={NotFound}></Route>
       </Switch>
     )
   }
 }
-
 
 
 export default Routes

@@ -24,10 +24,7 @@ const useStyles = makeStyles({
       },
 });
 
-const Style = {
-    width: "100%",
-    minHeight:100
-};
+
 const StyleTitle = {
     height: 50
 };
@@ -57,7 +54,7 @@ const StyleStarNone = {
 
 
 function ProductCard(props) {
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("userShopsale"));
     const classes = useStyles();
     const history = useHistory();
 
@@ -72,7 +69,6 @@ function ProductCard(props) {
                         style={StyleMedia}
                         image={props.imageUrl} 
                     >
-                        {/* <img src={props.imageUrl} style={Style} /> */}
                         </CardMedia>
                     <CardContent style={StyleContent}>
                         <Typography variant="body2" color="textSecondary" component="p" style={StyleTitle}>

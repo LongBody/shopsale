@@ -1,5 +1,5 @@
 import * as types from "../constants/actionTypes";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 let data = JSON.parse(localStorage.getItem("cartProduct"));
 const InitialState = data ? data : [];
 
@@ -9,9 +9,9 @@ const myReducer = (state = InitialState, action) => {
     let newState;
     switch (action.type) {
         case types.ADD_TO_CART:
-            console.log(product)
-            console.log(action)
-            console.log(typeof product)
+            console.log(product);
+            console.log(action);
+            console.log(typeof product);
             index = findProductInCart(state, product);
             if (index != -1) {
                 state[index].quantity += quantity;
@@ -24,7 +24,7 @@ const myReducer = (state = InitialState, action) => {
                 state.push(newState);
             }
 
-            console.log(state)
+            console.log(state);
             localStorage.setItem("cartProduct", JSON.stringify(state));
             return [...state];
 
@@ -50,23 +50,29 @@ const myReducer = (state = InitialState, action) => {
             }
             return [...state];
         case types.PAYMENT_CART:
-            console.log(state[0].checked)
-            let lengthState = state.length
+            console.log(state[0].checked);
+            let lengthState = state.length;
             let count = 0;
 
             for (let m = 0; m < lengthState; m++) {
                 if (state[m].checked === false) {
-                    count++
+                    count++;
                 }
             }
             if (count === lengthState) {
                 swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
             } else {
+                for (let i = 0; i < state.length; i++) {
+                    index = findProductInCartToDelete(state);
+                    if (index !== -1) {
+                        state.splice(index, 1);
+                        localStorage.setItem("cartProduct", JSON.stringify(state));
+                    }
+                }
+
                 swal("Thành Công", "Đã Mua Hàng", "success");
-                localStorage.removeItem("cartProduct");
-                state = [];
             }
-            return state;
+            return [...state];
         case types.UN_CHECK_CART:
             index = findProductInCart(state, action.props);
             if (index !== -1) {
@@ -88,6 +94,21 @@ let findProductInCart = (cart, product) => {
     if (cart.length > 0) {
         for (let i = 0; i < cart.length; i++) {
             if (cart[i].product.id === product.id) {
+                index = i;
+                break;
+            }
+        }
+    }
+
+    return index;
+};
+
+let findProductInCartToDelete = (cart) => {
+    let index = -1;
+    if (cart.length > 0) {
+        for (let i = 0; i < cart.length; i++) {
+            console.log(cart[i]);
+            if (cart[i].checked === true) {
                 index = i;
                 break;
             }

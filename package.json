@@ -14,6 +14,7 @@
         "gh-pages": "^3.1.0",
         "node-sass": "^4.14.1",
         "react": "^16.13.1",
+        "react-admin": "^3.8.2",
         "react-countdown": "^2.2.1",
         "react-dom": "^16.13.1",
         "react-redux": "^7.2.1",
@@ -24,6 +25,7 @@
         "redux-logger": "^3.0.6",
         "redux-thunk": "^2.3.0",
         "slick-carousel": "^1.8.1",
+        "socket.io": "^2.3.0",
         "sweetalert": "^2.1.2"
     },
     "scripts": {

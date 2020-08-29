@@ -77,7 +77,7 @@ export default function SignIn() {
             if(response.data.message){
                 setErrorMessage(response.data.message)
             } else {
-              localStorage.setItem("user", JSON.stringify(response.data));
+                localStorage.setItem("userShopsale", JSON.stringify(response.data));
                 setLoginDone(true)
             }
         })
@@ -86,7 +86,20 @@ export default function SignIn() {
 
 
     if(loginDone){
+      let user = JSON.parse(localStorage.getItem("userShopsale"));
+     if(user){
+      if(user.roles[0] === "admin"){
+        localStorage.removeItem("userShopsale");
+        return window.open( 'https://longbody.github.io/shopsaleadmin/#/')
+      }
+      else {
         return (<Redirect to="/" />);
+      }
+     }
+     else {
+      return (<Redirect to="/" />);
+     }
+      
 }
 
 else {

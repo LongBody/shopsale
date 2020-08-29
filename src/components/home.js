@@ -5,7 +5,7 @@ import Header from '../components/header'
 import Carousel from '../components/carousel'
 import { Container } from '@material-ui/core';
 import Footer from '../components/footer';
-import FlashSale from '../components/flashSale';
+
 import Toolbar from '@material-ui/core/Toolbar';
 
 function Home() {

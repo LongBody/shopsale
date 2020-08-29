@@ -74,7 +74,6 @@ function SearchLayout(props) {
     }   
 
     function handleChange(e){
-        console.log(e.target.value)
          setKeyword(e.target.value)
 
     }
