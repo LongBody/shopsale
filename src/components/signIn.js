@@ -89,8 +89,9 @@ export default function SignIn() {
       let user = JSON.parse(localStorage.getItem("userShopsale"));
      if(user){
       if(user.roles[0] === "admin"){
-        localStorage.removeItem("userShopsale");
-        return window.open( 'https://longbody.github.io/shopsaleadmin/#/')
+        // localStorage.removeItem("userShopsale");
+        // return window.open( 'https://longbody.github.io/shopsaleadmin/#/')
+        return (<Redirect to="/" />);
       }
       else {
         return (<Redirect to="/" />);

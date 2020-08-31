@@ -10,89 +10,60 @@ import Button from '@material-ui/core/Button';
 let socket;
 
 function ChatMessage() {
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
-  const [typing, setTyping] = useState("");
-  // const [messages , setStopTyping] = useState([]);
-  let userData = JSON.parse(localStorage.getItem("user"));
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
+    const [typing, setTyping] = useState("");
+    // const [messages , setStopTyping] = useState([]);
+    let userData = JSON.parse(localStorage.getItem("userShopsale"));
 
-  const ENDPOINT = 'http://localhost:8888'
+    const ENDPOINT = 'http://localhost:8888'
 
-  const styleButton = {
-    background: "#00acc1",
-    color: "white",
-    height: 35,
-    width: "20%"
-  }
-
-  useEffect(() => {
-    socket = io(ENDPOINT)
-
-    let { fullName, _id, roles } = userData
-
-    let userId
-
-    if (roles[0] === "user") {
-      userId = _id
-      socket.emit('join', { name: fullName, room: _id })
-    }
-    else {
-      socket.emit('join', { name: "LongBody", room: "" })
+    const styleButton = {
+        background: "#00acc1",
+        color: "white",
+        height: 35,
+        width: "20%"
     }
 
-  }, [userData])
+    useEffect(() => {
+        socket = io(ENDPOINT)
+
+        let { fullName, _id, roles } = userData
 
 
-  useEffect(() => {
-    socket.on('message', (message) => {
-      setMessages([...messages, message]);
-    })
-
-  }, [messages])
+        if (roles[0] === "user") {
+            socket.emit('join', { name: fullName, room: _id })
+        }
+    }, [userData])
 
 
-  // const onFocusHandler = () => {
-  //   if (message) {
-  //     console.log(socket)
-  //     socket.emit('someone-typing', "")
-  //   }
+    useEffect(() => {
+        socket.on('message', (message) => {
+            setMessages([...messages, message]);
+        })
+    }, [messages])
 
-  // }
-
-  // const onBlurHandler = () => {
-  //   if (message) {
-  //     console.log(socket)
-  //     socket.emit('someone-stop-typing', "")
-  //   }
-  // }
-
-
-  // useEffect(() => {
-  //   socket.on('server-send-someone-typing', () => {
-  //     setTyping("Someone is typing ...");
-  //   })
-
-  // },[onBlurHandler()])
+    useEffect(() => {
+        let { fullName, _id, roles } = userData
+        if (roles[0] === "admin") {
+            socket.on('server-admin-join', (data) => {
+                console.log(data)
+                socket.emit('join', { name: "longbody", room: data.room })
+            })
+        }
+    }, [])
 
 
 
 
-  // useEffect(() => {
-  //   socket.on('server-send-someone-stop-typing', () => {
-  //     setTyping("");
-  //   })
-
-  // },[onFocusHandler()])
-
-
-  const sendMessage = (e) => {
-    e.preventDefault()
-    if (message) {
-      console.log(socket)
-      socket.emit('sendMessage', message, () => setMessage(""))
-      setMessage("")
+    const sendMessage = (e) => {
+        e.preventDefault()
+        if (message) {
+            console.log(socket)
+            socket.emit('sendMessage', message, () => setMessage(""))
+            setMessage("")
+        }
     }
-  }
 
 
 
@@ -101,55 +72,103 @@ function ChatMessage() {
 
 
 
-  return (
-    <div>
-      <Header />
-      <Container style={{ paddingTop: 120 }}>
-        <div className="chat-wrap">
-          <div className="message-wrap">
-            {messages ? messages.map(item => <div>{item.text}</div>
-            ) : ""}
-          </div>
-          <div className="container-chat-wrap">
-            <div className="container-input-wrap">
-              <input
-                value={message}
-                onChange={(event) => { setMessage(event.target.value) }}
-                onKeyPress={event => event.key === "Enter" ? sendMessage(event) : null}
-                style={{ width: "80%", }}
-              // onFocus={onFocusHandler()}
-              // onBlur={onBlurHandler()}
-              />
-              <Button variant="contained" style={styleButton} >Send</Button>
-            </div>
-          </div>
-        </div>
+    return ( <
+        div >
+        <
+        Header / >
+        <
+        Container style = {
+            { paddingTop: 120 }
+        } >
+        <
+        div className = "chat-wrap" >
+        <
+        div className = "message-wrap" > {
+            messages ? messages.map(item => < div > { item.text } < /div>) : ""
+            } <
+            /div> <
+            div className = "container-chat-wrap" >
+            <
+            div className = "container-input-wrap" >
+            <
+            input value = { message }
+            onChange = {
+                (event) => { setMessage(event.target.value) }
+            }
+            onKeyPress = { event => event.key === "Enter" ? sendMessage(event) : null }
+            style = {
+                { width: "80%", }
+            }
+            // onFocus={onFocusHandler()}
+            // onBlur={onBlurHandler()}
+            /> <
+            Button variant = "contained"
+            style = { styleButton } > Send < /Button> < /
+            div > <
+            /div> < /
+            div >
 
 
 
-      </Container>
+            <
+            /Container>
 
-    </div>
+            <
+            /div>
 
 
 
 
-  );
-}
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    cart: state.cart,
-    messageCart: state.messageCart
-  }
-}
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    paymentCard: () => {
-      dispatch(actions.paymentCart())
-      // dispatch(actions.onUpdateMessage(MSG_YOUR_CART))
+        );
     }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatMessage);
+    const mapStateToProps = (state, ownProps) => {
+        return {
+            cart: state.cart,
+            messageCart: state.messageCart
+        }
+    }
+    const mapDispatchToProps = (dispatch, ownProps) => {
+        return {
+            paymentCard: () => {
+                dispatch(actions.paymentCart())
+                    // dispatch(actions.onUpdateMessage(MSG_YOUR_CART))
+            }
+        }
+    }
+
+    export default connect(mapStateToProps, mapDispatchToProps)(ChatMessage);
+
+
+    // const onFocusHandler = () => {
+    //   if (message) {
+    //     console.log(socket)
+    //     socket.emit('someone-typing', "")
+    //   }
+
+    // }
+
+    // const onBlurHandler = () => {
+    //   if (message) {
+    //     console.log(socket)
+    //     socket.emit('someone-stop-typing', "")
+    //   }
+    // }
+
+
+    // useEffect(() => {
+    //   socket.on('server-send-someone-typing', () => {
+    //     setTyping("Someone is typing ...");
+    //   })
+
+    // },[onBlurHandler()])
+
+
+
+
+    // useEffect(() => {
+    //   socket.on('server-send-someone-stop-typing', () => {
+    //     setTyping("");
+    //   })
+
+    // },[onFocusHandler()])
