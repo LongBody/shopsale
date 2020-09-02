@@ -136,7 +136,8 @@ function ProductDetail(props) {
                 </div>
                
             </Container>
-        </div >
+            {pro.price ? <Footer/> : ""}
+        </div>
 
     );
 
