@@ -136,7 +136,7 @@ function ProductDetail(props) {
                 </div>
                
             </Container>
-        </div >
+        </div>
 
     );
 

@@ -64,15 +64,17 @@ function Product() {
   const [state, setState] = useState("")
   const [page, setPage] = React.useState(1);
   const handleChangePage =async (event, value) => {
-    console.log(value)
+    setLoading(true)
     setPage(value);
     let callApiDataChangePage = await callApi("product/?pageSize=24&pageIndex="+value).then(async (response) => {
       let data = await response.data
       return data
     })
+    setState("")
     if (callApiDataChangePage.length > 0) {
       setProduct(callApiDataChangePage)
     }
+    setLoading(false)
   };
 
   const handleChange = (event) => {
