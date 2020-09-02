@@ -5,10 +5,13 @@ import Products from '../components/products'
 import Skeleton from '../components/skeleton'
 import { bindActionCreators } from 'redux';
 import { Container } from '@material-ui/core';
-
+import PropTypes from "prop-types";
 
 class ProductContainer extends Component {
 
+    static contextTypes = {
+        router: PropTypes.object
+      }
     constructor(props) {
         super(props);
         this.state={
@@ -23,10 +26,14 @@ class ProductContainer extends Component {
     }
 
     loadMoreProductOnClick(){
+        console.log(this.state.page)
         this.setState({
             page:this.state.page+=1
         })
-        console.log(this.state.page)
+        if(this.state.page > 5){
+            window.location.replace("https://longbody.github.io/shopsale/#/shopsale/shopsaleproduct/allproduct")
+        }
+        else 
         this.props.fetchLoadMoreProduct(this.state.page)
     }
 

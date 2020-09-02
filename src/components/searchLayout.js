@@ -62,7 +62,6 @@ const styleSearchField = {
 
 
 function SearchLayout(props) {
-    const textInput = useRef(null);
     let history = useHistory();
     const classes = useStyles();
     const [keyword , setKeyword ] = useState();
