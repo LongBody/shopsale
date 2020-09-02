@@ -79,7 +79,7 @@ export default class Responsive extends Component {
                         <div className="title-categories">Điện Tử - Điện Lạnh</div>
                     </div>
                     </Link>
-                    <Link to={{ pathname:"/"+ "Điện Tử - Điện Lạnh" }}>
+                    <Link to={{ pathname:"/"+ "Thể Thao - Dã Ngoại" }}>
                     <div className="image-categories-wrap">
                         <img src="  https://salt.tikicdn.com/ts/category/90/78/11/b8a67fe010361551e515fdcca7709f69.png" className="image-categories" />
                         <div className="title-categories">Thể Thao - Dã Ngoại</div>
