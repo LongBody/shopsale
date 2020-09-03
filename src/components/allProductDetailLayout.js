@@ -136,6 +136,7 @@ function ProductDetail(props) {
                 </div>
                
             </Container>
+            {pro.price ? <Footer/> : ""}
         </div>
 
     );

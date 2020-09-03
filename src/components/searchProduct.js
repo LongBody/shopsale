@@ -39,7 +39,6 @@ const StyleStarNone = {
 function SearchProduct(props) {
 
     // const history = useHistory();
-    let user = JSON.parse(localStorage.getItem("user"));
     const [product, setProductSearch] = useState([])
     const [loading, setLoading] = useState("Loading...")
     const [noProduct, setNoProduct] = useState(false)
@@ -57,7 +56,6 @@ function SearchProduct(props) {
             //     bio:data.bio,
             //     star:data.star
             // }
-            console.log(data)
             return data
         })
 
@@ -70,11 +68,6 @@ function SearchProduct(props) {
             setLoading("")
             setNoProduct(true)
         }
-
-
-
-
-
     }
 
     useEffect(() => {
@@ -98,7 +91,6 @@ function SearchProduct(props) {
         )
     })
 
-    console.log(result)
 
 
     return (
