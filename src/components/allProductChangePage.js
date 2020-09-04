@@ -12,7 +12,7 @@ import { callApi } from '../utils//callApi'
 import Header from '../components/header'
 import Pagination from '@material-ui/lab/Pagination';
 import Footer from '../components//footer'
-
+import { useHistory } from "react-router-dom";
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
@@ -57,32 +57,33 @@ const useStyles = makeStyles((theme) => ({
 
  
 
-function Product() {
+function Product(props) {
+  let history = useHistory();
   const classes = useStyles();
   const [product, setProduct] = useState([])
   const [loading, setLoading] = useState("Loading...")
   const [state, setState] = useState("")
-  const [page, setPage] = React.useState(1);
+  let pageConvert = parseInt(props.match.params.page) 
+  const [page, setPage] = React.useState(pageConvert);
+
+
   const handleChangePage =async (event, value) => {
     setLoading(true)
-    setPage(value);
-    let callApiDataChangePage = await callApi("product/?pageSize=24&pageIndex="+value).then(async (response) => {
-      let data = await response.data
-      return data
-    })
-    setState("")
-    if (callApiDataChangePage.length > 0) {
-      setProduct(callApiDataChangePage)
-    }
-    setLoading(false)
+    history.push({
+      pathname: '/shopsaleproduct/allproduct/' + value,
+      state: {
+          page: value
+      },
+      page: value
+  })
   };
+
 
   const handleChange = (event) => {
     setState( event.target.value)
   };
 
   const fetchData = async () => {
-    console.log(page)
   
       let callApiData =[]
       if(state){
@@ -93,7 +94,7 @@ function Product() {
         })
       }
       else{
-        callApiData= await callApi("product/?pageSize=24&pageIndex="+page).then(async (response) => {
+        callApiData= await callApi("product/?pageSize=24&pageIndex="+props.match.params.page).then(async (response) => {
           let data = await response.data
           return data
         })
@@ -110,8 +111,10 @@ function Product() {
   }
 
   useEffect(() => {
+    let pageParams = parseInt(props.match.params.page) 
+    setPage(pageParams)
     fetchData()
-  }, [state]);
+  }, [props.match.params.page]);
 
 
   let result = product.map((item, index) => {

@@ -40,7 +40,9 @@ function Home() {
       <Container>
       <Toolbar variant="dense" style={{backgroundColor:"#FFF" ,marginTop:40 , marginBottom:20 }}>
           <h4 style={{ color: "rgb(0, 172, 193)" }}> TẤT CẢ SẢN PHẨM </h4>
-          <Link to="/shopsaleproduct/allproduct" className="allProduct" style={{marginLeft:10}}> Xem Thêm <i class="fas fa-angle-double-right"  style={{fontSize:13}}></i></Link>
+          <Link to={{
+            pathname:'/shopsaleproduct/allproduct/' + 1,
+          }} className="allProduct" style={{marginLeft:10}}> Xem Thêm <i class="fas fa-angle-double-right"  style={{fontSize:13}}></i></Link>
         </Toolbar>
       </Container>
 

@@ -50,7 +50,6 @@ const myReducer = (state = InitialState, action) => {
             }
             return [...state];
         case types.PAYMENT_CART:
-            console.log(state[0].checked);
             let lengthState = state.length;
             let count = 0;
 
@@ -107,7 +106,6 @@ let findProductInCartToDelete = (cart) => {
     let index = -1;
     if (cart.length > 0) {
         for (let i = 0; i < cart.length; i++) {
-            console.log(cart[i]);
             if (cart[i].checked === true) {
                 index = i;
                 break;

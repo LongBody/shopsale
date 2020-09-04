@@ -5,7 +5,7 @@ import NotFound from './components/notFound'
 import CartLayout from './components/cartLayout'
 import ProductLayout from './components/productDetailLayout'
 import ProductFlashSaleLayout from './components/productFlashSaleDetailLayout '
-import AllProductLayout from './components/allProduct'
+import AllProductChangePageLayout from './components/allProductChangePage'
 import AllProductLayoutID from './components/allProductDetailLayout'
 import SignInLayout from './components/signIn'
 import SignUpLayout from './components/signUp'
@@ -31,8 +31,8 @@ class Routes extends Component {
         <Route path="/sign-in" exact component={SignInLayout}></Route>
         <Route path="/sign-up" exact  component={SignUpLayout}></Route>
         <Route path="/:keyword" exact component={SearchProduct} ></Route>
-        <Route path="/shopsaleproduct/allproduct" exact component={AllProductLayout} ></Route>
-        <Route path="/shopsaleproduct/allproduct/:id" exact component={AllProductLayoutID} ></Route>
+        <Route path="/shopsaleproduct/allproduct/:page" exact component={AllProductChangePageLayout} ></Route>
+        <Route path="/shopsaleproduct/allproduct/detail/:id" component={AllProductLayoutID} ></Route>
         <Route path="/shopsaleChat/message" exact component={chatMessage} ></Route>
         <Route component={NotFound}></Route>
       </Switch>

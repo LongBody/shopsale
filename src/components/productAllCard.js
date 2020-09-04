@@ -60,7 +60,7 @@ function ProductCard(props) {
 
     return (
         <div>
-          <Link to={{ pathname:"allproduct/"+ props.id, query: { the: props.id }  }} style={{textDecoration:"none"}}>
+          <Link to={{ pathname:"detail/"+ props.id, query: { the: props.id }  }} style={{textDecoration:"none"}}>
             <Card className={classes.root}>
                 <CardActionArea>
                     <CardMedia
