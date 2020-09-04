@@ -1,5 +1,5 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,7 +8,7 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
+import Tooltip from '@material-ui/core/Tooltip';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -19,9 +19,18 @@ import '../scss/header.scss'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SearchField from '../components/searchLayout'
+import { grey } from '@material-ui/core/colors';
 
 
-
+const LightTooltip = withStyles((theme) => ({
+    tooltip: {
+      backgroundColor: theme.palette.common.white,
+      color: 'rgba(0, 0, 0, 0.87)',
+      boxShadow: theme.shadows[1],
+      fontSize: 11,
+    },
+  }))(Tooltip);
+  
 
 
 
@@ -93,17 +102,17 @@ const useStyles = makeStyles((theme) => ({
 const styleCart = {
     fontSize: 25,
     color: "white",
-    marginLeft:20
+    marginLeft: 20
 }
 
 const styleAppBar = {
     position: "fixed",
     zIndex: 3,
-    backgroundColor:"#00acc1"
+    backgroundColor: "#00acc1"
 }
 
 const styleSearchField = {
-    width:"70%"
+    width: "70%"
 }
 
 
@@ -111,7 +120,7 @@ const styleSearchField = {
 function Header(props) {
 
     let user = JSON.parse(localStorage.getItem("userShopsale"));
-    
+
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -124,7 +133,7 @@ function Header(props) {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleLogout =()=>{
+    const handleLogout = () => {
         console.log("log")
         localStorage.removeItem("userShopsale");
         localStorage.removeItem("cartProduct");
@@ -155,14 +164,14 @@ function Header(props) {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            
+
             {userState ? <MenuItem onClick={handleMenuClose}>Profile</MenuItem> :
-            <Link  to="/sign-in" style={{color:"black"}}><MenuItem onClick={handleMenuClose}>Sign-In</MenuItem></Link>            
+                <Link to="/sign-in" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Sign-In</MenuItem></Link>
             }
-             {userState ? <MenuItem onClick={()=> handleLogout()} style={{color:"red"}}>LogOut</MenuItem> :
-           <Link to="/sign-up" style={{color:"black"}}><MenuItem onClick={handleMenuClose}>Sign-Up</MenuItem></Link>            
+            {userState ? <MenuItem onClick={() => handleLogout()} style={{ color: "red" }}>LogOut</MenuItem> :
+                <Link to="/sign-up" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Sign-Up</MenuItem></Link>
             }
-              
+
         </Menu>
     );
 
@@ -213,6 +222,18 @@ function Header(props) {
         quantity += item.quantity
     })
 
+    let cardInfoItem = cart.map(item => {
+        return (
+            <div style={{display:"flex",marginBottom:5}}><img src={item.product.imageUrl} style={{width:40,border:"1px solid #dadada"}}/>
+             <h3 style={{width:200,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis", display:"inline-block" ,marginLeft:4}}>{item.product.title}</h3>
+        <h5 style={{color:"#696969"}}>x{item.quantity}</h5>
+             </div>
+        )
+    })
+
+    console.log(cart)
+    console.log(cardInfoItem)
+
 
 
     return (
@@ -222,7 +243,7 @@ function Header(props) {
                 <Container fixed>
                     <Toolbar>
                         <Link to="/"><img src={LogoWeb} className="logoWebImage"></img></Link>
-                    <SearchField/>
+                        <SearchField />
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
                             <IconButton aria-label="show 17 new notifications" color="inherit">
@@ -242,13 +263,15 @@ function Header(props) {
                             </IconButton>
                         </div>
                         <Link to="/cart">
-                        <Badge badgeContent={quantity} color="primary">
-                            <ShoppingCartIcon style={styleCart} className="show">
-                               
-                                    <NotificationsIcon />
-                               </ShoppingCartIcon>
-                               </Badge>
-                               </Link>
+                            <LightTooltip title={cardInfoItem} arrow placement="bottom-end">
+                                <Badge badgeContent={quantity} color="primary">
+                                    <ShoppingCartIcon style={styleCart} className="show">
+                                        <NotificationsIcon />
+                                    </ShoppingCartIcon>
+                                </Badge>
+                            </LightTooltip>
+
+                        </Link>
                         <div className={classes.sectionMobile}>
                             <IconButton
                                 aria-label="show more"
