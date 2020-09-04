@@ -134,7 +134,6 @@ function SearchLayout(props) {
                     options={tags}
                     size="small"
                     filterOptions={filterOptions}
-                    autoHighlight={true}
                     onSelect={(event) => handleTag(event, 'tags')}
                     renderInput={(params) => (
                         <div ref={params.InputProps.ref}>
