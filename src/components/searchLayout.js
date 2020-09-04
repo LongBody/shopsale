@@ -8,13 +8,13 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { callApi } from '../utils/callApi'
-import {createFilterOptions } from "@material-ui/lab";
+import { createFilterOptions } from "@material-ui/lab";
 
 const OPTIONS_LIMIT = 7;
 const defaultFilterOptions = createFilterOptions();
 
 const filterOptions = (options, state) => {
-  return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
+    return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -79,12 +79,11 @@ function SearchLayout(props) {
     const [redirect, setRedirect] = useState(false);
     const [tags, setTags] = useState([])
 
-    let arrayTag = ["đồng hồ"  ,"thiết bị điện tử" , "hàng quốc tế" ]
+    let arrayTag = ["đồng hồ", "thiết bị điện tử", "hàng quốc tế"]
 
-    const fetchData = async () => {
-        const callApiData = await callApi("product/").then(async (response) => {
+    const fetchData = async() => {
+        const callApiData = await callApi("product/").then(async(response) => {
             let data = await response.data
-            console.log(data.title)
             return data
         })
 
@@ -92,7 +91,6 @@ function SearchLayout(props) {
             arrayTag.push(item.title)
         })
 
-        console.log(arrayTag)
         setTags(arrayTag)
     }
 
@@ -100,7 +98,7 @@ function SearchLayout(props) {
         fetchData()
     }, []);
 
-    const handleSubmit = async (evt) => {
+    const handleSubmit = async(evt) => {
         evt.preventDefault();
         setRedirect(true)
     }
@@ -124,39 +122,48 @@ function SearchLayout(props) {
     return (
 
 
-        <div className={classes.search} style={styleSearchField}>
-            <form
-                onSubmit={handleSubmit}
-            >
+        <
+        div className = { classes.search }
+        style = { styleSearchField } >
+        <
+        form onSubmit = { handleSubmit } >
 
-                <Autocomplete
-                    id="custom-input-demo"
-                    options={tags}
-                    size="small"
-                    filterOptions={filterOptions}
-                    onSelect={(event) => handleTag(event, 'tags')}
-                    renderInput={(params) => (
-                        <div ref={params.InputProps.ref}>
-                            <div className={classes.searchIcon}>
-                                <SearchIcon />
-                            </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                style={styleSearchField}
-                                inputProps={{ 'aria-label': 'search' }}
-                                {...params.inputProps}
-                            />
-                        </div>
-                    )}
-                />
+        <
+        Autocomplete id = "custom-input-demo"
+        options = { tags }
+        size = "small"
+        filterOptions = { filterOptions }
+        onSelect = {
+            (event) => handleTag(event, 'tags') }
+        renderInput = {
+            (params) => ( <
+                div ref = { params.InputProps.ref } >
+                <
+                div className = { classes.searchIcon } >
+                <
+                SearchIcon / >
+                <
+                /div> <
+                InputBase placeholder = "Search…"
+                classes = {
+                    {
+                        root: classes.inputRoot,
+                        input: classes.inputInput,
+                    }
+                }
+                style = { styleSearchField }
+                inputProps = {
+                    { 'aria-label': 'search' } } {...params.inputProps }
+                /> <
+                /div>
+            )
+        }
+        />
 
 
-            </form>
-        </div>
+        <
+        /form> <
+        /div>
 
     );
 }
