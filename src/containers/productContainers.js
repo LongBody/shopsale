@@ -31,7 +31,7 @@ class ProductContainer extends Component {
             page:this.state.page+=1
         })
         if(this.state.page > 5){
-            window.location.replace("https://longbody.github.io/#/shopsale/shopsaleproduct/allproduct/1")
+            window.location.replace("https://longbody.github.io/shopsale/#/shopsale/shopsaleproduct/allproduct/2")
         }
         else 
         this.props.fetchLoadMoreProduct(this.state.page)
@@ -45,7 +45,6 @@ class ProductContainer extends Component {
 
         return (
             <div>
-                
                 <Products products={products}> </Products>
                <Container style={{justifyContent:"center",marginTop:30,display:"flex"}}>
                     <button onClick={() =>{this.loadMoreProductOnClick()}}
