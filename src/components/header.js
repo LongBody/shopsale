@@ -20,17 +20,17 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SearchField from '../components/searchLayout'
 import { grey } from '@material-ui/core/colors';
-
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const LightTooltip = withStyles((theme) => ({
     tooltip: {
-      backgroundColor: theme.palette.common.white,
-      color: 'rgba(0, 0, 0, 0.87)',
-      boxShadow: theme.shadows[1],
-      fontSize: 11,
+        backgroundColor: theme.palette.common.white,
+        color: 'rgba(0, 0, 0, 0.87)',
+        boxShadow: theme.shadows[1],
+        fontSize: 11,
     },
-  }))(Tooltip);
-  
+}))(Tooltip);
+
 
 
 
@@ -120,6 +120,16 @@ const styleSearchField = {
 function Header(props) {
 
     let user = JSON.parse(localStorage.getItem("userShopsale"));
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleTooltipClose = () => {
+        setOpen(false);
+    };
+
+    const handleTooltipOpen = () => {
+        setOpen(true);
+    };
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -224,12 +234,16 @@ function Header(props) {
 
     let cardInfoItem = cart.map(item => {
         return (
-            <div style={{display:"flex",marginBottom:5}}><img src={item.product.imageUrl} style={{width:40,border:"1px solid #dadada"}}/>
-             <h3 style={{width:200,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis", display:"inline-block" ,marginLeft:4}}>{item.product.title}</h3>
-        <h5 style={{color:"#696969"}}>x{item.quantity}</h5>
-             </div>
+            <div style={{ display: "flex", marginBottom: 5 }}><img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
+                <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4 }}>{item.product.title}</h3>
+                <h5 style={{ color: "#696969", marginLeft: 1 }}>x{item.quantity}</h5>
+            </div>
         )
     })
+
+    function WatchNowNoti(){
+        alert("ok")
+    }
 
 
 
@@ -245,11 +259,31 @@ function Header(props) {
                         <SearchField />
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
-                            <IconButton aria-label="show 17 new notifications" color="inherit">
-                                <Badge badgeContent={7} color="primary">
-                                    <NotificationsIcon />
-                                </Badge>
-                            </IconButton>
+                            <ClickAwayListener onClickAway={handleTooltipClose}>
+                                <LightTooltip title={<div style={{ padding: 5 }}>
+                                    <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} /><h3 style={{ marginLeft: 5 }}> Chào mừng bạn đến với Shopsale</h3></div>
+                                        {/* <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} /><h3 style={{ marginLeft: 5 }}>Mua Sắm Với Shopsale
+                                     <span style={{ marginLeft: 2, color: "#e79413" }} onClick={() => WatchNowNoti()}>Xem Ngay</span>
+                                        </h3>
+                                        </div> */}
+                                </div>}
+                                    arrow placement="bottom-end"
+                                    PopperProps={{
+                                        disablePortal: true,
+                                    }}
+                                    onClose={handleTooltipClose}
+                                    open={open}
+                                    disableFocusListener
+                                    disableHoverListener
+                                    disableTouchListener
+                                >
+                                    <IconButton aria-label="show 17 new notifications" color="inherit" onClick={handleTooltipOpen}>
+                                        <Badge badgeContent={1} color="primary">
+                                            <NotificationsIcon />
+                                        </Badge>
+                                    </IconButton>
+                                </LightTooltip>
+                            </ClickAwayListener>
                             <IconButton
                                 edge="end"
                                 aria-label="account of current user"
@@ -262,7 +296,11 @@ function Header(props) {
                             </IconButton>
                         </div>
                         <Link to="/cart">
-                            <LightTooltip title={cardInfoItem.length > 0 ? cardInfoItem : "Chưa Có sản phẩm"} arrow placement="bottom-end">
+                            <LightTooltip title={cardInfoItem.length > 0 ? <div style={{ padding: 5 }}>
+                                {
+                                    cardInfoItem
+                                }
+                            </div> : "Chưa Có sản phẩm"} arrow placement="bottom-end">
                                 <Badge badgeContent={quantity} color="primary">
                                     <ShoppingCartIcon style={styleCart} className="show">
                                         <NotificationsIcon />
@@ -293,6 +331,8 @@ function Header(props) {
 
 
     );
+
+   
 
 
 

@@ -100,6 +100,7 @@ function Product(props) {
 
   const fetchDataSort = async () => {
     setLoading(true)
+    console.log(state)
     let callApiData = []
       if (state === "desc") {
         callApiData = product.sort(function (a, b) { return b.price - a.price })
@@ -127,6 +128,8 @@ function Product(props) {
   useEffect(() => {
     fetchDataSort()
   }, [state]);
+
+  console.log(product)
 
   let result = product.map((item, index) => {
     return (

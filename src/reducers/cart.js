@@ -57,7 +57,7 @@ const myReducer = (state = InitialState, action) => {
             if (count === lengthState) {
                 swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
             } else {
-                for (let i = 0; i < state.length; i++) {
+                for (let i = 0; i <= state.length; i++) {
                     index = findProductInCartToDelete(state);
                     if (index !== -1) {
                         state.splice(index, 1);
