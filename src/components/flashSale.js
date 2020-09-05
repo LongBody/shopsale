@@ -103,7 +103,7 @@ function FlashSale(props) {
 
     return (
         <div>
-                <Toolbar variant="dense"  style={{backgroundColor:"#FFF" ,marginTop:70  }}>
+                <Toolbar variant="dense"  style={{backgroundColor:"#FFF"  }}>
                     <h4 style={{ color: "rgb(0, 172, 193)" }}>FLASH SALE
                              </h4>
                     <FlashOnIcon style={{ color: "rgb(0, 172, 193)", marginLeft: 6 }} />
