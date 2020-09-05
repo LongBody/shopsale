@@ -103,15 +103,13 @@ function FlashSale(props) {
 
     return (
         <div>
-            <div position="static" className="appbarProduct">
-                <Toolbar variant="dense">
+                <Toolbar variant="dense"  style={{backgroundColor:"#FFF" ,marginTop:70  }}>
                     <h4 style={{ color: "rgb(0, 172, 193)" }}>FLASH SALE
                              </h4>
                     <FlashOnIcon style={{ color: "rgb(0, 172, 193)", marginLeft: 6 }} />
                     <span style={{ marginLeft: 100, color: "#e79413", fontSize: 20 }}> <Countdown date={Date.now() + 12000000} /></span>
                 </Toolbar>
                 <div style={{ backgroundColor: "rgb(0, 172, 193)", width: 140, height: 2 }}>.</div>
-            </div>
             <Grid container spacing={1} xs={12} sm={12} md={12} lg={12}>
                 {result}
             </Grid>

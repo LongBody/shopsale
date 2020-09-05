@@ -101,12 +101,11 @@ function Home() {
 
 
       <Container style={{ paddingTop: 40 }}>
-        <div position="static" className="appbarProduct">
-          <Toolbar variant="dense">
+          <Toolbar variant="dense" style={{backgroundColor:"#FFF" ,marginTop:25  }}>
             <h4 style={{ color: "rgb(0, 172, 193)" }}> GỢI Ý CHO BẠN </h4>
           </Toolbar>
           <div style={{ backgroundColor: "rgb(0, 172, 193)", width: 200, height: 2 }}></div>
-        </div>
+
       </Container>
 
       <ProductsContainer />
