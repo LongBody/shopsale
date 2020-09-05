@@ -231,8 +231,7 @@ function Header(props) {
         )
     })
 
-    console.log(cart)
-    console.log(cardInfoItem)
+
 
 
 
@@ -263,7 +262,7 @@ function Header(props) {
                             </IconButton>
                         </div>
                         <Link to="/cart">
-                            <LightTooltip title={cardInfoItem} arrow placement="bottom-end">
+                            <LightTooltip title={cardInfoItem.length > 0 ? cardInfoItem : "Chưa Có sản phẩm"} arrow placement="bottom-end">
                                 <Badge badgeContent={quantity} color="primary">
                                     <ShoppingCartIcon style={styleCart} className="show">
                                         <NotificationsIcon />

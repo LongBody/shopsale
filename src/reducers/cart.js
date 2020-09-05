@@ -9,9 +9,6 @@ const myReducer = (state = InitialState, action) => {
     let newState;
     switch (action.type) {
         case types.ADD_TO_CART:
-            console.log(product);
-            console.log(action);
-            console.log(typeof product);
             index = findProductInCart(state, product);
             if (index != -1) {
                 state[index].quantity += quantity;
@@ -24,7 +21,6 @@ const myReducer = (state = InitialState, action) => {
                 state.push(newState);
             }
 
-            console.log(state);
             localStorage.setItem("cartProduct", JSON.stringify(state));
             return [...state];
 
