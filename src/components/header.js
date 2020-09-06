@@ -249,8 +249,8 @@ function Header(props) {
                     <div className="content-header">
                         <div className="social-header">
                         <span style={{fontSize: "16px !important" , marginLeft:25, marginTop:3 , fontWeight:500 , marginRight:10 }}>Kết Nối</span>
-                        <a href="https://www.facebook.com/Shopsale-101665164978100/"><i class="fab fa-facebook-square" style={{fontSize:20 , marginRight:10, color:"#e79413 !important"}}></i></a>
-                        <a href="https://www.youtube.com/channel/UCq4jLkYQyW3llnJm6fpaFGQ?view_as=subscriber"><i class="fab fa-youtube"  style={{fontSize:20, marginRight:5}}></i></a>
+                        <a href="https://www.facebook.com/Shopsale-101665164978100/"><i class="fab fa-facebook-square" style={{fontSize:18, marginRight:10, color:"#e79413 !important"}}></i></a>
+                        <a href="https://www.youtube.com/channel/UCq4jLkYQyW3llnJm6fpaFGQ?view_as=subscriber"><i class="fab fa-youtube"  style={{fontSize:18, marginRight:5}}></i></a>
                             </div>
                         <div style={{ paddingRight:20}}>
                             <div className={classes.sectionDesktop} >
