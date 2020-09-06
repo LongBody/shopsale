@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/shopsale/static/css/main.0b14f80e.chunk.css",
+    "main.css": "/shopsale/static/css/main.ffa50599.chunk.css",
     "main.js": "/shopsale/static/js/main.7d037c33.chunk.js",
     "main.js.map": "/shopsale/static/js/main.7d037c33.chunk.js.map",
     "runtime-main.js": "/shopsale/static/js/runtime-main.6cdce110.js",
@@ -8,9 +8,9 @@
     "static/js/2.b81fbc1e.chunk.js": "/shopsale/static/js/2.b81fbc1e.chunk.js",
     "static/js/2.b81fbc1e.chunk.js.map": "/shopsale/static/js/2.b81fbc1e.chunk.js.map",
     "index.html": "/shopsale/index.html",
-    "precache-manifest.990b7efabb953cc18ff74667fec3a18a.js": "/shopsale/precache-manifest.990b7efabb953cc18ff74667fec3a18a.js",
+    "precache-manifest.7e8740a6c2b4c416191e38bb53fd27fe.js": "/shopsale/precache-manifest.7e8740a6c2b4c416191e38bb53fd27fe.js",
     "service-worker.js": "/shopsale/service-worker.js",
-    "static/css/main.0b14f80e.chunk.css.map": "/shopsale/static/css/main.0b14f80e.chunk.css.map",
+    "static/css/main.ffa50599.chunk.css.map": "/shopsale/static/css/main.ffa50599.chunk.css.map",
     "static/js/2.b81fbc1e.chunk.js.LICENSE.txt": "/shopsale/static/js/2.b81fbc1e.chunk.js.LICENSE.txt",
     "static/media/carousel1.jpg": "/shopsale/static/media/carousel1.593da67b.jpg",
     "static/media/saledienthoai.png": "/shopsale/static/media/saledienthoai.aa823f06.png"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.6cdce110.js",
     "static/js/2.b81fbc1e.chunk.js",
-    "static/css/main.0b14f80e.chunk.css",
+    "static/css/main.ffa50599.chunk.css",
     "static/js/main.7d037c33.chunk.js"
   ]
 }
