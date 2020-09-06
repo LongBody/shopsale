@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1be68596ea8b394291b8a98efb490cd3",
+    "revision": "1a8ee1a9375ca713bc2f75b7f5d9d580",
     "url": "/shopsale/index.html"
   },
   {
-    "revision": "593bddbbb958074dd7f3",
-    "url": "/shopsale/static/css/main.2cea8922.chunk.css"
+    "revision": "e02e6f7b1f1e4db82d27",
+    "url": "/shopsale/static/css/main.0b14f80e.chunk.css"
   },
   {
-    "revision": "a697e1019f41ea8365e2",
-    "url": "/shopsale/static/js/2.0e425fcd.chunk.js"
+    "revision": "f1a3c59a67297172efd6",
+    "url": "/shopsale/static/js/2.b81fbc1e.chunk.js"
   },
   {
     "revision": "555f72d435c87689937422779dcac070",
-    "url": "/shopsale/static/js/2.0e425fcd.chunk.js.LICENSE.txt"
+    "url": "/shopsale/static/js/2.b81fbc1e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "593bddbbb958074dd7f3",
-    "url": "/shopsale/static/js/main.83d10066.chunk.js"
+    "revision": "e02e6f7b1f1e4db82d27",
+    "url": "/shopsale/static/js/main.1a97ceaa.chunk.js"
   },
   {
     "revision": "83692bbe61a39f36ca04",
