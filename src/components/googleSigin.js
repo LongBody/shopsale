@@ -6,7 +6,7 @@ export default function GoogleSignIn() {
 
   const responseGoogle = (response) => {
     // console.log(response.profileObj);
-    if(response){
+    if(response.profileObj){
       localStorage.setItem("userShopsale", JSON.stringify(response.profileObj));
       history.push({
         pathname: '/',
