@@ -97,7 +97,7 @@ function SearchProduct(props) {
 
         <div>
             <Header />
-            <Container style={{ paddingTop: 120 }}>
+            <Container style={{ paddingTop: 145 }}>
                 <Grid container spacing={1} xs={12} sm={6} md={6} lg={12}>
                     {result.length > 0 ? result : <div style={{ textAlign: "center", color: "#e79413" }}><h2>{loading}</h2></div>}
                     {noProduct === true ? <div style={{ textAlign: "center", color: "red" }}><h2>Không Có Sản Phẩm</h2></div> : ""}

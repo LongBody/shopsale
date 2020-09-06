@@ -11,3 +11,31 @@
 .MuiTooltip-arrow {
     color: white !important
 }
+
+.MuiIconButton-root {
+    padding-top: 13px !important;
+    padding-right: 0px !important;
+    padding-left: 20px !important;
+    padding-bottom: 0px !important;
+    margin-right: 20px;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    .social-header {
+        padding-top: 13px !important;
+    }
+}
+
+.fa-facebook-square {
+    color: white;
+}
+
+.fa-youtube {
+    color: white;
+}
+
+.btn-search {
+    background-color: black !important;
+}

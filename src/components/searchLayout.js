@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { callApi } from '../utils/callApi'
 import { createFilterOptions } from "@material-ui/lab";
-
+import Button from '@material-ui/core/Button';
 const OPTIONS_LIMIT = 7;
 const defaultFilterOptions = createFilterOptions();
 
@@ -35,17 +35,15 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },
         marginRight: theme.spacing(2),
-        marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
+            marginLeft: theme.spacing(2),
             width: 'auto',
         },
+        marginTop: 4
     },
     searchIcon: {
-        padding: theme.spacing(0, 2),
         height: '100%',
-        position: 'absolute',
         pointerEvents: 'none',
         display: 'flex',
         alignItems: 'center',
@@ -57,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        paddingLeft: `calc(1em + ${theme.spacing(2)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
@@ -68,7 +66,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const styleSearchField = {
-    width: "70%"
+    width: "100%",
+
+}
+
+const btnSearch = {
+    height: '100%',
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    color:"white",
+    "background-color": "black !important",
 }
 
 
@@ -81,8 +89,8 @@ function SearchLayout(props) {
 
     let arrayTag = ["đồng hồ", "thiết bị điện tử", "hàng quốc tế"]
 
-    const fetchData = async() => {
-        const callApiData = await callApi("product/").then(async(response) => {
+    const fetchData = async () => {
+        const callApiData = await callApi("product/").then(async (response) => {
             let data = await response.data
             return data
         })
@@ -98,7 +106,7 @@ function SearchLayout(props) {
         fetchData()
     }, []);
 
-    const handleSubmit = async(evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
         setRedirect(true)
     }
@@ -122,48 +130,44 @@ function SearchLayout(props) {
     return (
 
 
-        <
-        div className = { classes.search }
-        style = { styleSearchField } >
-        <
-        form onSubmit = { handleSubmit } >
-
-        <
-        Autocomplete id = "custom-input-demo"
-        options = { tags }
-        size = "small"
-        filterOptions = { filterOptions }
-        onSelect = {
-            (event) => handleTag(event, 'tags') }
-        renderInput = {
-            (params) => ( <
-                div ref = { params.InputProps.ref } >
-                <
-                div className = { classes.searchIcon } >
-                <
-                SearchIcon / >
-                <
-                /div> <
-                InputBase placeholder = "Search…"
-                classes = {
-                    {
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
+     <div style={{width:"80%"}}>
+            <div className={classes.search}
+            style={styleSearchField} >
+            <form onSubmit={handleSubmit} >
+                <Autocomplete id="custom-input-demo"
+                    options={tags}
+                    size="small"
+                    filterOptions={filterOptions}
+                    onSelect={
+                        (event) => handleTag(event, 'tags')
                     }
-                }
-                style = { styleSearchField }
-                inputProps = {
-                    { 'aria-label': 'search' } } {...params.inputProps }
-                /> <
-                /div>
-            )
-        }
-        />
+                    renderInput={
+                        (params) => (<div ref={params.InputProps.ref} style={{ width: "100%" }}>
+                            <InputBase placeholder="Tìm kiếm sản phẩm ..."
+                                classes={
+                                    {
+                                        root: classes.inputRoot,
+                                        input: classes.inputInput,
+                                    }
+                                }
+                                style={styleSearchField}
+                                inputProps={
+                                    { 'aria-label': 'search' }
+                                } {...params.inputProps}
+                            />
 
-
-        <
-        /form> <
-        /div>
+                        </div >
+                        )
+                    } />
+                <Button variant="contained" style={btnSearch} className="btn-search"
+                onClick={handleSubmit}
+                >
+                    <div className={classes.searchIcon} >
+                        <SearchIcon />
+                    </div>
+                </Button>
+            </form> </div >
+     </div>
 
     );
 }

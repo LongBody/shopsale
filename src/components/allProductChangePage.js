@@ -156,7 +156,7 @@ function Product(props) {
     <div >
       <Header />
       <div ref={inputEl}></div>
-      <Container style={{ paddingTop: 100 }}>
+      <Container style={{ paddingTop: 130 }}>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="age-native-simple">Giá</InputLabel>
           <Select

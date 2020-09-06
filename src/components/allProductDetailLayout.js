@@ -84,7 +84,7 @@ function ProductDetail(props) {
         <div>
             <Header />
 
-            <Container style={{ paddingTop: 110 }}>
+            <Container style={{ paddingTop: 145 }}>
                 <div style={{padding: 40,paddingTop:50, backgroundColor: "#fff",height:"100%" }}>
                     {
                         pro ?

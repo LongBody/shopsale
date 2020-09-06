@@ -27,7 +27,7 @@ function Home() {
   
      </Container> */}
 
-      <Container style={{ paddingTop: 120 }}>
+      <Container style={{ paddingTop: 160 }}>
         <ProductFSContainer />
       </Container>
 

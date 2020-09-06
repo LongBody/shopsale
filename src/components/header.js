@@ -241,60 +241,67 @@ function Header(props) {
         )
     })
 
-    function WatchNowNoti(){
-        alert("ok")
-    }
-
-
-
-
-
     return (
         <div className={classes.grow}>
 
             <AppBar position="static" style={styleAppBar}>
                 <Container fixed>
-                    <Toolbar>
-                        <Link to="/"><img src={LogoWeb} className="logoWebImage"></img></Link>
-                        <SearchField />
-                        <div className={classes.grow} />
-                        <div className={classes.sectionDesktop}>
-                            <ClickAwayListener onClickAway={handleTooltipClose}>
-                                <LightTooltip title={<div style={{ padding: 5 }}>
-                                    <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} /><h3 style={{ marginLeft: 5 }}> Chào mừng bạn đến với Shopsale</h3></div>
+                    <div className="content-header">
+                        <div className="social-header">
+                        <span style={{fontSize: "16px !important" , marginLeft:25, marginTop:3 , fontWeight:500 , marginRight:10 }}>Kết Nối</span>
+                        <a href="https://www.facebook.com/Shopsale-101665164978100/"><i class="fab fa-facebook-square" style={{fontSize:20 , marginRight:10, color:"#e79413 !important"}}></i></a>
+                        <a href="https://www.youtube.com/channel/UCq4jLkYQyW3llnJm6fpaFGQ?view_as=subscriber"><i class="fab fa-youtube"  style={{fontSize:20, marginRight:5}}></i></a>
+                            </div>
+                        <div style={{ paddingRight:20}}>
+                            <div className={classes.sectionDesktop} >
+                                <ClickAwayListener onClickAway={handleTooltipClose}>
+                                    <LightTooltip title={<div style={{ padding: 5 }}>
+                                        <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} /><h3 style={{ marginLeft: 5 }}> Chào mừng bạn đến với Shopsale</h3></div>
                                         {/* <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} /><h3 style={{ marginLeft: 5 }}>Mua Sắm Với Shopsale
                                      <span style={{ marginLeft: 2, color: "#e79413" }} onClick={() => WatchNowNoti()}>Xem Ngay</span>
                                         </h3>
                                         </div> */}
-                                </div>}
-                                    arrow placement="bottom-end"
-                                    PopperProps={{
-                                        disablePortal: true,
-                                    }}
-                                    onClose={handleTooltipClose}
-                                    open={open}
-                                    disableFocusListener
-                                    disableHoverListener
-                                    disableTouchListener
+                                    </div>}
+                                        arrow placement="bottom-end"
+                                        PopperProps={{
+                                            disablePortal: true,
+                                        }}
+                                        onClose={handleTooltipClose}
+                                        open={open}
+                                        disableFocusListener
+                                        disableHoverListener
+                                        disableTouchListener
+                                    >
+                                        <IconButton aria-label="show 17 new notifications" color="inherit" onClick={handleTooltipOpen}>
+                                            <Badge badgeContent={1} color="primary">
+                                                <NotificationsIcon />                                        
+                                            </Badge>
+                                            <span style={{fontSize:15 , marginLeft:14 , marginTop:3}}>Thông báo</span>
+                                        </IconButton>
+                                    </LightTooltip>
+                                </ClickAwayListener>
+                                <IconButton
+                                    edge="end"
+                                    aria-label="account of current user"
+                                    aria-controls={menuId}
+                                    aria-haspopup="true"
+                                    onClick={handleProfileMenuOpen}
+                                    color="inherit"
                                 >
-                                    <IconButton aria-label="show 17 new notifications" color="inherit" onClick={handleTooltipOpen}>
-                                        <Badge badgeContent={1} color="primary">
-                                            <NotificationsIcon />
-                                        </Badge>
-                                    </IconButton>
-                                </LightTooltip>
-                            </ClickAwayListener>
-                            <IconButton
-                                edge="end"
-                                aria-label="account of current user"
-                                aria-controls={menuId}
-                                aria-haspopup="true"
-                                onClick={handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
+                                    <AccountCircle />
+                                    <span style={{fontSize:15 , marginLeft:5, marginTop:3}}>Người Dùng</span>
+                                </IconButton>
+                            </div>
                         </div>
+                    </div>
+
+
+
+                    <Toolbar>
+                        <Link to="/"><img src={LogoWeb} className="logoWebImage"></img></Link>
+                        <SearchField />
+                        <div className={classes.grow} />
+
                         <Link to="/cart">
                             <LightTooltip title={cardInfoItem.length > 0 ? <div style={{ padding: 5 }}>
                                 {
@@ -332,7 +339,7 @@ function Header(props) {
 
     );
 
-   
+
 
 
 
