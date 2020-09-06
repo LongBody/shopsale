@@ -19,7 +19,17 @@ export function signUpApi(endpoint) {
 
 }
 
+export function signInWithGGApi(endpoint) {
+    return axios.get(`${Config.CALL_API_SIGN_IN_GG}/${endpoint}`)
+        .catch(function(error) {
+            // handle error
+            console.log(error);
+        })
+
+}
+
 export default {
     callApi,
-    signUpApi
+    signUpApi,
+    signInWithGGApi
 }
