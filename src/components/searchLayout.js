@@ -156,14 +156,14 @@ function SearchLayout(props) {
                                 } {...params.inputProps}
                             />
 
-                        </div >
+                        </div>
                         )
                     } />
                 <Button variant="contained" style={btnSearch} className="btn-search"
                 onClick={handleSubmit}
                 >
                     <div className={classes.searchIcon} >
-                        <SearchIcon />
+                        <SearchIcon style={{color:"wheat"}}/>
                     </div>
                 </Button>
             </form> </div >

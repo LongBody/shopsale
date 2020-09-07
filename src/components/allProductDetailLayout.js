@@ -85,21 +85,12 @@ function ProductDetail(props) {
             <Header />
 
             <Container style={{ paddingTop: 145 }}>
-                <div style={{padding: 40,paddingTop:50, backgroundColor: "#fff",height:"100%" }}>
+                <div style={{padding: 40,paddingTop:50, backgroundColor: "#fff",height:"100%" }} className="responsive-image">
                     {
                         pro ?
                             <Grid container spacing={2} xs={3} sm={8} md={12} lg={12}>
                                 <Grid item xs={12} xs={10} sm={10} md={6} lg={5}>
                                     <img src={pro.imageUrl} style={styleImage} />
-                                    <div style={{marginTop:50}}>
-                                        <h4>CHI TIẾT SẢN PHẨM</h4>
-                                        {
-                                            bioAsync ?
-                                                newRow(pro.bio)
-                                                : "Loading"
-
-                                        }
-                                    </div>
                                 </Grid>
                                 <Grid item xs={12} xs={10} sm={10} md={6} lg={6}>
                                     <h2>{pro.title}</h2>
@@ -128,6 +119,17 @@ function ProductDetail(props) {
                                         >
                                             Mua Ngay
                                         </Button>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={12} xs={10} sm={10} md={6} lg={5}>
+                                    <div style={{marginTop:50}}>
+                                        <h4>CHI TIẾT SẢN PHẨM</h4>
+                                        {
+                                            bioAsync ?
+                                                newRow(pro.bio)
+                                                : "Loading"
+
+                                        }
                                     </div>
                                 </Grid>
                             </Grid>

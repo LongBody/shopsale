@@ -29,3 +29,9 @@
     .allProduct:hover {
         color: #a56601
     }
+    
+    @media only screen and (max-width: 400px) {
+        .responsive-image {
+            padding: 0px !important;
+        }
+    }

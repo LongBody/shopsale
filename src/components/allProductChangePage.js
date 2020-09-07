@@ -100,7 +100,7 @@ function Product(props) {
 
   const fetchDataSort = async () => {
     setLoading(true)
-    console.log(state)
+   
     let callApiData = []
       if (state === "desc") {
         callApiData = product.sort(function (a, b) { return b.price - a.price })
@@ -129,7 +129,7 @@ function Product(props) {
     fetchDataSort()
   }, [state]);
 
-  console.log(product)
+  
 
   let result = product.map((item, index) => {
     return (
@@ -165,7 +165,6 @@ function Product(props) {
             onChange={handleChange}
             inputProps={{
               name: 'price',
-              id: 'age-native-simple',
             }}
           >
             <option aria-label="None" value="" />
