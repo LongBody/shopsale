@@ -8,6 +8,8 @@ import { Container } from '@material-ui/core';
 import Footer from '../components/footer';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
+import Countdown from 'react-countdown';
+import FlashOnIcon from '@material-ui/icons/FlashOn';
 import image from '../image/saledienthoai.png'
 import { Link } from 'react-router-dom'
 function Home() {
@@ -28,6 +30,12 @@ function Home() {
      </Container> */}
 
       <Container style={{ paddingTop: 160 }}>
+      <Toolbar variant="dense"  style={{backgroundColor:"#FFF"  }}>
+                    <h4 style={{ color: "rgb(0, 172, 193)" }}>FLASH SALE
+                             </h4>
+                    <FlashOnIcon style={{ color: "rgb(0, 172, 193)", marginLeft: 6 }} />
+                    <span style={{ marginLeft: 100, color: "#e79413", fontSize: 20 }}> <Countdown date={Date.now() + 12000000} /></span>
+                </Toolbar>
         <ProductFSContainer />
       </Container>
 
