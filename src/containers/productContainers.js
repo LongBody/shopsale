@@ -31,7 +31,7 @@ class ProductContainer extends Component {
             page:this.state.page+=1
         })
         if(this.state.page > 5){
-            window.location.replace("https://longbody.github.io/shopsale/#/shopsale/shopsaleproduct/allproduct/2")
+            window.location.replace("https://shopsale.cf/#/shopsale/shopsaleproduct/allproduct/2")
         }
         else 
         this.props.fetchLoadMoreProduct(this.state.page)
