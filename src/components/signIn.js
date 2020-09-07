@@ -25,7 +25,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="/shopsale">
+      <Link color="inherit" href="/">
         ShopSale
       </Link>{' '}
       {new Date().getFullYear()}
@@ -180,7 +180,7 @@ export default function SignIn() {
                   </Link>
               </Grid>
               <Grid item>
-                <Link href="/shopsale/#/shopsale/sign-up" variant="body2">
+                <Link href="/shopsale/sign-up" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
