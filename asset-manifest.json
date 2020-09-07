@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/shopsale/static/css/main.9f3a9b7e.chunk.css",
-    "main.js": "/shopsale/static/js/main.481297ff.chunk.js",
-    "main.js.map": "/shopsale/static/js/main.481297ff.chunk.js.map",
-    "runtime-main.js": "/shopsale/static/js/runtime-main.6cdce110.js",
-    "runtime-main.js.map": "/shopsale/static/js/runtime-main.6cdce110.js.map",
-    "static/js/2.9a47ae2f.chunk.js": "/shopsale/static/js/2.9a47ae2f.chunk.js",
-    "static/js/2.9a47ae2f.chunk.js.map": "/shopsale/static/js/2.9a47ae2f.chunk.js.map",
-    "index.html": "/shopsale/index.html",
-    "precache-manifest.1a43e6ad0b8ce729b27db5709cffd8de.js": "/shopsale/precache-manifest.1a43e6ad0b8ce729b27db5709cffd8de.js",
-    "service-worker.js": "/shopsale/service-worker.js",
-    "static/css/main.9f3a9b7e.chunk.css.map": "/shopsale/static/css/main.9f3a9b7e.chunk.css.map",
-    "static/js/2.9a47ae2f.chunk.js.LICENSE.txt": "/shopsale/static/js/2.9a47ae2f.chunk.js.LICENSE.txt",
-    "static/media/carousel1.jpg": "/shopsale/static/media/carousel1.593da67b.jpg",
-    "static/media/saledienthoai.png": "/shopsale/static/media/saledienthoai.aa823f06.png"
+    "main.css": "/static/css/main.9f3a9b7e.chunk.css",
+    "main.js": "/static/js/main.ee3af79b.chunk.js",
+    "main.js.map": "/static/js/main.ee3af79b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.83c3e0c4.js",
+    "runtime-main.js.map": "/static/js/runtime-main.83c3e0c4.js.map",
+    "static/js/2.93127575.chunk.js": "/static/js/2.93127575.chunk.js",
+    "static/js/2.93127575.chunk.js.map": "/static/js/2.93127575.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.cb4c5c3a288dcab8a37f79e18db738ac.js": "/precache-manifest.cb4c5c3a288dcab8a37f79e18db738ac.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.9f3a9b7e.chunk.css.map": "/static/css/main.9f3a9b7e.chunk.css.map",
+    "static/js/2.93127575.chunk.js.LICENSE.txt": "/static/js/2.93127575.chunk.js.LICENSE.txt",
+    "static/media/carousel1.jpg": "/static/media/carousel1.593da67b.jpg",
+    "static/media/saledienthoai.png": "/static/media/saledienthoai.aa823f06.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.6cdce110.js",
-    "static/js/2.9a47ae2f.chunk.js",
+    "static/js/runtime-main.83c3e0c4.js",
+    "static/js/2.93127575.chunk.js",
     "static/css/main.9f3a9b7e.chunk.css",
-    "static/js/main.481297ff.chunk.js"
+    "static/js/main.ee3af79b.chunk.js"
   ]
 }
