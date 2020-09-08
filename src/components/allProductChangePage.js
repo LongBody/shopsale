@@ -162,7 +162,7 @@ function Product(props) {
           <Select
             native
             value={state.price}
-            onChange={handleChange}
+            onClick={handleChange}
             inputProps={{
               name: 'price',
             }}
