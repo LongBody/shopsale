@@ -5,7 +5,10 @@ const myReducer = (state = InitialState, action) => {
 
     switch (action.type) {
         case types.FETCH_CART:
-            return [...action.payload.productCart];
+            if (action.payload) {
+                return [...action.payload.productCart];
+            } else return state
+
         case types.ADD_TO_CART:
             return [...action.payload.productCart];
 
