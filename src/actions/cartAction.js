@@ -3,6 +3,7 @@ import swal from "sweetalert";
 import { callApiAddCart, callApi } from "../utils/callApi";
 const axios = require("axios");
 
+
 let user = JSON.parse(localStorage.getItem("userShopsale"));
 let id;
 if (user) {
@@ -139,10 +140,20 @@ export const paymentCart = (cart) => {
                     cart.splice(index, 1);
                 }
             }
-            swal("Thành Công", "Đã Mua Hàng", "success");
+
+            swal({
+                title: "Loading...",
+            })
+
         }
+
+
+
         callApiAddCart(id, cart).then(async(response) => {
             console.log(response);
+            swal.stopLoading();
+            swal.close();
+            swal("Thành Công!", "Đã Thanh Toán!", "success");
             await response.data;
             dispatch({
                 type: types.PAYMENT_CART,

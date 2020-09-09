@@ -166,7 +166,7 @@ function SearchLayout(props) {
                         <SearchIcon style={{color:"wheat"}}/>
                     </div>
                 </Button>
-            </form> </div >
+            </form> </div>
      </div>
 
     );

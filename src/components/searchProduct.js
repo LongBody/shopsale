@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import ProductCard from '../components/productCard'
 import swal from 'sweetalert'
+import CircularProgress from '@material-ui/core/CircularProgress';
 const StyleStar = {
     color: "#fc9d0a",
     fontSize: 13,
@@ -99,7 +100,9 @@ function SearchProduct(props) {
             <Header />
             <Container style={{ paddingTop: 145 }}>
                 <Grid container spacing={1} xs={12} sm={6} md={6} lg={12}>
-                    {result.length > 0 ? result : <div style={{ textAlign: "center", color: "#e79413" }}><h2>{loading}</h2></div>}
+                    {result.length > 0 ? result : <div style={{ textAlign: "center", color: "#e79413" , display:"flex" }}>
+                        {loading ? <CircularProgress style={{color: "#e79413" ,marginRight:30 , marginTop:15 }} size={30}/> : "" }
+                    <h2>{loading}</h2></div>}
                     {noProduct === true ? <div style={{ textAlign: "center", color: "red" }}><h2>Không Có Sản Phẩm</h2></div> : ""}
                 </Grid>
             </Container>
