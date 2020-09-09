@@ -162,7 +162,7 @@ function Product(props) {
     <div >
       <Header />
       <div ref={inputEl}></div>
-      <Container style={{ paddingTop: 130 }}>
+      <Container style={{ paddingTop: 140 }}>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="age-native-simple">Giá</InputLabel>
           <Select
@@ -179,7 +179,7 @@ function Product(props) {
           </Select>
         </FormControl>
 
-        <FormControl className={classes.formControl} style={{ marginLeft: 20 }}>
+        {/* <FormControl className={classes.formControl} style={{ marginLeft: 20 }}>
           <InputLabel htmlFor="age-native-simple"><i className="far fa-star" ></i></InputLabel>
           <Select
             native
@@ -197,7 +197,7 @@ function Product(props) {
             <option value={"2"} >2 Sao</option>
             <option value={"1"} >1 Sao</option>
           </Select>
-        </FormControl>
+        </FormControl> */}
 
 
         <Grid container spacing={1} xs={12} sm={6} md={6} lg={12} style={{ paddingTop: 20 }}
