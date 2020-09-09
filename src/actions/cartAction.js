@@ -38,6 +38,7 @@ let findProductInCart = (cart, product) => {
 };
 
 export const getCartUser = () => {
+    console.log(id)
     return (dispatch) => {
         if (id) {
             callApi("sign-in/get-cart/?id=" + id).then((response) => {

@@ -184,11 +184,11 @@ function Header(props) {
             onClose={handleMenuClose}
         >
 
-            {userState ? <MenuItem onClick={handleMenuClose}>Profile</MenuItem> :
-                <Link to="/sign-in" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Sign-In</MenuItem></Link>
+            {userState ? <MenuItem onClick={handleMenuClose}>Thông tin</MenuItem> :
+                <Link to="/sign-in" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Đăng Nhập</MenuItem></Link>
             }
-            {userState ? <MenuItem onClick={() => handleLogout()} style={{ color: "red" }}>LogOut</MenuItem> :
-                <Link to="/sign-up" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Sign-Up</MenuItem></Link>
+            {userState ? <MenuItem onClick={() => handleLogout()} style={{ color: "red" }}>Đăng Xuất</MenuItem> :
+                <Link to="/sign-up" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Đăng Kí</MenuItem></Link>
             }
 
         </Menu>
