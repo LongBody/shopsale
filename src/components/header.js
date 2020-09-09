@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -165,12 +165,15 @@ function Header(props) {
     };
 
 
+    if (user) {
+        useEffect(() => {
 
-    useEffect(() => {
-        if(user)
-        props.fetchCartUser()
-      },[]);
-      
+            props.fetchCartUser()
+        }, []);
+
+    }
+
+
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -238,20 +241,20 @@ function Header(props) {
     let { cart } = props
     let quantity = 0
     cart.map((item, index) => {
-        quantity += item.quantity      
+        quantity += item.quantity
     })
 
 
     let cardInfoItem = cart.map(item => {
-            return (
-                <div style={{ display: "flex", marginBottom: 5 }}><img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
-                    <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4 }}>{item.product.title}</h3>
-                    <h5 style={{ color: "#696969", marginLeft: 1 }}>x{item.quantity}</h5>
-                </div>
-            )
+        return (
+            <div style={{ display: "flex", marginBottom: 5 }}><img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
+                <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4 }}>{item.product.title}</h3>
+                <h5 style={{ color: "#696969", marginLeft: 1 }}>x{item.quantity}</h5>
+            </div>
+        )
 
 
-     
+
     })
 
     return (
@@ -261,11 +264,11 @@ function Header(props) {
                 <Container fixed>
                     <div className="content-header">
                         <div className="social-header">
-                        <span style={{fontSize: "16px !important" , marginLeft:25, marginTop:3 , fontWeight:500 , marginRight:10 }}>Kết Nối</span>
-                        <a href="https://www.facebook.com/Shopsale-101665164978100/" className="hoverFacebook"><i class="fab fa-facebook-square" style={{fontSize:20, marginRight:10, color:"#e79413 !important"}}></i></a>
-                        <a href="https://www.youtube.com/channel/UCq4jLkYQyW3llnJm6fpaFGQ?view_as=subscriber"><i class="fab fa-youtube"  style={{fontSize:20, marginRight:5}}></i></a>
-                            </div>
-                        <div style={{ paddingRight:20}}>
+                            <span style={{ fontSize: "16px !important", marginLeft: 25, marginTop: 3, fontWeight: 500, marginRight: 10 }}>Kết Nối</span>
+                            <a href="https://www.facebook.com/Shopsale-101665164978100/" className="hoverFacebook"><i class="fab fa-facebook-square" style={{ fontSize: 20, marginRight: 10, color: "#e79413 !important" }}></i></a>
+                            <a href="https://www.youtube.com/channel/UCq4jLkYQyW3llnJm6fpaFGQ?view_as=subscriber"><i class="fab fa-youtube" style={{ fontSize: 20, marginRight: 5 }}></i></a>
+                        </div>
+                        <div style={{ paddingRight: 20 }}>
                             <div className={classes.sectionDesktop} >
                                 <ClickAwayListener onClickAway={handleTooltipClose}>
                                     <LightTooltip title={<div style={{ padding: 5 }}>
@@ -287,9 +290,9 @@ function Header(props) {
                                     >
                                         <IconButton aria-label="show 17 new notifications" color="inherit" onClick={handleTooltipOpen}>
                                             <Badge badgeContent={1} color="primary">
-                                                <NotificationsIcon />                                        
+                                                <NotificationsIcon />
                                             </Badge>
-                                            <span style={{fontSize:15 , marginLeft:14 , marginTop:3}}>Thông báo</span>
+                                            <span style={{ fontSize: 15, marginLeft: 14, marginTop: 3 }}>Thông báo</span>
                                         </IconButton>
                                     </LightTooltip>
                                 </ClickAwayListener>
@@ -302,7 +305,7 @@ function Header(props) {
                                     color="inherit"
                                 >
                                     <AccountCircle />
-                                    <span style={{fontSize:15 , marginLeft:5, marginTop:3}}>Người Dùng</span>
+                                    <span style={{ fontSize: 15, marginLeft: 5, marginTop: 3 }}>Người Dùng</span>
                                 </IconButton>
                             </div>
                         </div>
@@ -366,12 +369,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-          fetchCartUser: () => {
+        fetchCartUser: () => {
             dispatch(actions.getCartUser())
-          }
+        }
     }
-  }
-  
+}
+
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
