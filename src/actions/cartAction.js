@@ -37,7 +37,7 @@ let findProductInCart = (cart, product) => {
     return index;
 };
 
-export const getCartUser = () => {
+export const getCartUser = (idUser) => {
     console.log(id)
     return (dispatch) => {
         if (id) {
@@ -48,16 +48,21 @@ export const getCartUser = () => {
                     payload: response.data,
                 });
             });
-        } else
-            dispatch({
-                type: types.FETCH_CART,
-                payload: [],
+
+        }else {
+            callApi("sign-in/get-cart/?id=" + idUser).then((response) => {
+                console.log(response)
+                dispatch({
+                    type: types.FETCH_CART,
+                    payload: response.data,
+                });
             });
-    };
+        }
+    }
 };
 
 export const addToCart = (cart, product, quantity, checked) => {
-    return async(dispatch) => {
+    return async (dispatch) => {
         let cartCurrent = [];
 
         let index = findProductInCart(cart, product);
@@ -76,7 +81,7 @@ export const addToCart = (cart, product, quantity, checked) => {
         console.log(cartCurrent)
         console.log(id)
 
-        callApiAddCart(id, cartCurrent).then(async(response) => {
+        callApiAddCart(id, cartCurrent).then(async (response) => {
             console.log(response);
             await response.data;
             dispatch({
@@ -88,7 +93,7 @@ export const addToCart = (cart, product, quantity, checked) => {
 };
 
 export const onUpdateQuantity = (cart, product, quantity) => {
-    return async(dispatch) => {
+    return async (dispatch) => {
         let index = findProductInCart(cart, product);
 
         if (index !== -1 && cart[index].quantity >= 0) {
@@ -100,7 +105,7 @@ export const onUpdateQuantity = (cart, product, quantity) => {
         } else {
             cart[index].checked = true;
         }
-        callApiAddCart(id, cart).then(async(response) => {
+        callApiAddCart(id, cart).then(async (response) => {
             console.log(response);
             await response.data;
             dispatch({
@@ -123,7 +128,7 @@ export const deleteProductCart = (product) => {
 };
 
 export const paymentCart = (cart) => {
-    return async(dispatch) => {
+    return async (dispatch) => {
         let lengthState = cart.length;
         let index;
         let count = 0;
@@ -150,7 +155,7 @@ export const paymentCart = (cart) => {
 
 
 
-        callApiAddCart(id, cart).then(async(response) => {
+        callApiAddCart(id, cart).then(async (response) => {
             console.log(response);
             swal.stopLoading();
             swal.close();
@@ -172,7 +177,7 @@ export const onUpdateMessage = (message) => {
 };
 
 export const handleChangeChecked = (cart, product) => {
-    return async(dispatch) => {
+    return async (dispatch) => {
         let index = findProductInCart(cart, product);
         if (index !== -1) {
             if (cart[index].checked == true) {
@@ -181,7 +186,7 @@ export const handleChangeChecked = (cart, product) => {
                 cart[index].checked = true;
             }
         }
-        callApiAddCart(id, cart).then(async(response) => {
+        callApiAddCart(id, cart).then(async (response) => {
             console.log(response);
             await response.data;
             dispatch({

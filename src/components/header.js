@@ -136,6 +136,7 @@ function Header(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const [userState, setUserState] = React.useState(user);
+    const [cartState, setCartState] = React.useState([]);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -166,12 +167,6 @@ function Header(props) {
 
 
 
-        useEffect(() => {
-            if (user) {
-            props.fetchCartUser()}
-        }, []);
-
-    
 
 
 
@@ -239,14 +234,25 @@ function Header(props) {
     );
 
     let { cart } = props
+
     let quantity = 0
-    if(cart){
-        cart.map((item, index) => {
+
+    if (cart) {
+        cart.map((item) => {
             quantity += item.quantity
         })
-    
     }
-  
+
+    useEffect(() => {
+        console.log(user)
+        if (user) {
+            props.fetchCartUser(user._id)
+        }
+    }, []);
+
+
+
+
 
     let cardInfoItem = cart.map(item => {
         return (
@@ -372,8 +378,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        fetchCartUser: () => {
-            dispatch(actions.getCartUser())
+        fetchCartUser: (id) => {
+            dispatch(actions.getCartUser(id))
         }
     }
 }

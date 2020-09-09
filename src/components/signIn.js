@@ -16,6 +16,8 @@ import { Router, Redirect } from "react-router-dom";
 import { createHashHistory } from 'history'
 import LogoWeb from '../image/brand.png'
 import SignInGoogle from '../components/googleSigin'
+import { connect } from 'react-redux'
+import * as actions from '../actions/cartAction'
 
 
 const history = createHashHistory()
@@ -59,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function SignIn() {
+ function SignIn(props) {
   const classes = useStyles();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -86,6 +88,10 @@ export default function SignIn() {
     }
   }
 
+  async function FetchCart(){
+  await  props.fetchCartUser()
+  }
+
   if (loginDone) {
     let user = JSON.parse(localStorage.getItem("userShopsale"));
     if (user) {
@@ -99,6 +105,8 @@ export default function SignIn() {
       }
     }
     else {
+      console.log("lo")
+      FetchCart()
       return (<Redirect to="/" />);
     }
 
@@ -197,5 +205,18 @@ export default function SignIn() {
 
 }
 
+
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+      fetchCartUser: () => {
+          dispatch(actions.getCartUser())
+      }
+  }
+}
+
+
+
+export default connect(null, mapDispatchToProps)(SignIn);
 
 
