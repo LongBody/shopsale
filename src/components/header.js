@@ -165,13 +165,13 @@ function Header(props) {
     };
 
 
-    if (user) {
-        useEffect(() => {
 
-            props.fetchCartUser()
+        useEffect(() => {
+            if (user) {
+            props.fetchCartUser()}
         }, []);
 
-    }
+    
 
 
 
@@ -240,10 +240,13 @@ function Header(props) {
 
     let { cart } = props
     let quantity = 0
-    cart.map((item, index) => {
-        quantity += item.quantity
-    })
-
+    if(cart){
+        cart.map((item, index) => {
+            quantity += item.quantity
+        })
+    
+    }
+  
 
     let cardInfoItem = cart.map(item => {
         return (
