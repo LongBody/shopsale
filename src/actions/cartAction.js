@@ -40,6 +40,7 @@ export const getCartUser = () => {
     return (dispatch) => {
         if (id) {
             callApi("sign-in/get-cart/?id=" + id).then((response) => {
+                console.log(response)
                 dispatch({
                     type: types.FETCH_CART,
                     payload: response.data,
