@@ -71,6 +71,9 @@ export const addToCart = (cart, product, quantity, checked) => {
             cartCurrent = await [...cart, data];
         }
 
+        console.log(cartCurrent)
+        console.log(id)
+
         callApiAddCart(id, cartCurrent).then(async(response) => {
             console.log(response);
             await response.data;

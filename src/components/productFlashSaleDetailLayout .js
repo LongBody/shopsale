@@ -93,7 +93,6 @@ function ProductDetail(props) {
 
     function newRow(text) {
         let result = text.split('\n')
-        console.log(text)
         return result.map((item, key) => {
             return <div key={key}> - {item}</div>
         })

@@ -236,8 +236,6 @@ function Header(props) {
     );
 
     let { cart } = props
-
-    console.log(cart)
     let quantity = 0
     cart.map((item, index) => {
         quantity += item.quantity      
