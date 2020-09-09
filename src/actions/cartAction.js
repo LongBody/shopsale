@@ -135,7 +135,9 @@ export const paymentCart = (cart) => {
         for (let m = 0; m < lengthState; m++) {
             if (cart[m].checked === false) {
                 count++;
+                
             }
+        
         }
         if (count === lengthState) {
             swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
@@ -151,21 +153,20 @@ export const paymentCart = (cart) => {
                 title: "Loading...",
             })
 
-        }
-
-
-
-        callApiAddCart(id, cart).then(async (response) => {
-            console.log(response);
-            swal.stopLoading();
-            swal.close();
-            swal("Thành Công!", "Đã Thanh Toán!", "success");
-            await response.data;
-            dispatch({
-                type: types.PAYMENT_CART,
-                payload: response.data,
+            callApiAddCart(id, cart).then(async (response) => {
+                console.log(response);
+                swal.stopLoading();
+                swal.close();
+                swal("Thành Công!", "Đã Thanh Toán!", "success");
+                await response.data;
+                dispatch({
+                    type: types.PAYMENT_CART,
+                    payload: response.data,
+                });
             });
-        });
+
+        }
+      
     };
 };
 
