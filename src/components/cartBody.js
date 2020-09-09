@@ -27,7 +27,7 @@ const styleQuantity = {
 
 
     const handleChange = () => {
-        props.handleChangeChecked(props)
+        props.handleChangeChecked(props.cart,props)
     };
 
 
@@ -45,13 +45,13 @@ const styleQuantity = {
 
                 <TableCell align="left">
                     <Button variant="contained" color="primary" size="small" style={styleButton} 
-                    onClick={()=>{props.onUpdateQuantity(props,props.quantity - 1)}}
+                    onClick={()=>{props.onUpdateQuantity(props.cart,props,props.quantity - 1)}}
                     >
                         -
                      </Button>
                    <span style={styleQuantity}>{props.quantity}</span> 
                     <Button variant="contained" color="primary" size="small" style={styleButton}
-                    onClick={()=>{props.onUpdateQuantity(props,props.quantity + 1)}}
+                    onClick={()=>{props.onUpdateQuantity(props.cart,props,props.quantity + 1)}}
                     >
                         +
                      </Button>
@@ -76,18 +76,25 @@ const styleQuantity = {
 
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+      cart: state.cart,
+    }
+  }
+  
+
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        handleChangeChecked: (props) => {
-            dispatch(actions.handleChangeChecked(props))
+        handleChangeChecked: (cart,props) => {
+            dispatch(actions.handleChangeChecked(cart,props))
             dispatch(actions.onUpdateMessage(MSG_UPDATE_CART))
           },
-        onUpdateQuantity:(props,quantity) => {
-            dispatch(actions.onUpdateQuantity(props,quantity))
+        onUpdateQuantity:(cart,props,quantity) => {
+            dispatch(actions.onUpdateQuantity(cart,props,quantity))
             dispatch(actions.onUpdateMessage(MSG_UPDATE_CART))
           },
     }
   }
 
 
-export default connect(null,mapDispatchToProps)(CartBody);
+export default connect(mapStateToProps,mapDispatchToProps)(CartBody);

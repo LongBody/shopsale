@@ -1,4 +1,4 @@
-import React, { useEffect, useState , createRef} from 'react';
+import React, { useEffect, useState, createRef } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
@@ -68,7 +68,6 @@ function Product(props) {
   const inputEl = createRef("home");
 
 
-
   const handleChangePage = async (event, value) => {
     setLoading(true)
     history.push({
@@ -82,6 +81,7 @@ function Product(props) {
 
 
   const handleChange = (event) => {
+    console.log('sỏt change', event.target.value);
     setState(event.target.value)
 
   };
@@ -100,44 +100,50 @@ function Product(props) {
 
   const fetchDataSort = async () => {
     setLoading(true)
-   
+
+    console.log(state) // ban dau no la object sau lai thanh String... @@
+
     let callApiData = []
-      if (state === "desc") {
-        callApiData = product.sort(function (a, b) { return b.price - a.price })
-        setProduct(callApiData)
-      }
-      else if(state === "asc") {
-        callApiData = product.sort(function (a, b) { return a.price - b.price })
-        setProduct(callApiData)
-      }
-      setLoading(false)
+    if (state === "desc") {
+      callApiData = product.sort(function (a, b) { return b.price - a.price })
+      console.log([callApiData]);
+      console.log([...callApiData]);
+      setProduct([...callApiData])
     }
+    else if (state === "asc") {
+      callApiData = product.sort(function (a, b) { return a.price - b.price })
+      console.log([callApiData]);
+      console.log([...callApiData]);
+      setProduct([...callApiData])
+    }
+    setLoading(false)
+  }
 
 
   useEffect(() => {
     let pageParams = parseInt(props.match.params.page)
     setPage(pageParams)
     fetchData()
-    
+
   }, [props.match.params.page]);
 
   const onButtonClick = () => {
-    inputEl.current.scrollIntoView({ behavior: "smooth" }) 
+    inputEl.current.scrollIntoView({ behavior: "smooth" })
   };
 
   useEffect(() => {
     fetchDataSort()
   }, [state]);
 
-  
+
 
   let result = product.map((item, index) => {
     return (
-      <Grid item xs={12} xs={6} sm={3} md={4} lg={2}
-  
+      <Grid item xs={12} xs={6} sm={3} md={4} lg={2} key={Math.random()}
+
       >
         <AllProductCard
-          key={index}
+          key={Math.random()}
           id={item._id}
           imageUrl={item.imageUrl}
           title={item.title}
@@ -161,7 +167,7 @@ function Product(props) {
           <InputLabel htmlFor="age-native-simple">Giá</InputLabel>
           <Select
             native
-            value={state.price}
+            value={state.price} // cai nay la state object
             onClick={handleChange}
             inputProps={{
               name: 'price',
@@ -195,7 +201,7 @@ function Product(props) {
 
 
         <Grid container spacing={1} xs={12} sm={6} md={6} lg={12} style={{ paddingTop: 20 }}
-        scroll
+          scroll
         >
 
           {result.length > 0 ? result : <div style={{ textAlign: "center", color: "#e79413" }}><h2>{loading}</h2></div>}

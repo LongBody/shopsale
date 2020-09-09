@@ -136,7 +136,7 @@ function ProductDetail(props) {
                                     <div>
                                         <Button variant="outlined" color="primary"
                                             onClick={() => {
-                                                addToCart(pro, 1, true)
+                                                addToCart(props.cart,pro, 1, true)
                                             }}
                                         >
                                             Thêm Vào Giỏ Hàng
@@ -171,7 +171,7 @@ function ProductDetail(props) {
 
     );
 
-    function addToCart(prop, quantity, checked) {
+    function addToCart(cart,prop, quantity, checked) {
 
 
         let pro = {
@@ -182,7 +182,7 @@ function ProductDetail(props) {
         }
 
         if (user) {
-            props.addToCart(pro, quantity, checked)
+            props.addToCart(cart,pro, quantity, checked)
         }
         else {
             history.push("/sign-in");
@@ -219,17 +219,24 @@ function showRating(rating) {
 
 
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+      cart: state.cart,
+    }
+  }
+  
+
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addToCart: (product, quantity, checked) => {
-            dispatch(actions.addToCart(product, quantity, checked))
+        addToCart: (cart,product, quantity, checked) => {
+            dispatch(actions.addToCart(cart,product, quantity, checked))
         }
     }
 }
 
 
-export default connect(null, mapDispatchToProps)(ProductDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
 
 
 

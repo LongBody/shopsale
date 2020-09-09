@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,6 +21,7 @@ import { connect } from 'react-redux'
 import SearchField from '../components/searchLayout'
 import { grey } from '@material-ui/core/colors';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import * as actions from '../actions/cartAction'
 
 const LightTooltip = withStyles((theme) => ({
     tooltip: {
@@ -163,6 +164,14 @@ function Header(props) {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+
+
+    useEffect(() => {
+        if(user)
+        props.fetchCartUser()
+      },[]);
+      
+
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
@@ -227,18 +236,24 @@ function Header(props) {
     );
 
     let { cart } = props
+
+    console.log(cart)
     let quantity = 0
     cart.map((item, index) => {
-        quantity += item.quantity
+        quantity += item.quantity      
     })
 
+
     let cardInfoItem = cart.map(item => {
-        return (
-            <div style={{ display: "flex", marginBottom: 5 }}><img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
-                <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4 }}>{item.product.title}</h3>
-                <h5 style={{ color: "#696969", marginLeft: 1 }}>x{item.quantity}</h5>
-            </div>
-        )
+            return (
+                <div style={{ display: "flex", marginBottom: 5 }}><img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
+                    <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4 }}>{item.product.title}</h3>
+                    <h5 style={{ color: "#696969", marginLeft: 1 }}>x{item.quantity}</h5>
+                </div>
+            )
+
+
+     
     })
 
     return (
@@ -351,5 +366,14 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+          fetchCartUser: () => {
+            dispatch(actions.getCartUser())
+          }
+    }
+  }
+  
 
-export default connect(mapStateToProps, null)(Header);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

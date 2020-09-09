@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,8 +10,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import Paper from '@material-ui/core/Paper';
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
 import { Container } from '@material-ui/core';
 import CartBody from '../components/cartBody';
 import '../scss/app.scss'
@@ -20,6 +18,7 @@ import { connect } from 'react-redux'
 import * as actions from '../actions/cartAction'
 import convertPrice from '../utils/convertPriceVND'
 import { MSG_YOUR_CART } from '../constants/messageCart'
+const axios = require('axios');
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +40,8 @@ const styleButton = {
 
 const StyleAppBar ={
     background:"rgb(121 161 187)",
-    marginTop:20
+    marginTop:20,
+    color:"#e79413 !important" 
 }
 
 
@@ -74,7 +74,6 @@ function subtotalUnChecked(items,itemUnChecked){
 
 
 
-
  function Cart(props) {
   const classes = useStyles();
   let result
@@ -97,12 +96,20 @@ function subtotalUnChecked(items,itemUnChecked){
 
 
 
+  // useEffect(() => {
+  //   props.fetchCartUser()
+  // },[]);
+  
+  
+
+
+
   return (
     <div className={classes.root}>
         <Container className="paddingTopFixed">
         <AppBar position="static" style={StyleAppBar}>
-        <Toolbar variant="dense">
-          <Typography variant="h6" color="inherit">
+        <Toolbar variant="dense" >
+          <Typography variant="h6" >
             {props.messageCart}
           </Typography>
         </Toolbar>
@@ -141,7 +148,8 @@ function subtotalUnChecked(items,itemUnChecked){
               }
                </TableCell>
                <TableCell align="center">
-               <Button  variant="contained" style={styleButton} onClick={()=>{props.paymentCard()}}> Thanh Toán</Button>
+               {/* <Button  variant="contained" style={styleButton} onClick={()=>{props.paymentCard()}}> Thanh Toán</Button> */}
+               <Button  variant="contained" style={styleButton} onClick={()=>{props.paymentCard(props.cart)}}> Thanh Toán</Button>
                </TableCell>
             
             </TableRow>
@@ -160,6 +168,7 @@ function subtotalUnChecked(items,itemUnChecked){
   );
 }
 
+
 const mapStateToProps = (state, ownProps) => {
   return {
     cart: state.cart,
@@ -170,9 +179,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-      paymentCard: () => {
-          dispatch(actions.paymentCart())
+      paymentCard: (cart) => {
+          dispatch(actions.paymentCart(cart))
           dispatch(actions.onUpdateMessage(MSG_YOUR_CART))
+        },
+        fetchCartUser: () => {
+          dispatch(actions.getCartUser())
         }
   }
 }
