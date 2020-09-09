@@ -10,6 +10,8 @@ if (user) {
     id = user._id;
 }
 
+console.log(id)
+
 let findProductInCartToDelete = (cart) => {
     let index = -1;
     if (cart.length > 0) {
@@ -38,7 +40,6 @@ let findProductInCart = (cart, product) => {
 };
 
 export const getCartUser = (idUser) => {
-    console.log(id)
     return (dispatch) => {
         if (id) {
             callApi("sign-in/get-cart/?id=" + id).then((response) => {
@@ -62,8 +63,12 @@ export const getCartUser = (idUser) => {
 };
 
 export const addToCart = (cart, product, quantity, checked) => {
+    console.log(id)
     return async (dispatch) => {
+        let user = JSON.parse(localStorage.getItem("userShopsale"));
         let cartCurrent = [];
+
+        let idUserGet = user._id
 
         let index = findProductInCart(cart, product);
         if (index != -1) {
@@ -79,16 +84,28 @@ export const addToCart = (cart, product, quantity, checked) => {
         }
 
         console.log(cartCurrent)
-        console.log(id)
 
-        callApiAddCart(id, cartCurrent).then(async (response) => {
-            console.log(response);
-            await response.data;
-            dispatch({
-                type: types.ADD_TO_CART,
-                payload: response.data,
+
+        if(id){
+            callApiAddCart(id, cartCurrent).then(async (response) => {
+                console.log(response);
+                await response.data;
+                dispatch({
+                    type: types.ADD_TO_CART,
+                    payload: response.data,
+                });
             });
-        });
+        }
+        else{
+            callApiAddCart(idUserGet, cartCurrent).then(async (response) => {
+                console.log(response);
+                await response.data;
+                dispatch({
+                    type: types.ADD_TO_CART,
+                    payload: response.data,
+                });
+            });
+        }
     };
 };
 
