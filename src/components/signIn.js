@@ -105,7 +105,6 @@ const useStyles = makeStyles((theme) => ({
       }
     }
     else {
-      console.log("lo")
       FetchCart()
       return (<Redirect to="/" />);
     }
