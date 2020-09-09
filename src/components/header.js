@@ -146,7 +146,6 @@ function Header(props) {
     };
 
     const handleLogout = () => {
-        console.log("log")
         localStorage.removeItem("userShopsale");
         localStorage.removeItem("cartProduct");
         setUserState("")
