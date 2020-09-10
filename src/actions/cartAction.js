@@ -123,16 +123,6 @@ export const onUpdateQuantity = (cart, product, quantity) => {
         } else {
             cart[index].checked = true;
         }
-        if(id){
-            callApiAddCart(id, cart).then(async (response) => {
-                console.log(response);
-                await response.data;
-                dispatch({
-                    type: types.UPDATE_QUANTITY,
-                });
-            });
-        }
-        else{
             callApiAddCart(idUserGet, cart).then(async (response) => {
                 console.log(response);
                 await response.data;
@@ -140,7 +130,6 @@ export const onUpdateQuantity = (cart, product, quantity) => {
                     type: types.UPDATE_QUANTITY,
                 });
             });
-        }
     };
     // return {
     //     type: types.UPDATE_QUANTITY,
