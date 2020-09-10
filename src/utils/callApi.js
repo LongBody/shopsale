@@ -29,8 +29,6 @@ export function signInWithGGApi(endpoint) {
 }
 
 export function callApiAddCart(id, data) {
-    console.log(data)
-    console.log(id)
     const config = { headers: { 'Content-Type': 'application/json' } };
     return axios.put(`https://shopsale.herokuapp.com/api/sign-in/?id=${id}`, data, config)
         .catch(function(error) {

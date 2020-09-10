@@ -145,10 +145,12 @@ function Header(props) {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem("userShopsale");
-        localStorage.removeItem("cartProduct");
-        setUserState("")
+    const handleLogout = async () => {
+        await localStorage.removeItem("userShopsale");
+        await localStorage.removeItem("cartProduct");
+        await setUserState("")
+        window.location.replace("https://shopsale.cf");
+
     }
 
     const handleMobileMenuClose = () => {
