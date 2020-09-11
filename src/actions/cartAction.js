@@ -42,7 +42,7 @@ export const getCartUser = (idUser) => {
     return (dispatch) => {
         if (id) {
             callApi("sign-in/get-cart/?id=" + id).then((response) => {
- 
+     
                 dispatch({
                     type: types.FETCH_CART,
                     payload: response.data,
@@ -51,6 +51,7 @@ export const getCartUser = (idUser) => {
 
         }else {
             callApi("sign-in/get-cart/?id=" + idUser).then((response) => {
+               
             
                 dispatch({
                     type: types.FETCH_CART,
