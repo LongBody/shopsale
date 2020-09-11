@@ -153,7 +153,7 @@ export const paymentCart = (cart) => {
         if (user) {
             address = user.location
         }
-        else address = false
+        else address = null
         let idUserGet = user._id
         let lengthState = cart.length;
         let index;
@@ -194,6 +194,9 @@ export const paymentCart = (cart) => {
                         })
                       address = address
                     } 
+                    else {
+                        address = null
+                      }
                   });
             }
             else {
@@ -208,7 +211,7 @@ export const paymentCart = (cart) => {
 
             console.log(address)
 
-            if (id && address !== false) {
+            if (id && address !== null) {
                 callApiAddCart(id, cart).then(async (response) => {
                     console.log(response);
                     swal.stopLoading();
@@ -222,7 +225,7 @@ export const paymentCart = (cart) => {
                 });
             }
             else {
-                if (address != false) {
+                if (address !== null) {
                     callApiAddCart(idUserGet, cart).then(async (response) => {
                         console.log(response);
                         swal.stopLoading();
