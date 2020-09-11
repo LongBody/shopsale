@@ -42,17 +42,17 @@ export const getCartUser = (idUser) => {
     return (dispatch) => {
         if (id) {
             callApi("sign-in/get-cart/?id=" + id).then((response) => {
-     
+
                 dispatch({
                     type: types.FETCH_CART,
                     payload: response.data,
                 });
             });
 
-        }else {
+        } else {
             callApi("sign-in/get-cart/?id=" + idUser).then((response) => {
-               
-            
+
+
                 dispatch({
                     type: types.FETCH_CART,
                     payload: response.data,
@@ -86,7 +86,7 @@ export const addToCart = (cart, product, quantity, checked) => {
         console.log(cartCurrent)
 
 
-        if(id){
+        if (id) {
             callApiAddCart(id, cartCurrent).then(async (response) => {
                 console.log(response);
                 await response.data;
@@ -96,7 +96,7 @@ export const addToCart = (cart, product, quantity, checked) => {
                 });
             });
         }
-        else{
+        else {
             callApiAddCart(idUserGet, cartCurrent).then(async (response) => {
                 console.log(response);
                 await response.data;
@@ -124,13 +124,13 @@ export const onUpdateQuantity = (cart, product, quantity) => {
         } else {
             cart[index].checked = true;
         }
-            callApiAddCart(idUserGet, cart).then(async (response) => {
-                console.log(response);
-                await response.data;
-                dispatch({
-                    type: types.UPDATE_QUANTITY,
-                });
+        callApiAddCart(idUserGet, cart).then(async (response) => {
+            console.log(response);
+            await response.data;
+            dispatch({
+                type: types.UPDATE_QUANTITY,
             });
+        });
     };
     // return {
     //     type: types.UPDATE_QUANTITY,
@@ -148,7 +148,12 @@ export const deleteProductCart = (product) => {
 
 export const paymentCart = (cart) => {
     return async (dispatch) => {
+        let address
         let user = JSON.parse(localStorage.getItem("userShopsale"));
+        if (user) {
+            address = user.location
+        }
+        else address = false
         let idUserGet = user._id
         let lengthState = cart.length;
         let index;
@@ -156,9 +161,9 @@ export const paymentCart = (cart) => {
         for (let m = 0; m < lengthState; m++) {
             if (cart[m].checked === false) {
                 count++;
-                
+
             }
-        
+
         }
         if (count === lengthState) {
             swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
@@ -170,11 +175,40 @@ export const paymentCart = (cart) => {
                 }
             }
 
-            swal({
-                title: "Loading...",
-            })
 
-            if(id){
+
+           
+
+            if (address) {
+               await swal({
+                    title: "Bạn Có Muốn Giao Đến Địa Chỉ?",
+                    text: address,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                    if (willDelete) {
+                        swal({
+                            title: "Loading...",
+                        })
+                      address = address
+                    } 
+                  });
+            }
+            else {
+                await swal("Vui Lòng Nhập Địa Chỉ Giao Hàng: ", {
+                    content: "input",
+                })
+                    .then((value) => {
+                        address = value
+                    });
+            }
+
+
+            console.log(address)
+
+            if (id && address !== false) {
                 callApiAddCart(id, cart).then(async (response) => {
                     console.log(response);
                     swal.stopLoading();
@@ -187,22 +221,24 @@ export const paymentCart = (cart) => {
                     });
                 });
             }
-            else{
-                callApiAddCart(idUserGet, cart).then(async (response) => {
-                    console.log(response);
-                    swal.stopLoading();
-                    swal.close();
-                    swal("Thành Công!", "Đã Thanh Toán!", "success");
-                    await response.data;
-                    dispatch({
-                        type: types.PAYMENT_CART,
-                        payload: response.data,
+            else {
+                if (address != false) {
+                    callApiAddCart(idUserGet, cart).then(async (response) => {
+                        console.log(response);
+                        swal.stopLoading();
+                        swal.close();
+                        swal("Thành Công!", "Đã Thanh Toán!", "success");
+                        await response.data;
+                        dispatch({
+                            type: types.PAYMENT_CART,
+                            payload: response.data,
+                        });
                     });
-                });
+                }
             }
 
         }
-      
+
     };
 };
 
@@ -225,25 +261,25 @@ export const handleChangeChecked = (cart, product) => {
                 cart[index].checked = true;
             }
         }
-     if(id){
-        callApiAddCart(id, cart).then(async (response) => {
-            console.log(response);
-            await response.data;
-            dispatch({
-                type: types.UN_CHECK_CART,
-                payload: response.data,
+        if (id) {
+            callApiAddCart(id, cart).then(async (response) => {
+                console.log(response);
+                await response.data;
+                dispatch({
+                    type: types.UN_CHECK_CART,
+                    payload: response.data,
+                });
             });
-        });
-     }
-     else {
-        callApiAddCart(idUserGet, cart).then(async (response) => {
-            console.log(response);
-            await response.data;
-            dispatch({
-                type: types.UN_CHECK_CART,
-                payload: response.data,
+        }
+        else {
+            callApiAddCart(idUserGet, cart).then(async (response) => {
+                console.log(response);
+                await response.data;
+                dispatch({
+                    type: types.UN_CHECK_CART,
+                    payload: response.data,
+                });
             });
-        });
-     }
+        }
     };
 };

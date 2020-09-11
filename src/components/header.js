@@ -183,7 +183,7 @@ function Header(props) {
             onClose={handleMenuClose}
         >
 
-            {userState ? <MenuItem onClick={handleMenuClose}>Thông tin</MenuItem> :
+            {userState ? <Link to="user-info"><MenuItem onClick={handleMenuClose}>Thông tin</MenuItem></Link> :
                 <Link to="/sign-in" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Đăng Nhập</MenuItem></Link>
             }
             {userState ? <MenuItem onClick={() => handleLogout()} style={{ color: "red" }}>Đăng Xuất</MenuItem> :
@@ -204,14 +204,6 @@ function Header(props) {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
             <MenuItem>
                 <IconButton aria-label="show 11 new notifications" color="inherit">
                     <Badge badgeContent={11} color="secondary">
