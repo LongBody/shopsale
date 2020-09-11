@@ -63,6 +63,7 @@ export default function SignUp() {
   const [checkConfirmPassword, setCheckConfirmPassword] = useState(false);
   const [checkPasswordAndConfirmPassword, setCheckPasswordAndConfirmPassword] = useState(false);
   const [checkSignUpSuccess, setSignUpSuccess] = useState("");
+  const [messageAlert, SetMessageAlert] = useState("");
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -72,11 +73,18 @@ export default function SignUp() {
     !password ? setCheckPassword(true) : setCheckPassword(false);
     !confirmPassword ? setCheckConfirmPassword(true) : setCheckConfirmPassword(false);
    
-    if (email && password ) {
+    if (email && password && fName && lName ) {
       password !== confirmPassword ? setCheckPasswordAndConfirmPassword(true) : setCheckPasswordAndConfirmPassword(false)
       if(password === confirmPassword){
         signUpApi(`sign-in/?email=${email}&password=${password}&firstName=${fName}&lastName=${lName}`).then(
           (response) => {
+            console.log(response.data.message)
+            if(response.data.message === "Email has been register or maybe not correct"){
+              SetMessageAlert("error")
+            }
+            else{
+              SetMessageAlert("success")
+            }
             setSignUpSuccess(response.data.message)
           }
         );
@@ -199,8 +207,7 @@ export default function SignUp() {
               : ""
                }
                {
-                 checkSignUpSuccess ? <Alert severity="success" >{checkSignUpSuccess}</Alert> : 
-                 ""
+                 checkSignUpSuccess ? <Alert severity={messageAlert} >{checkSignUpSuccess}</Alert>  : ""
                }
             </Grid>
             
