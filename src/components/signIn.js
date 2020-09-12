@@ -96,16 +96,14 @@ const useStyles = makeStyles((theme) => ({
     let user = JSON.parse(localStorage.getItem("userShopsale"));
     if (user) {
       if (user.roles[0] === "admin") {
-        // localStorage.removeItem("userShopsale");
-        // return window.open( 'https://longbody.github.io/shopsaleadmin/#/')
-        return (<Redirect to="/" />);
+        localStorage.removeItem("userShopsale");
+        return window.open( 'https://longbody.github.io/shopsaleadmin/#/')
       }
       else {
         return (<Redirect to="/" />);
       }
     }
     else {
-      FetchCart()
       return (<Redirect to="/" />);
     }
 
