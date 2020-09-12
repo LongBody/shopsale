@@ -237,7 +237,7 @@ function Header(props) {
     }
 
     useEffect(() => {
-        console.log(user)
+    
         if (user) {
             props.fetchCartUser(user._id)
         }

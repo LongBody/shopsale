@@ -90,7 +90,7 @@ function User() {
             .then(async(value) => {
                setLocationUser(value)
                await callApi('sign-in/update-location/?id='+user._id+"&location="+value).then(async(res)=>{
-                   console.log(res.data)
+                
                    await res.data
                 await localStorage.setItem('userShopsale',JSON.stringify( res.data))
                })
