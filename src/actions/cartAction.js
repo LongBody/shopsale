@@ -63,7 +63,6 @@ export const getCartUser = (idUser) => {
 };
 
 export const addToCart = (cart, product, quantity, checked) => {
-    console.log(id)
     return async (dispatch) => {
         let user = JSON.parse(localStorage.getItem("userShopsale"));
         let cartCurrent = [];
@@ -83,12 +82,11 @@ export const addToCart = (cart, product, quantity, checked) => {
             cartCurrent = await [...cart, data];
         }
 
-        console.log(cartCurrent)
+   
 
 
         if (id) {
             callApiAddCart(id, cartCurrent).then(async (response) => {
-                console.log(response);
                 await response.data;
                 dispatch({
                     type: types.ADD_TO_CART,
@@ -98,7 +96,7 @@ export const addToCart = (cart, product, quantity, checked) => {
         }
         else {
             callApiAddCart(idUserGet, cartCurrent).then(async (response) => {
-                console.log(response);
+             
                 await response.data;
                 dispatch({
                     type: types.ADD_TO_CART,
@@ -125,7 +123,7 @@ export const onUpdateQuantity = (cart, product, quantity) => {
             cart[index].checked = true;
         }
         callApiAddCart(idUserGet, cart).then(async (response) => {
-            console.log(response);
+       
             await response.data;
             dispatch({
                 type: types.UPDATE_QUANTITY,
@@ -139,14 +137,54 @@ export const onUpdateQuantity = (cart, product, quantity) => {
     // };
 };
 
-export const deleteProductCart = (product) => {
-    return {
-        type: types.DELETE_PRODUCT_CART,
-        product,
+export const deleteProductCart = (cart, product) => {
+
+    return async (dispatch) => {
+        let user = JSON.parse(localStorage.getItem("userShopsale"));
+        let idUserGet = user._id
+        let index ;
+        let lengthState = cart.length;
+
+        console.log(cart)
+  
+            await swal({
+                title: "Bạn có chắc chắn muốn xoá sản phẩm này khỏi gió hàng?",
+                text: product.title,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        for (let i = 0; i <= lengthState; i++) {
+                            index = findProductInCart(cart , product);
+                            if (index !== -1) {
+                                cart.splice(index, 1);
+                            }                         
+                        }
+
+                        swal({
+                            title: "Loading...",
+                        })
+
+                        callApiAddCart(idUserGet, cart).then(async (response) => {
+                            swal.stopLoading();
+                            swal.close();
+                            swal("Thành Công!", "Đã Xoá Sản Phẩm Khỏi Giỏ Hàng!", "success");
+                            await response.data;
+                            dispatch({
+                                type: types.DELETE_PRODUCT_CART,
+                                payload: response.data,
+                            });
+                        });
+
+                    }
+                });
     };
 };
 
 export const paymentCart = (cart) => {
+
     return async (dispatch) => {
         let address
         let user = JSON.parse(localStorage.getItem("userShopsale"));
@@ -161,59 +199,60 @@ export const paymentCart = (cart) => {
         for (let m = 0; m < lengthState; m++) {
             if (cart[m].checked === false) {
                 count++;
-
             }
 
         }
+
+     
         if (count === lengthState) {
             swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
         } else {
-            for (let i = 0; i <= lengthState; i++) {
-                index = findProductInCartToDelete(cart);
-                if (index !== -1) {
-                    cart.splice(index, 1);
-                }
-            }
-
-
-
-           
 
             if (address) {
-               await swal({
+                await swal({
                     title: "Bạn Có Muốn Giao Đến Địa Chỉ?",
                     text: address,
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
-                  })
-                  .then((willDelete) => {
-                    if (willDelete) {
-                        swal({
-                            title: "Loading...",
-                        })
-                      address = address
-                    } 
-                    else {
-                        address = null
-                      }
-                  });
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            address = address
+                            for (let i = 0; i <= lengthState; i++) {
+                                index = findProductInCartToDelete(cart);
+                                if (index !== -1) {
+                                    cart.splice(index, 1);
+                                }
+                            }
+                            swal({
+                                title: "Loading...",
+                            })
+
+                        }
+                        else {
+                            address = ""
+                        }
+                    });
             }
             else {
                 await swal("Vui Lòng Nhập Địa Chỉ Giao Hàng: ", {
                     content: "input",
                 })
-                    .then((value) => {
-                        address = value
+                    .then(async (value) => {
+                        for (let i = 0; i <= lengthState; i++) {
+                            index = findProductInCartToDelete(cart);
+                            if (index !== -1) {
+                                cart.splice(index, 1);
+                            }
+                        }
+                        address = await value
                     });
             }
 
 
-            console.log(address)
-
-            if (id && address !== null) {
+            if (id && address !== null && address.length > 0) {
                 callApiAddCart(id, cart).then(async (response) => {
-                    console.log(response);
                     swal.stopLoading();
                     swal.close();
                     swal("Thành Công!", "Đã Thanh Toán!", "success");
@@ -225,9 +264,8 @@ export const paymentCart = (cart) => {
                 });
             }
             else {
-                if (address !== null) {
+                if (address !== null && address.length > 0) {
                     callApiAddCart(idUserGet, cart).then(async (response) => {
-                        console.log(response);
                         swal.stopLoading();
                         swal.close();
                         swal("Thành Công!", "Đã Thanh Toán!", "success");
@@ -266,7 +304,7 @@ export const handleChangeChecked = (cart, product) => {
         }
         if (id) {
             callApiAddCart(id, cart).then(async (response) => {
-                console.log(response);
+              
                 await response.data;
                 dispatch({
                     type: types.UN_CHECK_CART,
@@ -276,7 +314,7 @@ export const handleChangeChecked = (cart, product) => {
         }
         else {
             callApiAddCart(idUserGet, cart).then(async (response) => {
-                console.log(response);
+            
                 await response.data;
                 dispatch({
                     type: types.UN_CHECK_CART,

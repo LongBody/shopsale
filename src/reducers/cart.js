@@ -16,6 +16,8 @@ const myReducer = (state = InitialState, action) => {
             return [...state];
         case types.PAYMENT_CART:
             return [...state];
+        case types.DELETE_PRODUCT_CART:
+            return [...state];
         case types.UN_CHECK_CART:
 
             return [...state];

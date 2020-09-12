@@ -30,11 +30,22 @@ const styleQuantity = {
         props.handleChangeChecked(props.cart,props)
     };
 
+    const deleteProduct = () => {
+        props.deleteProduct(props.cart,props)
+    };
+
 
     return (
 
         <TableBody>
             <TableRow>
+            <TableCell align="left">
+                    <Checkbox
+                    checked={props.checked}
+                    onChange={handleChange}
+                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                    
+                    /></TableCell> 
                 <TableCell >
                     <img src={props.imageUrl} style={{ width: 50 }} />
                 </TableCell>
@@ -58,13 +69,12 @@ const styleQuantity = {
                     </TableCell>
                     
                 <TableCell align="center">₫{convertPrice(props.price * props.quantity)}</TableCell>
-                <TableCell align="left">
-                    <Checkbox
-                    checked={props.checked}
-                    onChange={handleChange}
-                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                <TableCell align="center">
+                    <Button
+                    onClick={deleteProduct}
                     
-                    /></TableCell>               
+                    ><i className="fas fa-trash-alt" style={{fontSize:18 , color:"red" }}></i></Button></TableCell> 
+                            
             </TableRow>
         
         </TableBody>
@@ -91,6 +101,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           },
         onUpdateQuantity:(cart,props,quantity) => {
             dispatch(actions.onUpdateQuantity(cart,props,quantity))
+            dispatch(actions.onUpdateMessage(MSG_UPDATE_CART))
+          },
+
+          deleteProduct: (cart,props) => {
+            dispatch(actions.deleteProductCart(cart,props))
             dispatch(actions.onUpdateMessage(MSG_UPDATE_CART))
           },
     }

@@ -140,7 +140,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         addToCart: (cart,product, quantity, checked) => {
-            console.log(typeof cart)
             dispatch(actions.addToCart(cart,product, quantity, checked))
         }
     }
