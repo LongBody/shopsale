@@ -8,11 +8,11 @@ export default function GoogleSignIn() {
 
     const responseGoogle = async(response) => {
         let id = "";
+        let location;
         if (response.profileObj) {
             let checkEmail = await callApi(
                 "sign-in/google/?email=" + response.profileObj.email
             ).then(async(response) => {
-                console.log(response)
                 let data;
                 if (response) {
                     data = await response.data;
@@ -21,8 +21,9 @@ export default function GoogleSignIn() {
             });
 
             if (checkEmail) {
+                console.log(checkEmail)
                 id = checkEmail.id;
-                console.log(id)
+                location = checkEmail.location
             } else {
                 let createUser = await signUpApi("sign-in/google-create-user/?email=" + response.profileObj.email + "&name=" + response.profileObj.name).then(async(response) => {
                     let data = await response.data;
@@ -43,6 +44,7 @@ export default function GoogleSignIn() {
                 verify: true,
                 imageUrl: infoUserGoogle.imageUrl,
                 productCart: [],
+                location: location
             };
 
             localStorage.setItem("userShopsale", JSON.stringify(userSignByGoogle));

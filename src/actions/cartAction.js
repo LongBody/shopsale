@@ -148,7 +148,7 @@ export const deleteProductCart = (cart, product) => {
         console.log(cart)
   
             await swal({
-                title: "Bạn có chắc chắn muốn xoá sản phẩm này khỏi gió hàng?",
+                title: "Bạn có chắc chắn muốn xoá sản phẩm này khỏi giỏ hàng?",
                 text: product.title,
                 icon: "warning",
                 buttons: true,
