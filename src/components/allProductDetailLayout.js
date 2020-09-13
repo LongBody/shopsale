@@ -88,7 +88,7 @@ function ProductDetail(props) {
                 <div style={{padding: 40,paddingTop:50, backgroundColor: "#fff",height:"100%" }} className="responsive-image">
                     {
                         pro ?
-                            <Grid container spacing={2} xs={3} sm={8} md={12} lg={12}>
+                            <Grid container spacing={2} xs={12} sm={8} md={12} lg={12}>
                                 <Grid item xs={12} xs={10} sm={10} md={6} lg={5}>
                                     <img src={pro.imageUrl} style={styleImage} />
                                 </Grid>

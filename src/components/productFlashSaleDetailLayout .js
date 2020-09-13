@@ -107,10 +107,10 @@ function ProductDetail(props) {
             <Header />
 
             <Container style={{ paddingTop: 145 }}>
-                <div style={{ padding: 20, backgroundColor: "#fff" }}>
+                <div style={{ padding: 20, backgroundColor: "#fff" }} className="responsive-image">
                     {
                         pro ?
-                            <Grid container spacing={2} xs={3} sm={8} md={12} lg={12}>
+                            <Grid container spacing={2} xs={12} sm={8} md={12} lg={12}>
                                 <Grid item xs={12} xs={10} sm={10} md={6} lg={4}>
                                     <img src={pro.imageUrl} style={styleImage} />
                                 </Grid>

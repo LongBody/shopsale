@@ -33,6 +33,7 @@ class Routes extends Component {
         <Route path="/sign-up" exact  component={SignUpLayout}></Route>
         <Route path="/user-info" exact  component={UserInfoLayout}></Route>
         <Route path="/:keyword" exact component={SearchProduct} ></Route>
+      
         <Route path="/shopsaleproduct/allproduct/:page" exact component={AllProductChangePageLayout} ></Route>
         <Route path="/shopsaleproduct/allproduct/detail/:id" component={AllProductLayoutID} ></Route>
         <Route path="/shopsaleChat/message" exact component={chatMessage} ></Route>
