@@ -216,7 +216,7 @@ function Product(props) {
         } </Grid>
 
         {
-            result.length > 0 ? < Pagination count = { 10 }
+            result.length > 0 ? < Pagination count = { 8 }
             color = "primary"
             shape = "rounded"
             page = { page }
@@ -224,7 +224,7 @@ function Product(props) {
             onChange = { handleChangePage }
             style = {
                 { display: "flex", justifyContent: "center", margin: 30 }
-            }/> : ""} </Container > { result.length > 0 ? < Footer/> : "" }
+            }/> : ""} </Container> { result.length > 0 ? < Footer/> : "" }
 
             </div>
         );
