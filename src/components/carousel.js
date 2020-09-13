@@ -5,8 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom'
 export default class Responsive extends Component {
     render() {
-        var settings = {
+        const settings = {
             dots: true,
+            dotsClass: "button__bar",
             infinite: false,
             speed: 500,
             slidesToShow: 8,
@@ -39,6 +40,7 @@ export default class Responsive extends Component {
                 }
             ]
         };
+
         return (
             <div>
                     <div position="static" className="appbarCategories">
