@@ -9,13 +9,13 @@ import Routes from './router'
 function App() {
 
   return (
-    // <HashRouter >
-     <BrowserRouter basename='/'> 
+    <HashRouter  basename='/'>
+     <BrowserRouter> 
     <div className="App">
       <Routes></Routes>  
     </div>
     </BrowserRouter> 
-    /* // </HashRouter> */
+     </HashRouter> 
 
   );
 }
