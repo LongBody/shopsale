@@ -9,7 +9,7 @@ import Routes from './router'
 function App() {
 
   return (
-    <HashRouter basename='/shopsale'>
+    <HashRouter basename='/'>
     {/* <BrowserRouter> */}
     <div className="App">
       <Routes></Routes>  
