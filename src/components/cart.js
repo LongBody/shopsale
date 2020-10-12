@@ -146,7 +146,7 @@ function subtotalUnChecked(items,itemUnChecked){
               <TableCell rowSpan={3} ></TableCell>
               <TableCell rowSpan={3} ></TableCell>
               <TableCell colSpan={0} style={{fontWeight:500,fontSize:20}}>Tổng tiền :</TableCell>
-               <TableCell  align="left" style={{fontWeight:500,fontSize:21}}>₫{props.cart.checked ? subtotal(props.children)
+               <TableCell  align="left" style={{fontWeight:500,fontSize:21 , color:"#f94e2f"}}>₫{props.cart.checked ? subtotal(props.children)
               : subtotalUnChecked(props.children,props.cart)              
               }
                </TableCell>

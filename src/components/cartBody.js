@@ -73,7 +73,7 @@ const styleQuantity = {
                     <Button
                     onClick={deleteProduct}
                     
-                    ><i className="fas fa-trash-alt" style={{fontSize:18 , color:"red" }}></i></Button></TableCell> 
+                    ><i className="fas fa-trash-alt" style={{fontSize:18 , color:"#f94e2f" }}></i></Button></TableCell> 
                             
             </TableRow>
         
