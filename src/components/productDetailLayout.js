@@ -69,7 +69,7 @@ function ProductDetail(props) {
 
     useEffect(() => {
         fetchData()
-    },[]);
+    },[props.match.params.id]);
 
 
     function newRow(text) {

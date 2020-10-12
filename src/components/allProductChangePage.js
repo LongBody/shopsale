@@ -6,7 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
-import AllProductCard from '../components/productAllCard'
+import ProductCard from '../components/productCard'
 import '../scss/app.scss'
 import { callApi } from '../utils//callApi'
 import Header from '../components/header'
@@ -145,14 +145,14 @@ function Product(props) {
             key = { Math.random() }
 
             >
-            <AllProductCard key = { Math.random() }
+            <ProductCard key = { Math.random() }
             id = { item._id }
             imageUrl = { item.imageUrl }
             title = { item.title }
             price = { item.price }
             quantity = { item.quantity }
             star = { item.star } >
-            </AllProductCard> </Grid>
+            </ProductCard> </Grid>
         )
     })
 
@@ -199,8 +199,7 @@ function Product(props) {
         }
 
 
-        <Grid container spacing = { 1 }
-        xs = { 12 }
+        <Grid container spacing = {1} xs = { 12 }
         sm = { 6 }
         md = { 6 }
         lg = { 12 }

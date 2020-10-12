@@ -6,7 +6,7 @@ import CartLayout from './components/cartLayout'
 import ProductLayout from './components/productDetailLayout'
 import ProductFlashSaleLayout from './components/productFlashSaleDetailLayout '
 import AllProductChangePageLayout from './components/allProductChangePage'
-import AllProductLayoutID from './components/allProductDetailLayout'
+// import AllProductLayoutID from './components/allProductDetailLayout'
 import SignInLayout from './components/signIn'
 import SignUpLayout from './components/signUp'
 import UserInfoLayout from './components/userinfo'
@@ -35,7 +35,7 @@ class Routes extends Component {
         <Route path="/:keyword" exact component={SearchProduct} ></Route>
       
         <Route path="/shopsaleproduct/allproduct/:page" exact component={AllProductChangePageLayout} ></Route>
-        <Route path="/shopsaleproduct/allproduct/detail/:id" component={AllProductLayoutID} ></Route>
+        {/* <Route path="/shopsaleproduct/allproduct/detail/:id" component={AllProductLayoutID} ></Route> */}
         <Route path="/shopsaleChat/message" exact component={chatMessage} ></Route>
         <Route component={NotFound}></Route>
       </Switch>

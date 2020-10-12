@@ -250,7 +250,7 @@ function Header(props) {
     let cardInfoItem = cart.map(item => {
         return (
             <div style={{  marginBottom: 5 }} className="item__card__header">
-                <Link to={{ pathname: "product/" + item.product.id, query: { the: item.product.id } }} style={{ textDecoration: "none" , display: "flex"}}>
+                <Link to={{ pathname: "/product/" + item.product.id, query: { the: item.product.id } }} style={{ textDecoration: "none" , display: "flex"}}>
                     <img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
                     <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4, color:"#535252" }}>{item.product.title}</h3>
                     <h5 style={{ color: "#696969", marginLeft: 1, marginRight: 3, paddingRight: 3 }}>x{item.quantity}</h5>
