@@ -237,7 +237,7 @@ function Header(props) {
     }
 
     useEffect(() => {
-    
+
         if (user) {
             props.fetchCartUser(user._id)
         }
@@ -248,10 +248,14 @@ function Header(props) {
 
 
     let cardInfoItem = cart.map(item => {
+        console.log(item)
         return (
-            <div style={{ display: "flex", marginBottom: 5 }}><img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
-                <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4 }}>{item.product.title}</h3>
-                <h5 style={{ color: "#696969", marginLeft: 1 }}>x{item.quantity}</h5>
+            <div style={{  marginBottom: 5 }} className="item__card__header">
+                <Link to={{ pathname: "product/" + item.product.id, query: { the: item.product.id } }} style={{ textDecoration: "none" , display: "flex"}}>
+                    <img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
+                    <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4, color:"#535252" }}>{item.product.title}</h3>
+                    <h5 style={{ color: "#696969", marginLeft: 1, marginRight: 3, paddingRight: 3 }}>x{item.quantity}</h5>
+                </Link>
             </div>
         )
 
@@ -321,7 +325,7 @@ function Header(props) {
                         <div className={classes.grow} />
 
                         <Link to="/cart">
-                            <LightTooltip title={cardInfoItem.length > 0 ? <div style={{ padding: 5 }}>
+                            <LightTooltip interactive title={cardInfoItem.length > 0 ? <div style={{ padding: 5 }} >
                                 {
                                     cardInfoItem
                                 }

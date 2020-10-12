@@ -55,3 +55,11 @@
     background-color: white !important;
     width: 100%;
 }
+
+.item__card__header:hover {
+    background-color: rgb(233, 232, 232);
+}
+
+.item__card__header {
+    cursor: pointer;
+}
