@@ -248,7 +248,6 @@ function Header(props) {
 
 
     let cardInfoItem = cart.map(item => {
-        console.log(item)
         return (
             <div style={{  marginBottom: 5 }} className="item__card__header">
                 <Link to={{ pathname: "product/" + item.product.id, query: { the: item.product.id } }} style={{ textDecoration: "none" , display: "flex"}}>
