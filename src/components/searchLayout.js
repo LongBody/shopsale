@@ -137,6 +137,7 @@ function SearchLayout(props) {
                 <Autocomplete id="custom-input-demo"
                     options={tags}
                     size="small"
+                    freeSolo
                     filterOptions={filterOptions}
                     onSelect={
                         (event) => handleTag(event, 'tags')
