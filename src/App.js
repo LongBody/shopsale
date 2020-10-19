@@ -10,7 +10,7 @@ function App() {
 
   return (
     // <HashRouter basename='/'>
-     <BrowserRouter  basename='/'> 
+     <BrowserRouter > 
     <div className="App">
       <Routes></Routes>  
     </div>
