@@ -10,7 +10,7 @@ function App() {
 
   return (
     // <HashRouter basename='/'>
-     <BrowserRouter  basename={process.env.PUBLIC_URL}> 
+     <BrowserRouter  basename='/'> 
     <div className="App">
       <Routes></Routes>  
     </div>
