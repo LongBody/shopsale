@@ -67,3 +67,9 @@ a {
     background: rgb(0, 172, 193);
     outline: 0;
 }
+
+@media only screen and (max-width: 1051px) {
+    .button__bar {
+        display: none !important;
+    }
+}

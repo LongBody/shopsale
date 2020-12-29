@@ -202,15 +202,7 @@ function Header(props) {
             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
-        >
-            <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={11} color="secondary">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
-                <p>Notifications</p>
-            </MenuItem>
+        >          
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
                     aria-label="account of current user"
@@ -281,7 +273,19 @@ function Header(props) {
                             <a href="https://www.facebook.com/Shopsale-101665164978100/" className="hoverFacebook"><i class="fab fa-facebook-square" style={{ fontSize: 20, marginRight: 10, color: "#e79413 !important" }}></i></a>
                             <a href="https://www.youtube.com/channel/UCq4jLkYQyW3llnJm6fpaFGQ?view_as=subscriber"><i class="fab fa-youtube" style={{ fontSize: 20, marginRight: 5 }}></i></a>
                         </div>
+                       
                         <div style={{ paddingRight: 20 }}>
+                        <div className={classes.sectionMobile}>
+                            <IconButton
+                                aria-label="show more"
+                                aria-controls={mobileMenuId}
+                                aria-haspopup="true"
+                                onClick={handleMobileMenuOpen}
+                                color="inherit"
+                            >
+                                <MoreIcon />
+                            </IconButton>
+                        </div>
                             <div className={classes.sectionDesktop} >
                                 <ClickAwayListener onClickAway={handleTooltipClose}>
                                     <LightTooltip title={<div style={{ padding: 5 }}>
@@ -345,17 +349,7 @@ function Header(props) {
                             </LightTooltip>
 
                         </Link>
-                        <div className={classes.sectionMobile}>
-                            <IconButton
-                                aria-label="show more"
-                                aria-controls={mobileMenuId}
-                                aria-haspopup="true"
-                                onClick={handleMobileMenuOpen}
-                                color="inherit"
-                            >
-                                <MoreIcon />
-                            </IconButton>
-                        </div>
+                        
                     </Toolbar>
                 </Container>
             </AppBar>

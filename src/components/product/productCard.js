@@ -12,6 +12,7 @@ import * as actions from '../../actions/cartAction'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
+import '../../scss/product.scss'
 const useStyles = makeStyles({
     root: {
         maxWidth: 390,
@@ -71,7 +72,7 @@ function ProductCard(props) {
                     >
                         </CardMedia>
                     <CardContent style={StyleContent}>
-                        <Typography variant="body2" color="textSecondary" component="p" style={StyleTitle}>
+                        <Typography variant="body2" color="textSecondary" className="title__product__wrapper" component="p" style={StyleTitle}>
                             {props.title}
                         </Typography>
                         <Typography variant="body2" color="secondary" component="p">

@@ -1,3 +1,12 @@
 .productPaddingTop {
     padding-top: 100px;
 }
+
+@media only screen and (max-width: 768px) {
+    .title__product__wrapper {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        // width: 100px; // some width
+    }
+}

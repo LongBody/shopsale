@@ -63,3 +63,9 @@
 .item__card__header {
     cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+    .MuiToolbar-gutters {
+        padding: 0px !important;
+    }
+}
