@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createRef } from 'react';
+import React, { useEffect, useState, createRef , useRef } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
@@ -6,13 +6,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
-import ProductCard from '../components/productCard'
-import '../scss/app.scss'
-import { callApi } from '../utils//callApi'
-import Header from '../components/header'
+import ProductCard from './productCard'
+import { callApi } from '../../utils/callApi'
+import Header from '../body/header'
 import Pagination from '@material-ui/lab/Pagination';
-import Footer from '../components//footer'
+import Footer from '../body/footer'
 import { useHistory } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
+import '../../scss/app.scss'
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -67,9 +68,13 @@ function Product(props) {
     const [page, setPage] = React.useState(pageConvert);
     const inputEl = createRef("home");
 
+    const ref = useRef(null)
+
 
     const handleChangePage = async(event, value) => {
+       
         setLoading(true)
+        ref.current.complete()
         history.push({
             pathname: '/shopsaleproduct/allproduct/' + value,
             state: {
@@ -77,11 +82,12 @@ function Product(props) {
             },
             page: value
         })
+        ref.current.complete()
+        
     };
 
 
     const handleChange = (event) => {
-        console.log('sỏt change', event.target.value);
         setState(event.target.value)
 
     };
@@ -94,7 +100,6 @@ function Product(props) {
             return data
         })
         setProduct(callApiData)
-            // setInterval(() => { inputEl.current.scrollIntoView({behavior: 'smooth'})}, 2000);
         setLoading(false)
     }
 
@@ -127,7 +132,9 @@ function Product(props) {
     }, [props.match.params.page]);
 
     const onButtonClick = () => {
+        ref.current.staticStart(30)
         inputEl.current.scrollIntoView({ behavior: "smooth" })
+        
     };
 
     useEffect(() => {
@@ -162,6 +169,7 @@ function Product(props) {
 
         <div>
         <Header />
+        <LoadingBar color='#3f51b5' ref={ref} />
         <div ref = { inputEl } > </div> <Container style = {
             { paddingTop: 140 }
         } >

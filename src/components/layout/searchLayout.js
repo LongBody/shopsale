@@ -3,11 +3,11 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Redirect } from "react-router-dom";
-import * as actions from '../actions/searchAction'
+import * as actions from '../../actions/searchAction'
 import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { callApi } from '../utils/callApi'
+import { callApi } from '../../utils/callApi'
 import { createFilterOptions } from "@material-ui/lab";
 import Button from '@material-ui/core/Button';
 const OPTIONS_LIMIT = 7;
@@ -75,7 +75,7 @@ const btnSearch = {
     position: 'absolute',
     right: 0,
     top: 0,
-    color:"white",
+    color: "white",
     "background-color": "black !important",
 }
 
@@ -89,8 +89,8 @@ function SearchLayout(props) {
 
     let arrayTag = ["đồng hồ", "thiết bị điện tử", "hàng quốc tế"]
 
-    const fetchData = async () => {
-        const callApiData = await callApi("product/").then(async (response) => {
+    const fetchData = async() => {
+        const callApiData = await callApi("product/").then(async(response) => {
             let data = await response.data
             return data
         })
@@ -106,7 +106,7 @@ function SearchLayout(props) {
         fetchData()
     }, []);
 
-    const handleSubmit = async (evt) => {
+    const handleSubmit = async(evt) => {
         evt.preventDefault();
         setRedirect(true)
     }
@@ -130,45 +130,62 @@ function SearchLayout(props) {
     return (
 
 
-     <div style={{width:"80%"}}>
-            <div className={classes.search}
-            style={styleSearchField} >
-            <form onSubmit={handleSubmit} >
-                <Autocomplete id="custom-input-demo"
-                    options={tags}
-                    size="small"
-                    freeSolo
-                    filterOptions={filterOptions}
-                    onSelect={
-                        (event) => handleTag(event, 'tags')
+        <
+        div style = {
+            { width: "80%" }
+        } >
+        <
+        div className = { classes.search }
+        style = { styleSearchField } >
+        <
+        form onSubmit = { handleSubmit } >
+        <
+        Autocomplete id = "custom-input-demo"
+        options = { tags }
+        size = "small"
+        freeSolo filterOptions = { filterOptions }
+        onSelect = {
+            (event) => handleTag(event, 'tags')
+        }
+        renderInput = {
+            (params) => ( < div ref = { params.InputProps.ref }
+                style = {
+                    { width: "100%" }
+                } >
+                <
+                InputBase placeholder = "Tìm kiếm sản phẩm ..."
+                classes = {
+                    {
+                        root: classes.inputRoot,
+                        input: classes.inputInput,
                     }
-                    renderInput={
-                        (params) => (<div ref={params.InputProps.ref} style={{ width: "100%" }}>
-                            <InputBase placeholder="Tìm kiếm sản phẩm ..."
-                                classes={
-                                    {
-                                        root: classes.inputRoot,
-                                        input: classes.inputInput,
-                                    }
-                                }
-                                style={styleSearchField}
-                                inputProps={
-                                    { 'aria-label': 'search' }
-                                } {...params.inputProps}
-                            />
+                }
+                style = { styleSearchField }
+                inputProps = {
+                    { 'aria-label': 'search' }
+                } {...params.inputProps }
+                />
 
-                        </div>
-                        )
-                    } />
-                <Button variant="contained" style={btnSearch} className="btn-search"
-                onClick={handleSubmit}
-                >
-                    <div className={classes.searchIcon} >
-                        <SearchIcon style={{color:"wheat"}}/>
-                    </div>
-                </Button>
-            </form> </div>
-     </div>
+                <
+                /div>
+            )
+        }
+        /> <
+        Button variant = "contained"
+        style = { btnSearch }
+        className = "btn-search"
+        onClick = { handleSubmit } >
+        <
+        div className = { classes.searchIcon } >
+        <
+        SearchIcon style = {
+            { color: "wheat" }
+        }
+        /> < /
+        div > <
+        /Button> < /
+        form > < /div > < /
+        div >
 
     );
 }

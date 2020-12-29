@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/header'
+import Header from '../body/header'
 import { Container } from '@material-ui/core';
-import '../scss/app.scss'
+import '../../scss/app.scss'
 
 
 export default function NotFound() {

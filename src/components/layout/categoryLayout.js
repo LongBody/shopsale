@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../components/header'
-import '../scss/app.scss'
-import { callApi } from '../utils/callApi'
+import React, { useState, useEffect , useRef} from 'react';
+import Header from '../body/header'
+import '../../scss/app.scss'
+import { callApi } from '../../utils/callApi'
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
-import convertPrice from '../utils/convertPriceVND'
-import Footer from '../components/footer';
+import convertPrice from '../../utils/convertPriceVND'
+import Footer from '../body/footer';
 import Button from '@material-ui/core/Button';
-import * as actions from '../actions/cartAction'
+import * as actions from '../../actions/cartAction'
 import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
-import ProductCard from '../components/productCard'
-import swal from 'sweetalert'
+import ProductCard from '../product/productCard'
+
 const StyleStar = {
     color: "#fc9d0a",
     fontSize: 13,
@@ -37,7 +37,7 @@ const StyleStarNone = {
 };
 
 function SearchProduct(props) {
-
+    const ref = useRef(null)
     // const history = useHistory();
     let user = JSON.parse(localStorage.getItem("user"));
     const [product, setProductSearch] = useState([])
@@ -46,6 +46,7 @@ function SearchProduct(props) {
     const fetchData = async () => {
         // setLoading(true)
         const callApiData = await callApi("product/find/?search=" + props.match.params.category).then(async (response) => {
+        
             let data = await response.data
             // let dataConvert={
             //     id:data._id,
@@ -64,7 +65,9 @@ function SearchProduct(props) {
        
     }
 
-    useEffect(() => {
+ 
+
+    useEffect(() => {    
        fetchData()
     }, [props.location.params]);
 
@@ -85,12 +88,13 @@ function SearchProduct(props) {
         )
     })
 
-    console.log(result)
+
 
 
     return (
 
         <div>
+         
             <Header />
             <Container style={{ paddingTop: 120 }}>
                 <Grid container spacing={2} xs={3} sm={8} md={12} lg={12}>

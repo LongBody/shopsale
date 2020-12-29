@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../components/header'
-import '../scss/app.scss'
-import { callApi } from '../utils/callApi'
+import React, { useState, useEffect ,  useRef} from 'react';
+import Header from '../body/header'
+import '../../scss/app.scss'
+import { callApi } from '../../utils/callApi'
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
-import convertPrice from '../utils/convertPriceVND'
-import Footer from '../components/footer';
+import convertPrice from '../../utils/convertPriceVND'
+import Footer from '../body/footer';
 import Button from '@material-ui/core/Button';
-import * as actions from '../actions/cartAction'
+import * as actions from '../../actions/cartAction'
 import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
+import freeShipImage from '../../image/freeship.png'
 import swal from 'sweetalert'
+import LoadingBar from 'react-top-loading-bar'
+
 const StyleStar = {
     color: "#fc9d0a",
     fontSize: 13,
@@ -46,12 +49,14 @@ function ProductDetail(props) {
     })
 
 
+    const ref = useRef(null)
 
     const [bioAsync, setBioAsync] = useState(false)
 
     const fetchData = async () => {
         const callApiData = await callApi("product/" + props.match.params.id).then(async (response) => {
-            let data = await response.data
+            ref.current.complete()
+            let data = await response.data          
             let dataConvert = {
                 id: data._id,
                 title: data.title,
@@ -60,6 +65,7 @@ function ProductDetail(props) {
                 bio: data.bio,
                 star: data.star
             }
+            
             return dataConvert
         })
 
@@ -68,6 +74,7 @@ function ProductDetail(props) {
     }
 
     useEffect(() => {
+        ref.current.continuousStart()
         fetchData()
     },[props.match.params.id]);
 
@@ -82,7 +89,7 @@ function ProductDetail(props) {
     return (
         <div>
             <Header />
-
+            <LoadingBar color='#3f51b5' ref={ref} />
             <Container style={{ paddingTop: 150 }}>
                 <div style={{padding: 40,paddingTop:50, backgroundColor: "#fff",height:"100%" }} className="responsive-image">
                     {
@@ -97,7 +104,7 @@ function ProductDetail(props) {
                                     <h1 style={stylePrice}>₫{convertPrice(pro.price)}</h1>
                                     <h4>Vận Chuyển :
                                         <span style={{ marginLeft: 10 }}>
-                                            <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/9d21899f3344277e34d40bfc08f60bc7.png"
+                                            <img src={freeShipImage}
                                                 style={{ height: 20 }}
                                             />
                                         Miễn Phí Vận Chuyển
@@ -145,7 +152,7 @@ function ProductDetail(props) {
 
     function addToCart(cart,prop, quantity, checked) {
         if (user) {
-            props.addToCart(cart,prop, quantity, checked)
+            props.addToCart(cart,prop, "", quantity, checked)
         }
         else {
             history.push("/sign-in");
@@ -190,8 +197,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addToCart: (cart,product, quantity, checked) => {
-            dispatch(actions.addToCart(cart,product, quantity, checked))
+        addToCart: (cart,product,category, quantity, checked) => {
+            dispatch(actions.addToCart(cart,product, category, quantity, checked))
         }
     }
 }

@@ -62,7 +62,7 @@ export const getCartUser = (idUser) => {
     }
 };
 
-export const addToCart = (cart, product, quantity, checked) => {
+export const addToCart = (cart, product, category, quantity, checked) => {
     return async (dispatch) => {
         let user = JSON.parse(localStorage.getItem("userShopsale"));
         let cartCurrent = [];
@@ -75,6 +75,7 @@ export const addToCart = (cart, product, quantity, checked) => {
             cartCurrent = cart;
         } else {
             let data = {
+                category,
                 product,
                 quantity,
                 checked,

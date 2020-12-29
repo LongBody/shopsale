@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import '../scss/carousel.scss'
+import '../../scss/carousel.scss'
 import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom'
 export default class Responsive extends Component {

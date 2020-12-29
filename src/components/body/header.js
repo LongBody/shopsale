@@ -14,14 +14,13 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Container } from '@material-ui/core';
-import LogoWeb from '../image/LogoWeb.png'
-import '../scss/header.scss'
+import LogoWeb from '../../image/LogoWeb.png'
+import '../../scss/header.scss'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import SearchField from '../components/searchLayout'
-import { grey } from '@material-ui/core/colors';
+import SearchField from '../layout/searchLayout'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import * as actions from '../actions/cartAction'
+import * as actions from '../../actions/cartAction'
 
 const LightTooltip = withStyles((theme) => ({
     tooltip: {
@@ -245,16 +244,25 @@ function Header(props) {
 
 
 
+    console.log(cart)
 
 
     let cardInfoItem = cart.map(item => {
         return (
-            <div style={{  marginBottom: 5 }} className="item__card__header">
-                <Link to={{ pathname: "/product/" + item.product.id, query: { the: item.product.id } }} style={{ textDecoration: "none" , display: "flex"}}>
-                    <img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
-                    <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4, color:"#535252" }}>{item.product.title}</h3>
-                    <h5 style={{ color: "#696969", marginLeft: 1, marginRight: 3, paddingRight: 3 }}>x{item.quantity}</h5>
-                </Link>
+            <div style={{ marginBottom: 5 }} className="item__card__header">
+                {item.category === "FS" ?
+                    <Link to={{ pathname: "/productFlashSale/" + item.product.id, query: { the: item.product.id } }} style={{ textDecoration: "none", display: "flex" }}>
+                        <img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
+                        <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4, color: "#535252" }}>{item.product.title}</h3>
+                        <h5 style={{ color: "#696969", marginLeft: 1, marginRight: 3, paddingRight: 3 }}>x{item.quantity}</h5>
+                    </Link> :
+                    <Link to={{ pathname: "/product/" + item.product.id, query: { the: item.product.id } }} style={{ textDecoration: "none", display: "flex" }}>
+                        <img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
+                        <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4, color: "#535252" }}>{item.product.title}</h3>
+                        <h5 style={{ color: "#696969", marginLeft: 1, marginRight: 3, paddingRight: 3 }}>x{item.quantity}</h5>
+                    </Link>
+                }
+
             </div>
         )
 
@@ -310,7 +318,7 @@ function Header(props) {
                                     color="inherit"
                                 >
                                     <AccountCircle />
-                                    <span style={{ fontSize: 15, marginLeft: 5, marginTop: 3 }}>Người Dùng</span>
+                                    <span style={{ fontSize: 15, marginLeft: 5, marginTop: 3 }}>{user ? user.fullName : "Người Dùng"}</span>
                                 </IconButton>
                             </div>
                         </div>

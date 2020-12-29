@@ -1,18 +1,18 @@
 import React from 'react';
-import ProductsContainer from '../containers/productContainers'
-import ProductFSContainer from '../containers/productFSContainer'
-import Header from '../components/header'
-import Banner from '../components/banner'
-import Carousel from '../components/carousel'
+import ProductsContainer from '../../containers/productContainers'
+import ProductFSContainer from '../../containers/productFSContainer'
+import Header from '../body/header'
+import Banner from '../another/banner'
+import Carousel from '../another/carousel'
 import { Container } from '@material-ui/core';
-import Footer from '../components/footer';
+import Footer from '../body/footer';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Countdown from 'react-countdown';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
-import image from '../image/saledienthoai.png'
+import image from '../../image/saledienthoai.png'
 import { Link } from 'react-router-dom'
-import SlideProductHome from '../components/slidesProductHome'
+import SlideProductHome from '../product/slidesProductHome'
 function Home() {
 
   return (

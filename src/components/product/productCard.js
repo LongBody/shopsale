@@ -7,8 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import convertPrice from '../utils/convertPriceVND'
-import * as actions from '../actions/cartAction'
+import convertPrice from '../../utils/convertPriceVND'
+import * as actions from '../../actions/cartAction'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
@@ -107,7 +107,7 @@ function ProductCard(props) {
 
     function addToCart(cart,prop, quantity, checked) {
         if (user){
-            props.addToCart(cart,prop, quantity, checked)
+            props.addToCart(cart,prop, "",  quantity, checked)
         }         
         else{
             history.push("/sign-in");
@@ -139,8 +139,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addToCart: (cart,product, quantity, checked) => {
-            dispatch(actions.addToCart(cart,product, quantity, checked))
+        addToCart: (cart,product,category, quantity, checked) => {
+            dispatch(actions.addToCart(cart,product,category, quantity, checked))
         }
     }
 }

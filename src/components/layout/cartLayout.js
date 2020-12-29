@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
-import Header from './header'
-import '../scss/app.scss'
-import CartContainer from '../containers/cartContainer'
+import Header from '../body/header'
+import '../../scss/app.scss'
+import CartContainer from '../../containers/cartContainer'
 import { Redirect } from 'react-router';
 
 

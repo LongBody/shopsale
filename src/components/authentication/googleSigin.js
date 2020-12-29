@@ -2,7 +2,7 @@ import React from "react";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import { callApi, signUpApi } from "../utils/callApi";
+import { callApi, signUpApi } from "../../utils/callApi";
 export default function GoogleSignIn() {
     let history = useHistory();
 

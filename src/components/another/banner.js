@@ -1,6 +1,6 @@
 import React from "react";
-import '../scss/slider.scss'
-import image from '../image/carousel1.jpg'
+import '../../scss/slider.scss'
+import image from '../../image/carousel1.jpg'
 class Slider extends React.Component {
     constructor(props) {
         super(props)

@@ -1,0 +1,16 @@
+.user__info__wrapper {
+    display: flex;
+}
+
+.user__info__card {
+    width: 40%;
+}
+
+@media only screen and (max-width: 768px) {
+    .user__info__wrapper {
+        display: inline !important;
+    }
+    .user__info__card {
+        width: 100%;
+    }
+}

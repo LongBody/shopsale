@@ -1,9 +1,8 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -11,16 +10,14 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Alert from '@material-ui/lab/Alert';
-import { callApi, signInWithGGApi } from '../utils//callApi'
-import { Router, Redirect } from "react-router-dom";
-import { createHashHistory } from 'history'
-import LogoWeb from '../image/brand.png'
-import SignInGoogle from '../components/googleSigin'
+import { callApi } from '../../utils/callApi'
+import { Redirect } from "react-router-dom";
+import LogoWeb from '../../image/brand.png'
+import SignInGoogle from '../authentication/googleSigin'
 import { connect } from 'react-redux'
-import * as actions from '../actions/cartAction'
+import * as actions from '../../actions/cartAction'
 
 
-const history = createHashHistory()
 
 function Copyright() {
 

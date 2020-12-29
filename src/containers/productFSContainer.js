@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchProductFS } from '../actions/productAction'
-import FlashSale from '../components/flashSale'
-import SkeletonFs from '../components/skeletonFs'
+import FlashSale from '../components/body/flashSale'
+import SkeletonFs from '../components/loading/skeletonFs'
 import { bindActionCreators } from 'redux';
-import { Container } from '@material-ui/core';
-
 
 class ProductFSContainer extends Component {
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import '../scss/app.scss'
+import '../../scss/app.scss'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -9,10 +9,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import convertPrice from '../utils/convertPriceVND'
-import ProductLayout from '../components/productDetailLayout'
+import convertPrice from '../../utils/convertPriceVND'
+import ProductLayout from '../layout/productDetailLayout'
 import { useHistory } from "react-router-dom";
-import { callApi } from '../utils/callApi'
+import { callApi } from '../../utils/callApi'
 import { Link } from 'react-router-dom'
 const useStyles = makeStyles({
     root: {
@@ -86,8 +86,7 @@ function FlashSale(props) {
             color = "secondary"
             component = "p" > ₫{ salePrice(item.price, item.sale) }
 
-            </Typography> </CardContent> <
-            CardActions >
+            </Typography> </CardContent> <CardActions >
             <span style = {
                 { color: "grey", textDecoration: "line-through" } } > ₫{ convertPrice(item.price) } </span><span style = {
                 { fontSize: 16, fontWeight: 500 } } > { item.sale } % </span> </CardActions> </CardActionArea>

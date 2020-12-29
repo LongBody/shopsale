@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import Header from '../components/header'
+import Header from '../body/header'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -15,14 +15,11 @@ import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Button, Container } from '@material-ui/core';
 import swal from '@sweetalert/with-react';
-import {callApi} from  '../utils/callApi'
+import {callApi} from  '../../utils/callApi'
+import '../../scss/userInfo.scss'
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        width:"40%"
-        
-    },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
@@ -103,13 +100,9 @@ function User() {
         <div>
             <Header />
             <Container style={{ paddingTop: 140 }}>
-               <div style={{display:"flex"}}>
-               <Card className={classes.root} >
+               <div className="user__info__wrapper">
+               <Card className="user__info__card" >
                     <CardHeader
-                    
-
-                   
-
                     avatar={
                      user.imageUrl ? <Avatar alt="Remy Sharp" src={  user.imageUrl} />:
                      <Avatar aria-label="recipe" className={classes.avatar}>

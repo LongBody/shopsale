@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
-import ProductCard from '../components/productCard'
-import '../scss/app.scss'
+import ProductCard from './productCard'
+import '../../scss/app.scss'
 
 
 class Product extends Component {
