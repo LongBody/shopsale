@@ -6,6 +6,7 @@ import convertPrice from '../../utils/convertPriceVND'
 import * as actions from '../../actions/cartAction'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import swal from "sweetalert";
 
 function ListCheckout(props) {
   let user = JSON.parse(localStorage.getItem("userShopsale"));
@@ -18,11 +19,26 @@ function ListCheckout(props) {
        sum += item.product.price *item.quantity
      }
    })
-  
+
+ 
     let sumVnd = convertPrice(sum)
   
     return sumVnd
   }
+
+  const paymentCartFunc = (cart)=>{
+    
+    let userShop = JSON.parse(localStorage.getItem("userShopsale"));
+    console.log(userShop)
+    if(userShop.location && userShop.phone && userShop.location !== "null" && userShop.phone!== "null"){
+      props.paymentCart(cart)
+    }
+    else {
+      swal("Oops", "Bạn Chưa Có Thông Tin", "error");
+    }
+    
+  }
+ 
 
   useEffect(() => {
 
@@ -79,7 +95,7 @@ function ListCheckout(props) {
       <div className="list__checkout__payment__button">
         <div style={{fontSize:20, fontWeight:"bold"}} >Phương thức thanh toán :</div>  <span style={{color:" #00ACC1", fontSize:18, marginLeft:5}}>Thanh toán khi nhận hàng</span>
         <div style={{float:"right" , marginBottom:30 , paddingBottom:20}}>
-        <Button onClick={()=>{props.paymentCart(props.cart)}} variant="contained"  style={{backgroundColor:"#00ACC1 " , color:"white"}}>THANH TOÁN</Button>
+        <Button onClick={ ()=> {paymentCartFunc(props.cart)}} variant="contained"  style={{backgroundColor:"#00ACC1 " , color:"white"}}>THANH TOÁN</Button>
         </div>
         </div>
       </div>

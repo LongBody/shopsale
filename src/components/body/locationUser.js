@@ -31,7 +31,7 @@ export default function LocationUser() {
     }
 
     const  changeInfoFuncSuccess= async () =>{
-       if(location !== "Chưa có địa chỉ" || phone !=="Chưa có số điện thoại"){
+       if(location !== null || phone !==null){
         await callApi('sign-in/update-location/?id='+user._id+"&location="+location+"&phone="+phone).then(async(res)=>{               
             await res.data
             console.log(res.data)
