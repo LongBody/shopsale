@@ -31,7 +31,12 @@ function ListCheckout(props) {
     let userShop = JSON.parse(localStorage.getItem("userShopsale"));
     console.log(userShop)
     if(userShop.location && userShop.phone && userShop.location !== "null" && userShop.phone!== "null"){
-      props.paymentCart(cart)
+      if(cart){
+        props.paymentCart(cart)
+      }
+      else{
+        props.paymentCart(userShop.productCart)
+      }
     }
     else {
       swal("Oops", "Bạn Chưa Có Thông Tin", "error");
