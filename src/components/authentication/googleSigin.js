@@ -9,6 +9,7 @@ export default function GoogleSignIn() {
     const responseGoogle = async(response) => {
         let id = "";
         let location;
+        let phone;
         if (response.profileObj) {
             let checkEmail = await callApi(
                 "sign-in/google/?email=" + response.profileObj.email
@@ -23,7 +24,8 @@ export default function GoogleSignIn() {
             if (checkEmail) {
                 console.log(checkEmail)
                 id = checkEmail.id;
-                location = checkEmail.location
+                location = checkEmail.location;
+                phone = checkEmail.phone
             } else {
                 let createUser = await signUpApi("sign-in/google-create-user/?email=" + response.profileObj.email + "&name=" + response.profileObj.name).then(async(response) => {
                     let data = await response.data;
@@ -44,7 +46,8 @@ export default function GoogleSignIn() {
                 verify: true,
                 imageUrl: infoUserGoogle.imageUrl,
                 productCart: [],
-                location: location
+                location: location,
+                phone: phone
             };
 
             localStorage.setItem("userShopsale", JSON.stringify(userSignByGoogle));
@@ -54,8 +57,7 @@ export default function GoogleSignIn() {
         }
     };
 
-    return ( <
-        div style = {
+    return ( <div style = {
             {
                 display: "flex",
                 justifyContent: "center",
@@ -64,28 +66,22 @@ export default function GoogleSignIn() {
                 backgroundColor: "rgb(255, 255, 255)",
             }
         } >
-        <
-        GoogleLogin clientId = "1079345342714-8q3900edhd8glu594i1kbgovile1bgio.apps.googleusercontent.com"
+        <GoogleLogin clientId = "1079345342714-8q3900edhd8glu594i1kbgovile1bgio.apps.googleusercontent.com"
         render = {
-            (renderProps) => ( <
-                Button variant = "contained"
+            (renderProps) => ( <Button variant = "contained"
                 onClick = { renderProps.onClick }
                 disabled = { renderProps.disabled }
                 className = "btn-sign-in-gg" >
-                <
-                img src = "https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg "
+                <img src = "https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg "
                 style = {
                     { height: 20, marginRight: 10 }
                 }
-                />
-                Sign in with Google { " " } <
-                /Button>
+                />Sign in with Google { " " } </Button>
             )
         }
         onSuccess = { responseGoogle }
         onFailure = { responseGoogle }
         cookiePolicy = { "single_host_origin" }
-        />{" "} < /
-        div >
+        />{" "} </div >
     );
 }
