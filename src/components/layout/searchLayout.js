@@ -130,17 +130,13 @@ function SearchLayout(props) {
     return (
 
 
-        <
-        div style = {
+        <div style = {
             { width: "80%" }
         } >
-        <
-        div className = { classes.search }
+        <div className = { classes.search }
         style = { styleSearchField } >
-        <
-        form onSubmit = { handleSubmit } >
-        <
-        Autocomplete id = "custom-input-demo"
+        <form onSubmit = { handleSubmit } >
+        <Autocomplete id = "custom-input-demo"
         options = { tags }
         size = "small"
         freeSolo filterOptions = { filterOptions }
@@ -148,12 +144,11 @@ function SearchLayout(props) {
             (event) => handleTag(event, 'tags')
         }
         renderInput = {
-            (params) => ( < div ref = { params.InputProps.ref }
+            (params) => ( <div ref = { params.InputProps.ref }
                 style = {
                     { width: "100%" }
                 } >
-                <
-                InputBase placeholder = "Tìm kiếm sản phẩm ..."
+                <InputBase placeholder = "Tìm kiếm sản phẩm ..."
                 classes = {
                     {
                         root: classes.inputRoot,
@@ -166,26 +161,18 @@ function SearchLayout(props) {
                 } {...params.inputProps }
                 />
 
-                <
-                /div>
+                </div>
             )
         }
-        /> <
-        Button variant = "contained"
+        /> <Button variant = "contained"
         style = { btnSearch }
         className = "btn-search"
         onClick = { handleSubmit } >
-        <
-        div className = { classes.searchIcon } >
-        <
-        SearchIcon style = {
+        <div className = { classes.searchIcon } >
+        <SearchIcon style = {
             { color: "wheat" }
         }
-        /> < /
-        div > <
-        /Button> < /
-        form > < /div > < /
-        div >
+        /> </div> </Button> </form> </div> </div>
 
     );
 }

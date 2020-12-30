@@ -6,6 +6,7 @@ import messageCart from '../reducers/messageCart'
 import signIn from '../reducers/sign-in'
 import keyword from '../reducers/search'
 import productSearchByKeyword from '../reducers/productSearchByKeyword'
+import productCheckout from '../reducers/productCheckout'
 
 const myReducer = combineReducers({
     products,
@@ -14,7 +15,8 @@ const myReducer = combineReducers({
     messageCart,
     signIn,
     keyword,
-    productSearchByKeyword
+    productSearchByKeyword,
+    productCheckout
 })
 
 export default myReducer;

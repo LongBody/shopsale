@@ -11,6 +11,7 @@ import SignUpLayout from './components/authentication/signUp'
 import UserInfoLayout from './components/layout/userinfoLayout'
 import SearchProduct from './components/product/searchProduct'
 import CategoryLayout from './components/layout/categoryLayout'
+import CheckoutLayout from './components/layout/checkoutLayout'
 
 
 class Routes extends Component {
@@ -30,6 +31,7 @@ class Routes extends Component {
         <Route path="/sign-up" exact  component={SignUpLayout}></Route>
         <Route path="/user-info" exact  component={UserInfoLayout}></Route>
         <Route path="/:keyword" exact component={SearchProduct} ></Route>  
+        <Route path="/payment/checkout" exact component={CheckoutLayout} ></Route>  
         <Route path="/shopsaleproduct/allproduct/:page" exact component={AllProductChangePageLayout} ></Route>
         <Route component={NotFound}></Route>
       </Switch>
