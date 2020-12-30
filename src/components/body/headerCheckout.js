@@ -1,36 +1,17 @@
 import React, { useEffect } from 'react';
-import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Tooltip from '@material-ui/core/Tooltip';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import { Container } from '@material-ui/core';
 import LogoWeb from '../../image/LogoWeb.png'
 import '../../scss/header.scss'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import SearchField from '../layout/searchLayout'
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import * as actions from '../../actions/cartAction'
-
-const LightTooltip = withStyles((theme) => ({
-    tooltip: {
-        backgroundColor: theme.palette.common.white,
-        color: 'rgba(0, 0, 0, 0.87)',
-        boxShadow: theme.shadows[1],
-        fontSize: 11,
-    },
-}))(Tooltip);
-
 
 
 
@@ -99,20 +80,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const styleCart = {
-    fontSize: 25,
-    color: "white",
-    marginLeft: 20
-}
 
 const styleAppBar = {
     position: "fixed",
     zIndex: 3,
     backgroundColor: "#00acc1"
-}
-
-const styleSearchField = {
-    width: "70%"
 }
 
 
@@ -121,21 +93,12 @@ function Header(props) {
 
     let user = JSON.parse(localStorage.getItem("userShopsale"));
 
-    const [open, setOpen] = React.useState(false);
 
-    const handleTooltipClose = () => {
-        setOpen(false);
-    };
-
-    const handleTooltipOpen = () => {
-        setOpen(true);
-    };
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const [userState, setUserState] = React.useState(user);
-    const [cartState, setCartState] = React.useState([]);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -182,7 +145,7 @@ function Header(props) {
             onClose={handleMenuClose}
         >
 
-            {userState ? <Link to="user-info"><MenuItem onClick={handleMenuClose}>Thông tin</MenuItem></Link> :
+            {userState ? <Link to="/user-info"><MenuItem onClick={handleMenuClose}>Thông tin</MenuItem></Link> :
                 <Link to="/sign-in" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Đăng Nhập</MenuItem></Link>
             }
             {userState ? <MenuItem onClick={() => handleLogout()} style={{ color: "red" }}>Đăng Xuất</MenuItem> :

@@ -225,13 +225,9 @@ export const productCheckout = (cart) => {
         if (count === lengthState) {
             swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
         } else {
-            window.location = "http://localhost:3000/#/payment/checkout";
+            window.location = "https://shopsale.cf/#/payment/checkout";
 
         }
-        // console.log(isHasProduct)
-        // if (isHasProduct === true) {
-        //     window.location = "http://localhost:3000/#/payment/checkout";
-        // }
 
     };
 };

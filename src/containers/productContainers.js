@@ -16,38 +16,49 @@ class ProductContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      seeMore: 1,
       page: 3,
+
     };
-    this.myRef = React.createRef() 
+    this.myRef = React.createRef()
   }
 
   componentDidMount() {
     this.props.fetchProduct();
   }
 
-  
+  componentWillReceiveProps(){
+    this.setState({
+      seeMore: (this.state.seeMore -= 1)
+    });
+  }
+
+
   executeScroll = () => this.myRef.current.scrollIntoView()
 
-  
 
-loadMoreProductOnClick() {
+
+  loadMoreProductOnClick() {
     // ref.current.continuousStart()
     this.setState({
       page: (this.state.page += 1),
+      seeMore: (this.state.seeMore += 1)
     });
 
-    console.log(this.state.seeMore)
-    if (this.state.page > 5) {
-      window.location.replace(
-        "https://shopsale.cf/#/shopsaleproduct/allproduct/2"
-      );
-    } else  this.props.fetchLoadMoreProduct(this.state.page);
 
-   
+    if (this.state.page > 8) {
+      window.location.replace(
+        "https://shopsale.cf/#/shopsaleproduct/allproduct/3"
+      );
+    } else {
+      this.props.fetchLoadMoreProduct(this.state.page);
+
+    }
     this.executeScroll()
+    
   }
 
- 
+
 
   render() {
     let { products } = this.props;
@@ -64,22 +75,30 @@ loadMoreProductOnClick() {
         <Container
           style={{ justifyContent: "center", marginTop: 30, display: "flex" }}
         >
-          
-              <button
-            onClick={() => {
-              this.loadMoreProductOnClick();
-            }}
-            style={{ width: 400, height: 30 }}
-          >
-            
-                Xem Thêm
-       
-          </button>
-          
-        
-          <div ref={this.myRef}></div> 
+
+
+          {
+            this.state.seeMore === 1 ? 
+              <LogoLoading/>
+               : <a
+                onClick={() => {
+                  this.loadMoreProductOnClick();
+                }}
+                style={{ width: 400, height: 30, border: "1px solid #00acc1", paddingTop: 3, paddingBottom: 3, display: "flex", alignItems: "center", justifyContent: "center" }}
+              >
+                <span style={{ color: "#00acc1", cursor: "pointer", padding: 30, fontFamily: "Roboto-Medium;" }}>Xem Thêm </span>
+              </a>
+          }
+
+
+
+
+
+
+
+          <div ref={this.myRef}></div>
         </Container>
-        
+
       </div>
     );
   }

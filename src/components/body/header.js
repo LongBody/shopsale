@@ -90,6 +90,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('md')]: {
             display: 'flex',
         },
+        paddingTop:2
     },
     sectionMobile: {
         display: 'flex',
@@ -282,11 +283,12 @@ function Header(props) {
                                 aria-haspopup="true"
                                 onClick={handleMobileMenuOpen}
                                 color="inherit"
+                                className="disableHover"
                             >
                                 <MoreIcon />
                             </IconButton>
                         </div>
-                            <div className={classes.sectionDesktop} >
+                            <div className={classes.sectionDesktop + " disableHover"} >
                                 <ClickAwayListener onClickAway={handleTooltipClose}>
                                     <LightTooltip title={<div style={{ padding: 5 }}>
                                         <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} /><h3 style={{ marginLeft: 5 }}> Chào mừng bạn đến với Shopsale</h3></div>
@@ -305,8 +307,8 @@ function Header(props) {
                                         disableHoverListener
                                         disableTouchListener
                                     >
-                                        <IconButton aria-label="show 17 new notifications" color="inherit" onClick={handleTooltipOpen}>
-                                            <Badge badgeContent={1} color="primary">
+                                        <IconButton  style={{ backgroundColor: 'transparent' }} className="top-header-hover"  aria-label="show 17 new notifications" color="inherit" onClick={handleTooltipOpen}>
+                                            <Badge badgeContent={1} color="primary" >
                                                 <NotificationsIcon />
                                             </Badge>
                                             <span style={{ fontSize: 15, marginLeft: 14, marginTop: 3 }}>Thông báo</span>
@@ -320,9 +322,10 @@ function Header(props) {
                                     aria-haspopup="true"
                                     onClick={handleProfileMenuOpen}
                                     color="inherit"
-                                >
+                                    className="top-header-hover"
+                                    style={{ backgroundColor: 'transparent' }} >                             
                                     <AccountCircle />
-                                    <span style={{ fontSize: 15, marginLeft: 5, marginTop: 3 }}>{user ? user.fullName : "Người Dùng"}</span>
+                                    <span  style={{ fontSize: 15, marginLeft: 5, marginTop: 3 }}>{user ? user.fullName : "Người Dùng"}</span>
                                 </IconButton>
                             </div>
                         </div>
