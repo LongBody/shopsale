@@ -10,6 +10,7 @@ import swal from "sweetalert";
 
 function ListCheckout(props) {
   let user = JSON.parse(localStorage.getItem("userShopsale"));
+  const [message, setMessage] = useState("")
 
   function subtotalUnChecked(items) {
     console.log(items)
@@ -33,9 +34,11 @@ function ListCheckout(props) {
     if(userShop.location && userShop.phone && userShop.location !== "null" && userShop.phone!== "null"){
       if(cart){
         props.paymentCart(cart)
+        setMessage("")
       }
       else{
         props.paymentCart(userShop.productCart)
+        setMessage("")
       }
     }
     else {
@@ -83,7 +86,7 @@ function ListCheckout(props) {
         <div className="dashed___line"></div>
 
         <div className="list__checkout__payment__totalPrice">
-        <TextField id="outlined-basic"  label="Lời nhắn người mua" size="small" variant="outlined" style={{paddingBottom:5}} />
+        <TextField id="outlined-basic" value={message} onInput={e => setMessage(e.target.value)}   label="Lời nhắn người mua" size="small" variant="outlined" style={{paddingBottom:5}} />
         <span style={{float:"right", padding:10, fontSize:20}}>Tổng Tiền: <span style={{color:" #00ACC1", fontSize:20}}>{subtotalUnChecked(props.cart)} </span></span>
         </div>
 

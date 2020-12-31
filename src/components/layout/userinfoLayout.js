@@ -16,6 +16,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Button, Container } from '@material-ui/core';
 import swal from '@sweetalert/with-react';
 import {callApi} from  '../../utils/callApi'
+import TextField from '@material-ui/core/TextField';
 import '../../scss/userInfo.scss'
 
 
@@ -46,7 +47,9 @@ function User() {
 
     let user = JSON.parse(localStorage.getItem("userShopsale"));
     let avatar = user.fullName.charAt(0).toUpperCase()
-    const [locationUser , setLocationUser] = useState(user.location)
+    const [location , setLocation] = useState(user.location)
+    const [phone, setPhone] = useState(user.phone)
+
    const classes = useStyles();
     const onPick = value => {
         swal("Cảm ơn đã đánh giá!", `You rated us ${value}/5`, "success")
@@ -81,17 +84,17 @@ function User() {
     }
 
     async function ChangeAddress(){
-         swal("Vui Lòng Nhập Địa Chỉ : ", {
-            content: "input",
+        if(location !== null || phone !==null){
+        await callApi('sign-in/update-location/?id='+user._id+"&location="+location+"&phone="+phone).then(async(res)=>{               
+            await res.data
+            console.log(res.data)
+         await localStorage.setItem('userShopsale',JSON.stringify( res.data))
+         swal("Thành Công", "Bạn Đã Thay Đổi Thông Tin", "success");
         })
-            .then(async(value) => {
-               setLocationUser(value)
-               await callApi('sign-in/update-location/?id='+user._id+"&location="+value).then(async(res)=>{
-                
-                   await res.data
-                await localStorage.setItem('userShopsale',JSON.stringify( res.data))
-               })
-            });
+       }
+       else {
+        swal("Oops", "Bạn Chưa Điền Thông Tin", "error");
+       }
     }
 
  
@@ -133,8 +136,12 @@ function User() {
                 </Card>
 
                 <div style={{marginLeft:50}}>
-                    <h2>Location : {locationUser}</h2>
-                    <Button variant="contained" color="primary" onClick={()=> ChangeAddress()}>Sửa Địa Chỉ</Button>
+                    <h2>Thông tin:</h2>
+                    <TextField id="outlined-basic" value={user.phone === "null"|| user.phone === "" ? "Chưa có SĐT" : phone} onInput={e => setPhone(e.target.value)} label="Số điện thoại" size="small" variant="outlined" />
+                    <div style={{width:10,height:10,}}></div>
+                    <TextField id="outlined-basic" value={user.location === "null" || user.location === "" ? "Chưa có địa chỉ" :  location  }  onInput={e => setLocation(e.target.value)} label="Địa chỉ giao hàng" size="small" variant="outlined" />
+                    <div style={{width:10,height:10,}}></div>
+                    <Button variant="contained"  color="primary" onClick={()=> ChangeAddress()}>Thay Đổi</Button>
                 </div>
                </div>
             </Container>

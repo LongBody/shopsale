@@ -172,8 +172,7 @@ export const deleteProductCart = (cart, product) => {
 
 export const paymentCart = (cart) => {
     return async(dispatch) => {
-        let user = JSON.parse(localStorage.getItem("userShopsale"));
-        let idUserGet = user._id
+
         let index;
         let cartPayment = []
         let lengthState = cart.length;
@@ -198,14 +197,29 @@ export const paymentCart = (cart) => {
                     cart.splice(index, 1);
                 }
             }
-            callApiAddCart(id, cart).then(async(response) => {
-                await response.data;
-                swal("Thành Công!", "Đã Thanh Toán!", "success");
-                dispatch({
-                    type: types.PAYMENT_CART,
-                    payload: response.data,
+            let user = JSON.parse(localStorage.getItem("userShopsale"));
+            let idUserGet = user._id
+            console.log(id + cart)
+            if (id) {
+                callApiAddCart(id, cart).then(async(response) => {
+                    await response.data;
+                    swal("Thành Công!", "Đã Thanh Toán!", "success");
+                    dispatch({
+                        type: types.PAYMENT_CART,
+                        payload: response.data,
+                    });
                 });
-            });
+            } else {
+                callApiAddCart(idUserGet, cart).then(async(response) => {
+                    await response.data;
+                    swal("Thành Công!", "Đã Thanh Toán!", "success");
+                    dispatch({
+                        type: types.PAYMENT_CART,
+                        payload: response.data,
+                    });
+                });
+            }
+
         }
     };
 };
