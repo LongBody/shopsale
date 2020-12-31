@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     if (user) {
       if (user.roles[0] === "admin") {
         localStorage.removeItem("userShopsale");
-        return window.open( 'https://longbody.github.io/shopsaleadmin/#/')
+        return window.open( 'https://shopsaleadmin.netlify.app/#/')
       }
       else {
         return (<Redirect to="/" />);
