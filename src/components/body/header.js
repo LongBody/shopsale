@@ -183,7 +183,7 @@ function Header(props) {
             onClose={handleMenuClose}
         >
 
-            {userState ? <Link to="user-info"><MenuItem onClick={handleMenuClose}>Thông tin</MenuItem></Link> :
+            {userState ? <Link to="/user-info"><MenuItem onClick={handleMenuClose}>Thông tin</MenuItem></Link> :
                 <Link to="/sign-in" style={{ color: "black" }}><MenuItem onClick={handleMenuClose}>Đăng Nhập</MenuItem></Link>
             }
             {userState ? <MenuItem onClick={() => handleLogout()} style={{ color: "red" }}>Đăng Xuất</MenuItem> :
