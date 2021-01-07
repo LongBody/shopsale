@@ -1,7 +1,7 @@
 import * as types from "../constants/actionTypes";
 import swal from "sweetalert";
 import { callApiAddCart, callApi } from "../utils/callApi";
-const axios = require("axios");
+
 
 let user = JSON.parse(localStorage.getItem("userShopsale"));
 let id;
@@ -64,7 +64,7 @@ export const addToCart = (cart, product, category, quantity, checked) => {
         let idUserGet = user._id;
 
         let index = findProductInCart(cart, product);
-        if (index != -1) {
+        if (index !== -1) {
             cart[index].quantity += quantity;
             cartCurrent = cart;
         } else {
@@ -106,7 +106,7 @@ export const onUpdateQuantity = (cart, product, quantity) => {
         if (index !== -1 && cart[index].quantity >= 0) {
             cart[index].quantity = quantity;
         }
-        if (cart[index].quantity == 0 || cart[index].quantity == -1) {
+        if (cart[index].quantity === 0 || cart[index].quantity === -1) {
             cart[index].quantity = 0;
             cart[index].checked = false;
         } else {
@@ -234,7 +234,7 @@ export const productCheckout = (cart) => {
                 count++;
             }
         }
-        let isHasProduct = false
+
 
         if (count === lengthState) {
             swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
@@ -259,7 +259,7 @@ export const handleChangeChecked = (cart, product) => {
         let idUserGet = user._id;
         let index = findProductInCart(cart, product);
         if (index !== -1) {
-            if (cart[index].checked == true) {
+            if (cart[index].checked === true) {
                 cart[index].checked = false;
             } else {
                 cart[index].checked = true;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import '../../scss/app.scss'
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,12 +7,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import convertPrice from '../../utils/convertPriceVND'
-import ProductLayout from '../layout/productDetailLayout'
-import { useHistory } from "react-router-dom";
-import { callApi } from '../../utils/callApi'
 import { Link } from 'react-router-dom'
 const useStyles = makeStyles({
     root: {

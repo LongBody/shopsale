@@ -11,8 +11,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Button, Container } from '@material-ui/core';
 import swal from '@sweetalert/with-react';
 import {callApi} from  '../../utils/callApi'

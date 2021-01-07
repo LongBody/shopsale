@@ -124,10 +124,7 @@ function Header(props) {
         handleMobileMenuClose();
     };
 
-    const handleMobileMenuOpen = (event) => {
-        setMobileMoreAnchorEl(event.currentTarget);
-    };
-
+  
 
 
 

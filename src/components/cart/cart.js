@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,7 +8,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TableBody from '@material-ui/core/TableBody';
 import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
 import CartBody from '../cart/cartBody';
@@ -62,7 +61,7 @@ function subtotalUnChecked(items, itemUnChecked) {
   }));
 
   items.map((item => {
-    if (item.props.checked == false) {
+    if (item.props.checked === false) {
       sumUnCheck += item.props.price * item.props.quantity
     }
   }));

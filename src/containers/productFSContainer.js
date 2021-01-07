@@ -20,7 +20,7 @@ class ProductFSContainer extends Component {
     render() {
 
         let { productFS } = this.props
-        if (productFS.length == 0)
+        if (productFS.length === 0)
         return <SkeletonFs></SkeletonFs>
 
         return (

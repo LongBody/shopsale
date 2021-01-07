@@ -1,4 +1,4 @@
-import React, { Component, useRef } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProduct, fetchLoadMoreProduct } from "../actions/productAction";
 import Products from "../components/product/products";
@@ -62,7 +62,7 @@ class ProductContainer extends Component {
 
   render() {
     let { products } = this.props;
-    if (products.length == 0) return <Skeleton></Skeleton>;
+    if (products.length === 0) return <Skeleton></Skeleton>;
 
     return (
       <div>
