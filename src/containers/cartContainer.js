@@ -8,7 +8,7 @@ import Cart from '../components/cart/cart';
 class CartContainer extends Component {
  
 render(){
-    let { cart ,onUpdateQuantity}  = this.props
+    let { cart }  = this.props
 
   return (
 

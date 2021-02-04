@@ -291,7 +291,7 @@ function Header(props) {
                             <div className={classes.sectionDesktop + " disableHover"} >
                                 <ClickAwayListener onClickAway={handleTooltipClose}>
                                     <LightTooltip title={<div style={{ padding: 5 }}>
-                                        <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} /><h3 style={{ marginLeft: 5 }}> Chào mừng bạn đến với Shopsale</h3></div>
+                                        <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} alt="shopsale"/><h3 style={{ marginLeft: 5 }}> Chào mừng bạn đến với Shopsale</h3></div>
                                         {/* <div style={{ display: "flex" }}><img src={LogoWeb} style={{ width: 38 }} /><h3 style={{ marginLeft: 5 }}>Mua Sắm Với Shopsale
                                      <span style={{ marginLeft: 2, color: "#e79413" }} onClick={() => WatchNowNoti()}>Xem Ngay</span>
                                         </h3>
