@@ -4,54 +4,62 @@ import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import '../../scss/product.scss'
 import { Link } from 'react-router-dom'
+import image_1 from '../../image/popular/giay.png'
+import image_2 from '../../image/popular/thiet-bi-dien-tu.png'
+import image_3 from '../../image/popular/bach_hoa.png'
+import image_4 from '../../image/popular/do_choi.png'
+import image_5 from '../../image/popular/may-anh.png'
+import image_6 from '../../image/popular/son.png'
+import image_7 from '../../image/popular/dong-ho.png'
+import image_8 from '../../image/popular/ao-nu.png'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 const mostPopularProduct = [
   {
-    "image": '/static/media/giay.74ca517e.png',
+    "image": image_1,
     "title": "Giày dép",
     "total": "24+",
     "path":"Giày"
   },
   {
-    "image": '/static/media/thiet-bi-dien-tu.978b9e4c.png',
+    "image": image_2,
     "title": "Thiết bị điện tử",
     "total": "32+",
     "path":"Thiết bị điện tử"
   },
   {
-    "image": '/static/media/bach_hoa.c432168e.png',
+    "image":image_3,
     "title": "Bách hoá",
     "total": "14+",
     "path":"Bách hoá"
   },
   {
-    "image": '/static/media/do_choi.099edde1.png',
+    "image": image_4,
     "title": "Đồ Chơi Mẹ Và Bé",
     "total": "27+",
     "path":"Đồ Chơi Mẹ Và Bé"
   },
   {
-    "image": '/static/media/may-anh.ec14dd4f.png',
+    "image": image_5,
     "title": "Máy ảnh",
     "total": "19+",
     "path":"Máy ảnh"
   },
   {
-    "image": '/static/media/son.bba68b7d.png',
+    "image": image_6,
     "title": "Son Môi",
     "total": "3+",
     "path":"Son"
   },
   {
-    "image": '/static/media/dong-ho.86c294aa.png',
+    "image":image_7,
     "title": "Đồng hồ",
     "total": "2+",
     "path":"Đồng hồ"
   },
   {
-    "image": '/static/media/ao-nu.75ea42f9.png',
+    "image": image_8,
     "title": "Áo nữ",
     "total": "3+",
     "path":"Áo"
