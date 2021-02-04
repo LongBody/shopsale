@@ -76,7 +76,7 @@ const btnSearch = {
     right: 0,
     top: 0,
     color: "white",
-    "background-color": "black !important",
+    backgroundColor: "black !important",
 }
 
 

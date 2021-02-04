@@ -34,7 +34,7 @@
 .list__checkout__wrapper {
     background-color: #FFFFFF;
     margin-top: 18px;
-    padding: 20px 20px 40px 20px;
+    padding: 20px 20px 50px 20px;
     margin-bottom: 10px;
     box-shadow: 0 0.0625rem 0.0625rem 0 rgba(0, 0, 0, .05);
     #list {
@@ -73,4 +73,16 @@
     padding: 10px 20px 45px 20px;
     margin-bottom: 10px;
     box-shadow: 0 0.0625rem 0.0625rem 0 rgba(0, 0, 0, .05);
+}
+
+.num__to__vietnam__text {
+    font-size: 16px;
+    color: #e79413;
+    padding-top: 10px;
+    font-weight: bold;
+    font-family: sans-serif;
+    float: right;
+    &::first-letter {
+        text-transform: uppercase;
+    }
 }

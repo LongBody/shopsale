@@ -4,13 +4,13 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import convertPrice from '../../utils/convertPriceVND'
 import * as actions from '../../actions/cartAction'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useHistory } from "react-router-dom";
 import '../../scss/product.scss'
 const useStyles = makeStyles({
@@ -64,13 +64,7 @@ function ProductCard(props) {
           <Link to={{ pathname:"/product/"+ props.id, query: { the: props.id }  }} style={{textDecoration:"none"}}>
             <Card className={classes.root}>
                 <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        title={props.title}
-                        style={StyleMedia}
-                        image={props.imageUrl} 
-                    >
-                        </CardMedia>
+                <LazyLoadImage  effect="blur" src={props.imageUrl} style={{width:"100%" , height:180}} alt={props.title}/>
                     <CardContent style={StyleContent}>
                         <Typography variant="body2" color="textSecondary" className="title__product__wrapper" component="p" style={StyleTitle}>
                             {props.title}

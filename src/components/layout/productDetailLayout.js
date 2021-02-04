@@ -97,11 +97,11 @@ function ProductDetail(props) {
                 <div style={{padding: 40,paddingTop:50, backgroundColor: "#fff",height:"100%" }} className="responsive-image">
                     {
                         pro ?
-                            <Grid container spacing={2} xs={12} sm={8} md={12} lg={12}>
+                            <Grid container spacing={2} >
                                 <Grid item xs={12} xs={10} sm={10} md={6} lg={5}>
                                     <img src={pro.imageUrl} style={styleImage} />
                                 </Grid>
-                                <Grid item xs={12} xs={10} sm={10} md={6} lg={6} >
+                                <Grid item xs={12} sm={10} md={6} lg={6} >
                                     <h2>{pro.title}</h2>
                                     <h3>{showRating(pro.star)}</h3>
                                     <h1 style={stylePrice}>₫{convertPrice(pro.price)}</h1>
@@ -131,7 +131,7 @@ function ProductDetail(props) {
                                     </div>
                                 </Grid>
 
-                                <Grid item xs={12} xs={10} sm={10} md={6} lg={5}>
+                                <Grid item xs={12} sm={10} md={6} lg={5}>
                                     <div style={{marginTop:50}}>
                                         <h4>CHI TIẾT SẢN PHẨM</h4>
                                         {

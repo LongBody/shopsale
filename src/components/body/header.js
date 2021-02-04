@@ -237,14 +237,14 @@ function Header(props) {
 
 
 
-    console.log(cart)
+ 
 
 
-    let cardInfoItem = cart.map(item => {
+    let cardInfoItem = cart.map( (item , index) => {
         return (
             <div style={{ marginBottom: 5 }} className="item__card__header">
                 {item.category === "FS" ?
-                    <Link to={{ pathname: "/productFlashSale/" + item.product.id, query: { the: item.product.id } }} style={{ textDecoration: "none", display: "flex" }}>
+                    <Link to={{ pathname: "/productFlashSale/" + item.product.id, query: { the: item.product.id } }} key={index} style={{ textDecoration: "none", display: "flex" }}>
                         <img src={item.product.imageUrl} style={{ width: 40, border: "1px solid #dadada" }} />
                         <h3 style={{ width: 200, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block", marginLeft: 4, color: "#535252" }}>{item.product.title}</h3>
                         <h5 style={{ color: "#696969", marginLeft: 1, marginRight: 3, paddingRight: 3 }}>x{item.quantity}</h5>
@@ -271,8 +271,8 @@ function Header(props) {
                     <div className="content-header">
                         <div className="social-header">
                             <span style={{ fontSize: "16px !important", marginLeft: 25, marginTop: 3, fontWeight: 500, marginRight: 10 }}>Kết Nối</span>
-                            <a href="https://www.facebook.com/Shopsale-101665164978100/" className="hoverFacebook"><i class="fab fa-facebook-square" style={{ fontSize: 20, marginRight: 10, color: "#e79413 !important" }}></i></a>
-                            <a href="https://www.youtube.com/channel/UCq4jLkYQyW3llnJm6fpaFGQ?view_as=subscriber"><i class="fab fa-youtube" style={{ fontSize: 20, marginRight: 5 }}></i></a>
+                            <a href="https://www.facebook.com/Shopsale-101665164978100/" className="hoverFacebook"><i className="fab fa-facebook-square" style={{ fontSize: 20, marginRight: 10, color: "#e79413 !important" }}></i></a>
+                            <a href="https://www.youtube.com/channel/UCq4jLkYQyW3llnJm6fpaFGQ?view_as=subscriber"><i className="fab fa-youtube" style={{ fontSize: 20, marginRight: 5 }}></i></a>
                         </div>
                        
                         <div style={{ paddingRight: 20 }}>

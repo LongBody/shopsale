@@ -3,6 +3,7 @@ import { Container } from "@material-ui/core";
 import "../../scss/checkout.scss";
 import { connect } from 'react-redux'
 import convertPrice from '../../utils/convertPriceVND'
+import numToVietnameseText from '../../utils/numToVietNamText'
 import * as actions from '../../actions/cartAction'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -13,30 +14,46 @@ function ListCheckout(props) {
   const [message, setMessage] = useState("")
 
   function subtotalUnChecked(items) {
-    console.log(items)
-    let sum = 0
-   items.map(item =>{
-     if(item.checked === true ){
-       sum += item.product.price *item.quantity
-     }
-   })
 
- 
+    let sum = 0
+    items.map(item => {
+      if (item.checked === true) {
+        sum += item.product.price * item.quantity
+      }
+    })
+
+
     let sumVnd = convertPrice(sum)
-  
+
     return sumVnd
   }
 
-  const paymentCartFunc = (cart)=>{
-    
+  function priceNumberToVietnameseText(items) {
+    let sum = 0
+
+    items.map(item => {
+      if (item.checked === true) {
+        sum += item.product.price * item.quantity
+      }
+    })
+
+
+    let sumVnd = numToVietnameseText(sum);
+
+
+    return sumVnd;
+  }
+
+  const paymentCartFunc = (cart) => {
+
     let userShop = JSON.parse(localStorage.getItem("userShopsale"));
-    console.log(userShop)
-    if(userShop.location && userShop.phone && userShop.location !== "null" && userShop.phone!== "null"){
-      if(cart){
+
+    if (userShop.location && userShop.phone && userShop.location !== "null" && userShop.phone !== "null") {
+      if (cart) {
         props.paymentCart(cart)
         setMessage("")
       }
-      else{
+      else {
         props.paymentCart(userShop.productCart)
         setMessage("")
       }
@@ -44,9 +61,9 @@ function ListCheckout(props) {
     else {
       swal("Oops", "Bạn Chưa Có Thông Tin", "error");
     }
-    
+
   }
- 
+
 
   useEffect(() => {
 
@@ -55,15 +72,18 @@ function ListCheckout(props) {
     }
   }, []);
 
-  let result = props.cart.map(item => {
+  let result = props.cart.map((item, index) => {
     if (item.checked === true) {
       return (
-        <tr style={{ marginBottom: 6 }}>
-          <td><img src={item.product.imageUrl} style={{ width: 35, border: "1px solid rgba(0,0,0,.05)" }} /> <span style={{ marginLeft: 10 }}>{item.product.title}</span></td>
-          <td style={{ textAlign: "center" }}>{convertPrice(item.product.price)}</td>
-          <td style={{ textAlign: "center" }}>{item.quantity}</td>
-          <td style={{ textAlign: "center" }}>{convertPrice(item.product.price * item.quantity)}</td>
-        </tr>
+        <tbody style={{ marginBottom: 6 }} key={index}>
+          <tr>
+            <td><img src={item.product.imageUrl} style={{ width: 35, border: "1px solid rgba(0,0,0,.05)" }} /> <span style={{ marginLeft: 10 }}>{item.product.title}</span></td>
+            <td style={{ textAlign: "center" }}>{convertPrice(item.product.price)}</td>
+            <td style={{ textAlign: "center" }}>{item.quantity}</td>
+            <td style={{ textAlign: "center" }}>{convertPrice(item.product.price * item.quantity)}</td>
+          </tr>
+
+        </tbody>
       )
     }
 
@@ -72,12 +92,15 @@ function ListCheckout(props) {
     <Container>
       <div className="list__checkout__wrapper">
         <table id="list">
+          <thead>
           <tr>
-            <th><h3 style={{color:"#222"}}>Sản Phẩm</h3></th>
-            <th style={{ textAlign: "center" , color:"#bbb" }}>Đơn giá</th>
-            <th style={{ textAlign: "center",color:"#bbb" }}>Số lượng</th>
-            <th style={{ textAlign: "center",color:"#bbb" }}>Thành tiền</th>
+            <th><h3 style={{ color: "#222" }}>Sản Phẩm</h3></th>
+            <th style={{ textAlign: "center", color: "#bbb" }}>Đơn giá</th>
+            <th style={{ textAlign: "center", color: "#bbb" }}>Số lượng</th>
+            <th style={{ textAlign: "center", color: "#bbb" }}>Thành tiền</th>
           </tr>
+          </thead>
+         
           {
             result
           }
@@ -86,13 +109,15 @@ function ListCheckout(props) {
         <div className="dashed___line"></div>
 
         <div className="list__checkout__payment__totalPrice">
-        <TextField id="outlined-basic" value={message} onInput={e => setMessage(e.target.value)}   label="Lời nhắn người mua" size="small" variant="outlined" style={{paddingBottom:5}} />
-        <span style={{float:"right", padding:10, fontSize:20}}>Tổng Tiền: <span style={{color:" #00ACC1", fontSize:20}}>{subtotalUnChecked(props.cart)} </span></span>
+          <TextField id="outlined-basic" value={message} onInput={e => setMessage(e.target.value)} label="Lời nhắn người mua" size="small" variant="outlined" style={{ paddingBottom: 5 }} />
+          <span style={{ float: "right", padding: 10, fontSize: 20 }}>Tổng Tiền: <span style={{ color: " #00ACC1", fontSize: 20 }}>₫{subtotalUnChecked(props.cart)} </span></span>
         </div>
+        <div className="num__to__vietnam__text">{priceNumberToVietnameseText(props.cart)} VNĐ</div>
+
 
         {/* <div className="dashed___line"></div> */}
 
-       
+
 
 
       </div>
@@ -100,11 +125,11 @@ function ListCheckout(props) {
 
 
       <div>
-      <div className="list__checkout__payment__button">
-        <div style={{fontSize:20, fontWeight:"bold"}} >Phương thức thanh toán :</div>  <span style={{color:" #00ACC1", fontSize:18, marginLeft:5}}>Thanh toán khi nhận hàng</span>
-        <div style={{float:"right" , marginBottom:30 , paddingBottom:20}}>
-        <Button onClick={ ()=> {paymentCartFunc(props.cart)}} variant="contained"  style={{backgroundColor:"#00ACC1 " , color:"white"}}>THANH TOÁN</Button>
-        </div>
+        <div className="list__checkout__payment__button">
+          <div style={{ fontSize: 20, fontWeight: "bold" }} >Phương thức thanh toán :</div>  <span style={{ color: " #00ACC1", fontSize: 18, marginLeft: 5 }}>Thanh toán khi nhận hàng</span>
+          <div style={{ float: "right", marginBottom: 30, paddingBottom: 20 }}>
+            <Button onClick={() => { paymentCartFunc(props.cart) }} variant="contained" style={{ backgroundColor: "#00ACC1 ", color: "white" }}>THANH TOÁN</Button>
+          </div>
         </div>
       </div>
 

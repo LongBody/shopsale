@@ -61,8 +61,8 @@ function Home() {
 
       <Container>
         <Toolbar variant="dense" style={{ backgroundColor: "#FFF", paddingTop: 25 }}>
-          <Grid container spacing={4} xs={12} sm={6} md={6} lg={12}>
-            <Grid item xs={12} xs={6} sm={3} md={4} lg={2}>
+          <Grid container spacing={4} >
+            <Grid item xs={12} sm={3} md={4} lg={2}>
               <div>
                 <i className="fas fa-shipping-fast" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
                 <h3 style={{ textAlign: "center", color: "#e79413" }}>Giao Hàng Miễn Phí</h3>
@@ -70,42 +70,42 @@ function Home() {
             </Grid>
 
 
-            <Grid item xs={12} xs={6} sm={3} md={4} lg={2}>
+            <Grid item xs={12} sm={3} md={4} lg={2}>
               <div>
                 <i className="fas fa-dice-d6" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
                 <h3 style={{ textAlign: "center", color: "#e79413" }}>Đa Dạng Sản Phẩm</h3>
               </div>
             </Grid>
 
-            <Grid item xs={12} xs={6} sm={3} md={4} lg={2}>
+            <Grid item xs={12}  sm={3} md={4} lg={2}>
               <div>
                 <i className="fas fa-tags" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
                 <h3 style={{ textAlign: "center", color: "#e79413" }}>Giá Ưu Đãi</h3>
               </div>
             </Grid>
 
-            <Grid item xs={12} xs={6} sm={3} md={4} lg={2}>
+            <Grid item xs={12}  sm={3} md={4} lg={2}>
               <div>
                 <i className="fas fa-box-open" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
                 <h3 style={{ textAlign: "center", color: "#e79413" }}>Dễ Dàng Đổi Trả</h3>
               </div>
             </Grid>
 
-            <Grid item xs={12} xs={6} sm={3} md={4} lg={2}>
+            <Grid item xs={12} sm={3} md={4} lg={2}>
               <div>
                 <i className="fas fa-headset" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
                 <h3 style={{ textAlign: "center", color: "#e79413" }}>Hỗ Trợ 24/7</h3>
               </div>
             </Grid>
 
-            <Grid item xs={12} xs={6} sm={3} md={4} lg={2}>
+            <Grid item xs={12} sm={3} md={4} lg={2}>
               <div>
                 <i className="fas fa-money-check-alt" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
                 <h3 style={{ textAlign: "center", color: "#e79413" }}>Thanh Toán An Toàn</h3>
               </div>
             </Grid>
 
-            <Grid item xs={12} xs={6} sm={3} md={4} lg={2}>
+            <Grid item xs={12}  sm={3} md={4} lg={2}>
             </Grid>
           </Grid>
         </Toolbar>

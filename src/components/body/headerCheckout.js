@@ -196,7 +196,7 @@ function Header(props) {
 
 
 
-    console.log(cart)
+  
 
 
     let cardInfoItem = cart.map(item => {
