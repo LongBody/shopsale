@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import '../../scss/carousel.scss'
 import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import image_1 from '../../image/category/thoi_trang.png'
 import image_2 from '../../image/category/sac_dep.png'
@@ -67,73 +68,73 @@ export default class Responsive extends Component {
                 <Slider {...settings}>
                 <Link to={{ pathname:"/" + "Thời Trang", }} >
                 <div className="image-categories-wrap">
-                        <img src={image_1} className="image-categories" alt=""/>
+                <LazyLoadImage  effect="blur" src={image_1} className="image-categories" alt=""/>
                         <div className="title-categories">Thời Trang</div>
                     </div>
                 </Link>
                 <Link to={{ pathname:"/" + "Sắc Đẹp", }} >
                     <div className="image-categories-wrap">
-                        <img src={image_2} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_2} className="image-categories" alt=""/>
                         <div className="title-categories">Sắc Đẹp</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Thiết Bị Điện Tử" }} >
                     <div className="image-categories-wrap" >
-                        <img src={image_3} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_3} className="image-categories" alt=""/>
                         <div className="title-categories"   >Thiết Bị Điện Tử</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Hàng Quốc Tế" }} >
                     <div className="image-categories-wrap">
-                        <img src={image_4} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_4} className="image-categories" alt=""/>
                         <div className="title-categories">Hàng Quốc Tế</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Điện Tử - Điện Lạnh" }}>
                     <div className="image-categories-wrap">
-                        <img src={image_5}className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_5}className="image-categories" alt=""/>
                         <div className="title-categories">Điện Tử - Điện Lạnh</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Thể Thao - Dã Ngoại" }}>
                     <div className="image-categories-wrap">
-                        <img src={image_6}className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_6}className="image-categories" alt=""/>
                         <div className="title-categories">Thể Thao - Dã Ngoại</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Đồ Chơi Mẹ Và Bé" }}>
                     <div className="image-categories-wrap">
-                        <img src={image_7} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_7} className="image-categories" alt=""/>
                         <div className="title-categories">Đồ Chơi Mẹ Và Bé</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Máy Ảnh" }}>
                     <div className="image-categories-wrap">
-                        <img src={image_8} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_8} className="image-categories" alt=""/>
                         <div className="title-categories">Máy Ảnh</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Điện Gia Dụng" }}>
                     <div className="image-categories-wrap">
-                        <img src={image_9}className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_9}className="image-categories" alt=""/>
                         <div className="title-categories">Điện Gia Dụng</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Bách Hoá" }}>
                     <div className="image-categories-wrap">
-                        <img src={image_10} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_10} className="image-categories" alt=""/>
                         <div className="title-categories">Bách Hoá</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Thiết Bị Số" }}>
                     <div className="image-categories-wrap">
-                        <img src={image_11} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur"src={image_11} className="image-categories" alt=""/>
                         <div className="title-categories">Thiết Bị Số</div>
                     </div>
                     </Link>
                     <Link to={{ pathname:"/"+ "Nhà Cửa - Đời Sống" }}>
                     <div className="image-categories-wrap">
-                        <img ssrc={image_12} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur"ssrc={image_12} className="image-categories" alt=""/>
                         <div className="title-categories">Nhà Cửa - Đời Sống</div>
                     </div>
                     </Link>
