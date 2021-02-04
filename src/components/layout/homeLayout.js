@@ -12,7 +12,9 @@ import Countdown from 'react-countdown';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
 import image from '../../image/saledienthoai.png'
 import { Link } from 'react-router-dom'
-import SlideProductHome from '../product/slidesProductHome'
+// import SlideProductHome from '../product/slidesProductHome'
+import ServiceBar from '../body/serviceBar'
+import MostPopular from '../body/MostPopularProduct'
 function Home() {
 
   return (
@@ -59,57 +61,25 @@ function Home() {
         <div style={{ backgroundColor: "rgb(0, 172, 193)", width: "100%", height: 2 }}></div>
       </Container>
 
+      <ServiceBar/>
+
+
+
       <Container>
-        <Toolbar variant="dense" style={{ backgroundColor: "#FFF", paddingTop: 25 }}>
-          <Grid container spacing={4} >
-            <Grid item xs={12} sm={3} md={4} lg={2}>
-              <div>
-                <i className="fas fa-shipping-fast" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
-                <h3 style={{ textAlign: "center", color: "#e79413" }}>Giao Hàng Miễn Phí</h3>
-              </div>
-            </Grid>
-
-
-            <Grid item xs={12} sm={3} md={4} lg={2}>
-              <div>
-                <i className="fas fa-dice-d6" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
-                <h3 style={{ textAlign: "center", color: "#e79413" }}>Đa Dạng Sản Phẩm</h3>
-              </div>
-            </Grid>
-
-            <Grid item xs={12}  sm={3} md={4} lg={2}>
-              <div>
-                <i className="fas fa-tags" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
-                <h3 style={{ textAlign: "center", color: "#e79413" }}>Giá Ưu Đãi</h3>
-              </div>
-            </Grid>
-
-            <Grid item xs={12}  sm={3} md={4} lg={2}>
-              <div>
-                <i className="fas fa-box-open" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
-                <h3 style={{ textAlign: "center", color: "#e79413" }}>Dễ Dàng Đổi Trả</h3>
-              </div>
-            </Grid>
-
-            <Grid item xs={12} sm={3} md={4} lg={2}>
-              <div>
-                <i className="fas fa-headset" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
-                <h3 style={{ textAlign: "center", color: "#e79413" }}>Hỗ Trợ 24/7</h3>
-              </div>
-            </Grid>
-
-            <Grid item xs={12} sm={3} md={4} lg={2}>
-              <div>
-                <i className="fas fa-money-check-alt" style={{ fontSize: 50, display: "flex", justifyContent: "center", color: "rgb(0, 172, 193)" }}></i>
-                <h3 style={{ textAlign: "center", color: "#e79413" }}>Thanh Toán An Toàn</h3>
-              </div>
-            </Grid>
-
-            <Grid item xs={12}  sm={3} md={4} lg={2}>
-            </Grid>
-          </Grid>
+        <Toolbar variant="dense" style={{ backgroundColor: "#FFF", marginTop: 70 }}>
+          <h4 style={{ color: "#f57224" ,fontFamily:"sans-serif" , fontWeight:"bold" }}> XU HƯỚNG TÌM KIẾM</h4>
+          <i className="fas fa-fire" style={{marginLeft:10 , color:"#f57224" , fontSize:20 , marginBottom:4}}></i>
         </Toolbar>
+        <div style={{ backgroundColor: "#f57224", width: "20%", height: 2 }}></div>
       </Container>
+
+      <MostPopular/>
+
+
+    
+
+      
+
 
 
       <Container style={{ paddingTop: 40 }}>
