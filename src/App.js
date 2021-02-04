@@ -7,10 +7,10 @@ import Routes from './router'
 
 
 function App() {
-
+ 
   return (
     // <HashRouter basename='/'>
-      <BrowserRouter basename="https://shopsale.cf"> 
+      <BrowserRouter basename="/"> 
     <div className="App">
       <Routes></Routes>  
     </div>
