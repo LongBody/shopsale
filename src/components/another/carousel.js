@@ -134,7 +134,7 @@ export default class Responsive extends Component {
                     </Link>
                     <Link to={{ pathname:"/"+ "Nhà Cửa - Đời Sống" }}>
                     <div className="image-categories-wrap">
-                    <LazyLoadImage  effect="blur"ssrc={image_12} className="image-categories" alt=""/>
+                    <LazyLoadImage  effect="blur" src={image_12} className="image-categories" alt=""/>
                         <div className="title-categories">Nhà Cửa - Đời Sống</div>
                     </div>
                     </Link>
