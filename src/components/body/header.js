@@ -334,7 +334,7 @@ function Header(props) {
 
 
                     <Toolbar>
-                        <Link to="/"><img src={LogoWeb} className="logoWebImage"></img></Link>
+                        <Link to="/"><img src={LogoWeb} className="logoWebImage" alt="shopsale"></img></Link>
                         <SearchField />
                         <div className={classes.grow} />
 
