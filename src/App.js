@@ -15,7 +15,7 @@ function App() {
       <Routes></Routes>  
     </div>
   </BrowserRouter> 
-     {/* </HashRouter> */}
+    // {/* </HashRouter> */}
 
   );
 }
