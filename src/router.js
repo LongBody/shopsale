@@ -22,8 +22,8 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path={`/`} component={HomePage}></Route>
-        <Route path={`/cart`}  exact component={CartLayout}></Route>
+        <Route exact path="/" component={HomePage}></Route>
+        <Route path="/cart"  exact component={CartLayout}></Route>
         <Route path="/product/:id" exact component={ProductLayout}></Route>
         <Route path="/shopsale/categories/:category" component={CategoryLayout}></Route>
         <Route path="/productFlashSale/:id" exact component={ProductFlashSaleLayout}></Route>
