@@ -48,7 +48,7 @@ class ProductContainer extends Component {
 
     if (this.state.page > 8) {
       window.location.replace(
-        "https://shopsale.cf/#/shopsaleproduct/allproduct/3"
+        "https://shopsale.cf/shopsaleproduct/allproduct/3"
       );
     } else {
       this.props.fetchLoadMoreProduct(this.state.page);

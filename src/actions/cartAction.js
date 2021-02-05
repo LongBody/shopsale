@@ -239,7 +239,7 @@ export const productCheckout = (cart) => {
         if (count === lengthState) {
             swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
         } else {
-            window.location = "https://shopsale.cf/#/payment/checkout";
+            window.location = "https://shopsale.cf/payment/checkout";
 
         }
 
