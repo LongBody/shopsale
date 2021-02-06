@@ -92,7 +92,7 @@ function ProductDetail(props) {
     useEffect(() => {
         ref.current.continuousStart()
         fetchData()
-    }, []);
+    }, [props.match.params.id]);
 
 
     function newRow(text) {
