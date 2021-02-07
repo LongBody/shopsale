@@ -46,6 +46,8 @@ function SearchProduct(props) {
     const [loading, setLoading] = useState("Loading...")
     const [noProduct, setNoProduct] = useState(false)
     const ref = useRef(null)
+
+    console.log(props)
     let result
     const fetchData = async () => {
         setNoProduct(false)
@@ -78,7 +80,7 @@ function SearchProduct(props) {
     useEffect(() => {
         ref.current.continuousStart()
         fetchData()
-    }, [props.location.params]);
+    }, [props.location.pathname]);
 
 
     result = product.map((item, index) => {

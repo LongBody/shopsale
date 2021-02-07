@@ -4,12 +4,14 @@ import SearchIcon from '@material-ui/icons/Search';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Redirect } from "react-router-dom";
 import * as actions from '../../actions/searchAction'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { callApi } from '../../utils/callApi'
 import { createFilterOptions } from "@material-ui/lab";
 import Button from '@material-ui/core/Button';
+import '../../scss/product.scss'
 const OPTIONS_LIMIT = 7;
 const defaultFilterOptions = createFilterOptions();
 
@@ -170,9 +172,23 @@ function SearchLayout(props) {
         onClick = { handleSubmit } >
         <div className = { classes.searchIcon } >
         <SearchIcon style = {
-            { color: "wheat" }
+            { color: "aqua" , }
         }
-        /> </div> </Button> </form> </div> </div>
+        /> </div> </Button> </form>
+        
+         </div> 
+         <div className="search__keyword__below__searchField" style={{marginLeft:18 , marginTop:5, color:"#d3d3d3"}}>
+         <Link to="/Tai nghe" style={{color:"#d3d3d3", marginRight:13 , fontFamily:"sans-serif", fontSize:13}}>Tai nghe</Link>
+         <Link to="/sneaker" style={{color:"#d3d3d3", marginRight:13 , fontFamily:"sans-serif", fontSize:13}}>giày sneaker</Link>
+         <Link to="/ao" style={{color:"#d3d3d3", marginRight:13 , fontFamily:"sans-serif", fontSize:13}}>áo nữ</Link>
+         <Link to="/sua rua mat" style={{color:"#d3d3d3", marginRight:13 , fontFamily:"sans-serif", fontSize:13}}>sữa rửa mặt</Link>
+         <Link to="/dien thoai" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>điện thoại</Link>
+         <Link to="/bia" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>Bia</Link>
+         <Link to="/dong ho" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>đồng hồ</Link>
+         <Link to="/coca" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>Coca-Cola</Link>
+         <Link to="/loa" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>Loa bluetooth</Link>
+            </div>
+         </div>
 
     );
 }
