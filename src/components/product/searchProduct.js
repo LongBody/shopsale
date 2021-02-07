@@ -47,7 +47,6 @@ function SearchProduct(props) {
     const [noProduct, setNoProduct] = useState(false)
     const ref = useRef(null)
 
-    console.log(props)
     let result
     const fetchData = async () => {
         setNoProduct(false)

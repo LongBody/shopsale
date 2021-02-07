@@ -86,3 +86,13 @@
         text-transform: uppercase;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .list__checkout__wrapper {
+        padding-bottom: 70px !important;
+        margin-bottom: 20px !important;
+    }
+    .num__to__vietnam__text {
+        padding-top: 0px;
+    }
+}
