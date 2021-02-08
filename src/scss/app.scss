@@ -51,3 +51,21 @@
             padding: 0px !important;
         }
     }
+    
+    @media only screen and (max-width: 768px) {
+        .banner__home {
+            display: none !important;
+        }
+    }
+    
+    .swiper-pagination-bullet-active {
+        background-color: #FA4F30 !important;
+    }
+    
+    .swiper-button-prev {
+        color: #FA4F30 !important;
+    }
+    
+    .swiper-button-next {
+        color: #FA4F30!important;
+    }

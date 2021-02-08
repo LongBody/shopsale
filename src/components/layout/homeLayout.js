@@ -2,7 +2,6 @@ import React from 'react';
 import ProductsContainer from '../../containers/productContainers'
 import ProductFSContainer from '../../containers/productFSContainer'
 import Header from '../body/header'
-import Banner from '../another/banner'
 import Carousel from '../another/carousel'
 import { Container } from '@material-ui/core';
 import Footer from '../body/footer';
@@ -12,29 +11,34 @@ import Countdown from 'react-countdown';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
 import image from '../../image/saledienthoai.png'
 import { Link } from 'react-router-dom'
-// import SlideProductHome from '../product/slidesProductHome'
+import Banner from '../another/banner'
 import ServiceBar from '../body/serviceBar'
 import MostPopular from '../body/MostPopularProduct'
+import '../../scss/app.scss'
 function Home() {
 
   return (
     <div>
       <Header />
-      {/* <Container style={{paddingTop:120 , background:"#f5f5f5"}}>
-     <Grid container spacing={0} xs={12} sm={12} md={12} lg={12}>
-     <Grid item xs={6} sm={6} md={8} lg={12} style={{height:300,width:"100%"}}>
-     <Banner/>
-        </Grid>
-        <Grid item xs={6} sm={6} md={4} lg={4}>
-     <img src= {image} style={{height:260}}/>
-        </Grid>
+
+      
+      <Container style={{ paddingTop: 150 }}>
+      </Container>
+
+      <Container className="banner__home" style={{ paddingTop: 10, paddingBottom: 20, borderRadius:"5px" }}>
+        <Grid container spacing={1} xs={12} sm={12} md={12} lg={12}>
+          <Grid item xs={6} sm={6} md={8} lg={8} style={{ height: 230, width: "100%" }}>
+            <Banner />
           </Grid>
-  
-     </Container> */}
+          
+          <Grid item xs={6} sm={6} md={4} lg={4}>
+            <img src={image} style={{ height: 230, width: "100%", borderRadius:"5px"  }} />
+          </Grid>
+        </Grid>
 
-      {/* <SlideProductHome /> */}
+      </Container>
 
-      <Container style={{ paddingTop: 160 }}>
+      <Container style={{ paddingTop: 20 }}>
 
         <Toolbar variant="dense" style={{ backgroundColor: "#FFF" }}>
           <h4 style={{ color: "rgb(0, 172, 193)" }}>FLASH SALE
@@ -44,6 +48,10 @@ function Home() {
         </Toolbar>
         <ProductFSContainer />
       </Container>
+
+
+
+
 
 
       <Container style={{ paddingTop: 40 }}>
@@ -61,24 +69,24 @@ function Home() {
         <div style={{ backgroundColor: "rgb(0, 172, 193)", width: "100%", height: 2 }}></div>
       </Container>
 
-      <ServiceBar/>
+      <ServiceBar />
 
 
 
       <Container>
         <Toolbar variant="dense" style={{ backgroundColor: "#FFF", marginTop: 70 }}>
-          <h4 style={{ color: "#f57224" ,fontFamily:"sans-serif" , fontWeight:"bold" }}> XU HƯỚNG TÌM KIẾM</h4>
-          <i className="fas fa-fire" style={{marginLeft:10 , color:"#f57224" , fontSize:20 , marginBottom:4}}></i>
+          <h4 style={{ color: "#f57224", fontFamily: "sans-serif", fontWeight: "bold" }}> XU HƯỚNG TÌM KIẾM</h4>
+          <i className="fas fa-fire" style={{ marginLeft: 10, color: "#f57224", fontSize: 20, marginBottom: 4 }}></i>
         </Toolbar>
         <div style={{ backgroundColor: "#f57224", width: "20%", height: 2 }}></div>
       </Container>
 
-      <MostPopular/>
+      <MostPopular />
 
 
-    
 
-      
+
+
 
 
 
