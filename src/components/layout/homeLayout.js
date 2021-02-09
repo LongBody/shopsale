@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  {useEffect} from 'react';
 import ProductsContainer from '../../containers/productContainers'
 import ProductFSContainer from '../../containers/productFSContainer'
 import Header from '../body/header'
@@ -15,7 +15,13 @@ import Banner from '../another/banner'
 import ServiceBar from '../body/serviceBar'
 import MostPopular from '../body/MostPopularProduct'
 import '../../scss/app.scss'
+import {TITLE_SHOP_SALE} from '../../constants/config'
 function Home() {
+
+
+  useEffect(() => {
+    document.title = TITLE_SHOP_SALE; 
+},[]);
 
   return (
     <div>

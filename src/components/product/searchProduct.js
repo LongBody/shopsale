@@ -53,6 +53,7 @@ function SearchProduct(props) {
         // setLoading(true)
         const callApiData = await callApi("product/find/?search=" + props.match.params.keyword).then(async (response) => {
             ref.current.complete()
+            document.title = props.match.params.keyword; 
             let data = await response.data
             // let dataConvert={
             //     id:data._id,

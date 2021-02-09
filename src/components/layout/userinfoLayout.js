@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState , useEffect} from 'react';
 import Header from '../body/header'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -47,6 +47,11 @@ function User() {
     let avatar = user.fullName.charAt(0).toUpperCase()
     const [location , setLocation] = useState(user.location)
     const [phone, setPhone] = useState(user.phone)
+
+    useEffect(() => {
+        document.title = 'Tài Khoản';
+      
+    },[]);
 
    const classes = useStyles();
     const onPick = value => {

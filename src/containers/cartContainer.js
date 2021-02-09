@@ -19,6 +19,11 @@ render(){
   );
   
 }
+
+componentDidMount() {
+    document.title = 'Giỏ hàng';
+  }
+
 showItemInCart = (cart)=>{
 
     let result;
