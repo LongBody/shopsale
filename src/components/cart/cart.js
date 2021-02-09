@@ -76,17 +76,20 @@ function subtotalUnChecked(items, itemUnChecked) {
 function Cart(props) {
   const classes = useStyles();
   let result
-  if (props.children) {
-    result = props.children.map((item, index) => {
+  if (props.cart) {
+    console.log(props)
+    result = props.cart.map((item, index) => {
       return (
         <CartBody
           key={index}
-          id={item.props.id}
-          imageUrl={item.props.imageUrl}
-          title={item.props.title}
-          price={item.props.price}
-          quantity={item.props.quantity}
-          checked={item.props.checked}>
+          id={item.product.id}
+          imageUrl={item.product.imageUrl}
+          title={item.product.title}
+          price={item.product.price}
+          quantity={item.quantity}
+          checked={item.checked}
+          category={item.category}>
+         
 
         </CartBody>
       )
