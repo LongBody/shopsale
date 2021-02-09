@@ -66,9 +66,13 @@ function ProductDetail(props) {
                     bio: data.bio,
                     star: data.star
                 }
+                document.title = dataConvert.title +" | Shopsale Việt Nam"
                 
                 return dataConvert
             })
+
+          
+        
     
             setPro(callApiData)
             setBioAsync(true)
@@ -79,6 +83,7 @@ function ProductDetail(props) {
     useEffect(() => {
         ref.current.continuousStart()
         fetchData()
+      
     },[props.match.params.id]);
 
 

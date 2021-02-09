@@ -29,8 +29,6 @@ export default () => {
         disableOnInteraction: false
     }}
       pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
     >
             <SwiperSlide><img style={{width:"100%", height:230,borderRadius:"5px" }} src={banner_1}/></SwiperSlide>
       <SwiperSlide><img style={{width:"100%", height:230, borderRadius:"5px" }}  src={banner_2}/></SwiperSlide>

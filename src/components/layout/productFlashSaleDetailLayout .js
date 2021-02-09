@@ -82,6 +82,7 @@ function ProductDetail(props) {
                 star: data.star,
                 sale: data.sale
             }
+            document.title = dataConvert.title +" | Shopsale Việt Nam"
             return dataConvert
         })
 
