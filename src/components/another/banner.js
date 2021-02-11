@@ -15,7 +15,7 @@ import banner_5 from '../../image/banner/banner5.png'
 import banner_6 from '../../image/banner/banner6.png'
 
 // install Swiper modules
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay ]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 export default () => {
   return (
@@ -27,15 +27,15 @@ export default () => {
       autoplay={{
         delay: 2000,
         disableOnInteraction: false
-    }}
+      }}
       pagination={{ clickable: true }}
     >
-            <SwiperSlide><img style={{width:"100%", height:230,borderRadius:"5px" }} src={banner_1}/></SwiperSlide>
-      <SwiperSlide><img style={{width:"100%", height:230, borderRadius:"5px" }}  src={banner_2}/></SwiperSlide>
-      <SwiperSlide><img style={{width:"100%", height:230,borderRadius:"5px" }}  src={banner_3}/></SwiperSlide>
-      <SwiperSlide><img style={{width:"100%", height:230,borderRadius:"5px" }}  src={banner_4}/></SwiperSlide>
-      <SwiperSlide><img style={{width:"100%", height:230,borderRadius:"5px" }}  src={banner_5}/></SwiperSlide>
-      <SwiperSlide><img style={{width:"100%", height:230,borderRadius:"5px" }}  src={banner_6}/></SwiperSlide>
+      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_1} /></SwiperSlide>
+      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_2} /></SwiperSlide>
+      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_3} /></SwiperSlide>
+      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_4} /></SwiperSlide>
+      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_5} /></SwiperSlide>
+      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_6} /></SwiperSlide>
     </Swiper>
   );
 };

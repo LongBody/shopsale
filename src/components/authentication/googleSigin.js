@@ -6,14 +6,14 @@ import { callApi, signUpApi } from "../../utils/callApi";
 export default function GoogleSignIn() {
     let history = useHistory();
 
-    const responseGoogle = async(response) => {
+    const responseGoogle = async (response) => {
         let id = "";
         let location;
         let phone;
         if (response.profileObj) {
             let checkEmail = await callApi(
                 "sign-in/google/?email=" + response.profileObj.email
-            ).then(async(response) => {
+            ).then(async (response) => {
                 let data;
                 if (response) {
                     data = await response.data;
@@ -27,7 +27,7 @@ export default function GoogleSignIn() {
                 location = checkEmail.location;
                 phone = checkEmail.phone
             } else {
-                let createUser = await signUpApi("sign-in/google-create-user/?email=" + response.profileObj.email + "&name=" + response.profileObj.name).then(async(response) => {
+                let createUser = await signUpApi("sign-in/google-create-user/?email=" + response.profileObj.email + "&name=" + response.profileObj.name).then(async (response) => {
                     let data = await response.data;
                     console.log(data)
                     return data;
@@ -57,31 +57,31 @@ export default function GoogleSignIn() {
         }
     };
 
-    return ( <div style = {
-            {
-                display: "flex",
-                justifyContent: "center",
-                paddingBottom: 10,
-                width: "100%",
-                backgroundColor: "rgb(255, 255, 255)",
-            }
-        } >
-        <GoogleLogin clientId = "1079345342714-8q3900edhd8glu594i1kbgovile1bgio.apps.googleusercontent.com"
-        render = {
-            (renderProps) => ( <Button variant = "contained"
-                onClick = { renderProps.onClick }
-                disabled = { renderProps.disabled }
-                className = "btn-sign-in-gg" >
-                <img src = "https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg "
-                style = {
-                    { height: 20, marginRight: 10 }
-                }
-                />Sign in with Google { " " } </Button>
-            )
+    return (<div style={
+        {
+            display: "flex",
+            justifyContent: "center",
+            paddingBottom: 10,
+            width: "100%",
+            backgroundColor: "rgb(255, 255, 255)",
         }
-        onSuccess = { responseGoogle }
-        onFailure = { responseGoogle }
-        cookiePolicy = { "single_host_origin" }
-        />{" "} </div >
+    } >
+        <GoogleLogin clientId="1079345342714-8q3900edhd8glu594i1kbgovile1bgio.apps.googleusercontent.com"
+            render={
+                (renderProps) => (<Button variant="contained"
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}
+                    className="btn-sign-in-gg" >
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg "
+                        style={
+                            { height: 20, marginRight: 10 }
+                        }
+                    />Sign in with Google { " "} </Button>
+                )
+            }
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+        />{" "} </div>
     );
 }

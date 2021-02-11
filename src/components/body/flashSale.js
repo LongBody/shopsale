@@ -59,49 +59,48 @@ function FlashSale(props) {
     let result = props.products.map(item => {
         return (
 
-            <Grid item xs = { 12 }
-            xs = { 6 }
-            sm = { 3 }
-            md = { 4 }
-            lg = { 2 }>
-            <Link to = {
-                { pathname: "productFlashSale/" + item._id, query: { the: props.id } } }
-            style = {
-                { textDecoration: "none" } } >
-            <Card className = { classes.root } >
-            <CardActionArea >
-            <CardMedia className = { classes.media }
-            title = { item.title }
-            style = { StyleMedia }
-            image = { item.imageUrl } >
-            { /* <img src={item.imageUrl} style={Style} /> */ } </CardMedia>                         <CardContent style = { StyleContent } >
-            <Typography variant = "body2"
-            color = "textSecondary"
-            component = "p"
-            style = { StyleTitle } > { item.title } </Typography> <Typography variant = "body2"
-            color = "secondary"
-            component = "p" > ₫{ salePrice(item.price, item.sale) }
+            <Grid item xs={12}
+                sm={3}
+                md={4}
+                lg={2}>
+                <Link to={
+                    { pathname: "productFlashSale/" + item._id, query: { the: props.id } }}
+                    style={
+                        { textDecoration: "none" }} >
+                    <Card className={classes.root} >
+                        <CardActionArea >
+                            <CardMedia className={classes.media}
+                                title={item.title}
+                                style={StyleMedia}
+                                image={item.imageUrl} >
+                                { /* <img src={item.imageUrl} style={Style} /> */} </CardMedia>                         <CardContent style={StyleContent} >
+                                <Typography variant="body2"
+                                    color="textSecondary"
+                                    component="p"
+                                    style={StyleTitle} > {item.title} </Typography> <Typography variant="body2"
+                                        color="secondary"
+                                        component="p" > ₫{salePrice(item.price, item.sale)}
 
-            </Typography> </CardContent> <CardActions >
-            <span style = {
-                { color: "grey", textDecoration: "line-through" } } > ₫{ convertPrice(item.price) } </span><span style = {
-                { fontSize: 16, fontWeight: 500 } } > { item.sale } % </span> </CardActions> </CardActionArea>
+                                </Typography> </CardContent> <CardActions >
+                                <span style={
+                                    { color: "grey", textDecoration: "line-through" }} > ₫{convertPrice(item.price)} </span><span style={
+                                        { fontSize: 16, fontWeight: 500 }} > {item.sale} % </span> </CardActions> </CardActionArea>
 
-            </Card> </Link> </Grid>
+                    </Card> </Link> </Grid>
 
         )
     })
 
 
-    return ( <div>
-        <div style = {
-            { backgroundColor: "rgb(0, 172, 193)", width: 140, height: 2 } } > . </div> <Grid container spacing = { 1 }
-        xs = { 12 }
-        sm = { 12 }
-        md = { 12 }
-        lg = { 12 } > { result } </Grid>
+    return (<div>
+        <div style={
+            { backgroundColor: "rgb(0, 172, 193)", width: 140, height: 2 }} > . </div> <Grid container spacing={1}
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12} > {result} </Grid>
 
-        </div>
+    </div>
 
     );
 }
