@@ -7,6 +7,7 @@ import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import banner_1 from '../../image/banner/banner1.png'
 import banner_2 from '../../image/banner/banner2.png'
 import banner_3 from '../../image/banner/banner3.png'
@@ -30,12 +31,12 @@ export default () => {
       }}
       pagination={{ clickable: true }}
     >
-      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_1} /></SwiperSlide>
-      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_2} /></SwiperSlide>
-      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_3} /></SwiperSlide>
-      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_4} /></SwiperSlide>
-      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_5} /></SwiperSlide>
-      <SwiperSlide><img style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_6} /></SwiperSlide>
+      <SwiperSlide> <LazyLoadImage effect="blur" style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_1} /></SwiperSlide>
+      <SwiperSlide><LazyLoadImage effect="blur" style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_2} /></SwiperSlide>
+      <SwiperSlide><LazyLoadImage effect="blur" style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_3} /></SwiperSlide>
+      <SwiperSlide><LazyLoadImage effect="blur" style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_4} /></SwiperSlide>
+      <SwiperSlide><LazyLoadImage effect="blur" style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_5} /></SwiperSlide>
+      <SwiperSlide><LazyLoadImage effect="blur" style={{ width: "100%", height: 230, borderRadius: "5px" }} src={banner_6} /></SwiperSlide>
     </Swiper>
   );
 };

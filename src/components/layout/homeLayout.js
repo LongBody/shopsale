@@ -1,4 +1,4 @@
-import React,  {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import ProductsContainer from '../../containers/productContainers'
 import ProductFSContainer from '../../containers/productFSContainer'
 import Header from '../body/header'
@@ -15,30 +15,31 @@ import Banner from '../another/banner'
 import ServiceBar from '../body/serviceBar'
 import MostPopular from '../body/MostPopularProduct'
 import '../../scss/app.scss'
-import {TITLE_SHOP_SALE} from '../../constants/config'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { TITLE_SHOP_SALE } from '../../constants/config'
 function Home() {
 
 
   useEffect(() => {
-    document.title = TITLE_SHOP_SALE; 
-},[]);
+    document.title = TITLE_SHOP_SALE;
+  }, []);
 
   return (
     <div>
       <Header />
 
-      
+
       <Container style={{ paddingTop: 150 }}>
       </Container>
 
-      <Container className="banner__home" style={{ paddingTop: 10, paddingBottom: 20, borderRadius:"5px" }}>
+      <Container className="banner__home" style={{ paddingTop: 10, paddingBottom: 20, borderRadius: "5px" }}>
         <Grid container spacing={1} xs={12} sm={12} md={12} lg={12}>
           <Grid item xs={6} sm={6} md={8} lg={8} style={{ height: 230, width: "100%" }}>
             <Banner />
           </Grid>
-          
+
           <Grid item xs={6} sm={6} md={4} lg={4}>
-            <img src={image} style={{ height: 230, width: "100%", borderRadius:"5px"  }} />
+            <LazyLoadImage effect="blur" src={image} style={{ height: 230, width: "100%", borderRadius: "5px" }} />
           </Grid>
         </Grid>
 
