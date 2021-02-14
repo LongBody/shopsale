@@ -62,12 +62,21 @@
         background-color: #FA4F30 !important;
     }
     
+    .swiper-button-prev:hover {
+        color: white !important;
+    }
+    
     .swiper-button-prev {
-        color: #FA4F30 !important;
+        color: transparent !important;
     }
     
     .swiper-button-next {
-        color: #FA4F30!important;
+        color: transparent !important;
+    }
+    
+    .swiper-button-next:hover {
+        display: block;
+        color: white!important;
     }
     
     .title__product__cart {
