@@ -86,3 +86,34 @@
     .title__product__cart:hover {
         color: rgb(110, 110, 110)!important;
     }
+    
+    .scroll-to-top {
+        position: fixed;
+        bottom: 0.8rem;
+        left: 0.8rem;
+        animation: fadeIn 700ms ease-in-out 1s both;
+        border: 1px solid #00ACC1;
+        border-radius: 10px;
+        cursor: pointer;
+        .fa-arrow-up {
+            padding: 8px;
+            color: #00ACC1;
+            font-size: 22px;
+        }
+        &:hover {
+            border: 1px solid #037f8f;
+            .fa-arrow-up {
+                color: #037f8f;
+                ;
+            }
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }

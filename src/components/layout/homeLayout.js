@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductsContainer from '../../containers/productContainers'
 import ProductFSContainer from '../../containers/productFSContainer'
 import Header from '../body/header'
@@ -24,8 +24,33 @@ function Home() {
     document.title = TITLE_SHOP_SALE;
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+  }, []);
+
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+
   return (
     <div>
+
       <Header />
 
 
@@ -89,6 +114,15 @@ function Home() {
       </Container>
 
       <MostPopular />
+
+
+      <div className="scroll-to-top">
+        {isVisible &&
+          <div onClick={scrollToTop}>
+            <i className="fas fa-arrow-up"></i>
+          </div>}
+      </div>
+
 
 
 
