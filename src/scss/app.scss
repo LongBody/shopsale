@@ -59,7 +59,7 @@
     }
     
     .swiper-pagination-bullet-active {
-        background-color: #FA4F30 !important;
+        background-color: #EE4D2D !important;
     }
     
     .swiper-button-prev:hover {
@@ -92,8 +92,11 @@
         bottom: 0.8rem;
         left: 0.8rem;
         animation: fadeIn 700ms ease-in-out 1s both;
-        border: 1px solid #00ACC1;
-        border-radius: 10px;
+        .icon-scroll {
+            border: 1px solid #00ACC1;
+            border-radius: 10px;
+            animation: fadeIn 700ms ease-in-out 1s both;
+        }
         cursor: pointer;
         .fa-arrow-up {
             padding: 8px;

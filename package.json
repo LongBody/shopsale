@@ -19,6 +19,7 @@
         "react-countdown": "^2.2.1",
         "react-dom": "^16.13.1",
         "react-google-login": "^5.1.21",
+        "react-id-swiper": "^4.0.0",
         "react-lazy-load-image-component": "^1.5.1",
         "react-loading": "^2.0.3",
         "react-material-ui-carousel": "^1.8.3",

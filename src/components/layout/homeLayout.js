@@ -32,7 +32,7 @@ function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
+    if (window.pageYOffset > 150) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -64,7 +64,7 @@ function Home() {
           </Grid>
 
           <Grid item xs={6} sm={6} md={4} lg={4}>
-            <LazyLoadImage effect="blur" src={image} style={{ height: 230, width: "100%", borderRadius: "5px" }} />
+            <LazyLoadImage effect="blur" src={image} style={{ height: 230, width: "100%", borderRadius: "5px", boxShadow: "0 11px 6px -6px black" }} />
           </Grid>
         </Grid>
 
@@ -118,7 +118,7 @@ function Home() {
 
       <div className="scroll-to-top">
         {isVisible &&
-          <div onClick={scrollToTop}>
+          <div className="icon-scroll" onClick={scrollToTop}>
             <i className="fas fa-arrow-up"></i>
           </div>}
       </div>
