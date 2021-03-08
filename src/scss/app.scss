@@ -89,7 +89,7 @@
     
     .scroll-to-top {
         position: fixed;
-        bottom: 0.8rem;
+        bottom: 2.5rem;
         left: 0.8rem;
         animation: fadeIn 700ms ease-in-out 1s both;
         .icon-scroll {
@@ -104,9 +104,10 @@
             font-size: 22px;
         }
         &:hover {
-            border: 1px solid #037f8f;
+            border: #E79413;
+            border-radius: 10px;
             .fa-arrow-up {
-                color: #037f8f;
+                color: #E79413;
                 ;
             }
         }
