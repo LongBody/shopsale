@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,  useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from '../body/header'
 import '../../scss/app.scss'
 import { callApi } from '../../utils/callApi'
@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import freeShipImage from '../../image/freeship.png'
 import swal from 'sweetalert'
 import LoadingBar from 'react-top-loading-bar'
+import ScrollToTop from '../../hooks/scroll_to_top'
 
 const StyleStar = {
     color: "#fc9d0a",
@@ -54,10 +55,10 @@ function ProductDetail(props) {
     const [bioAsync, setBioAsync] = useState(false)
 
     const fetchData = async () => {
-        if(props.match.params.id){
+        if (props.match.params.id) {
             const callApiData = await callApi("product/" + props.match.params.id).then(async (response) => {
                 ref.current.complete()
-                let data = await response.data          
+                let data = await response.data
                 let dataConvert = {
                     id: data._id,
                     title: data.title,
@@ -66,25 +67,25 @@ function ProductDetail(props) {
                     bio: data.bio,
                     star: data.star
                 }
-                document.title = dataConvert.title +" | Shopsale Việt Nam"
-                
+                document.title = dataConvert.title + " | Shopsale Việt Nam"
+
                 return dataConvert
             })
 
-          
-        
-    
+
+
+
             setPro(callApiData)
             setBioAsync(true)
         }
-        
+
     }
 
     useEffect(() => {
         ref.current.continuousStart()
         fetchData()
-      
-    },[props.match.params.id]);
+
+    }, [props.match.params.id]);
 
 
     function newRow(text) {
@@ -96,10 +97,11 @@ function ProductDetail(props) {
 
     return (
         <div>
+            <ScrollToTop />
             <Header />
             <LoadingBar color='#3f51b5' ref={ref} />
             <Container style={{ paddingTop: 150 }}>
-                <div style={{padding: 40,paddingTop:50, backgroundColor: "#fff",height:"100%" }} className="responsive-image">
+                <div style={{ padding: 40, paddingTop: 50, backgroundColor: "#fff", height: "100%" }} className="responsive-image">
                     {
                         pro ?
                             <Grid container spacing={2} >
@@ -121,7 +123,7 @@ function ProductDetail(props) {
                                     <div>
                                         <Button variant="outlined" color="primary"
                                             onClick={() => {
-                                                addToCart(props.cart,pro, 1, true)
+                                                addToCart(props.cart, pro, 1, true)
                                             }}
                                         >
                                             Thêm Vào Giỏ Hàng
@@ -137,7 +139,7 @@ function ProductDetail(props) {
                                 </Grid>
 
                                 <Grid item xs={12} sm={10} md={6} lg={5}>
-                                    <div style={{marginTop:50}}>
+                                    <div style={{ marginTop: 50 }}>
                                         <h4>CHI TIẾT SẢN PHẨM</h4>
                                         {
                                             bioAsync ?
@@ -151,16 +153,16 @@ function ProductDetail(props) {
                             : "Loading"
                     }
                 </div>
-               
+
             </Container>
-            {pro.price ? <Footer/> : ""}
+            {pro.price ? <Footer /> : ""}
         </div>
 
     );
 
-    function addToCart(cart,prop, quantity, checked) {
+    function addToCart(cart, prop, quantity, checked) {
         if (user) {
-            props.addToCart(cart,prop, "", quantity, checked)
+            props.addToCart(cart, prop, "", quantity, checked)
         }
         else {
             history.push("/sign-in");
@@ -198,21 +200,21 @@ function showRating(rating) {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      cart: state.cart,
+        cart: state.cart,
     }
-  }
-  
+}
+
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addToCart: (cart,product,category, quantity, checked) => {
-            dispatch(actions.addToCart(cart,product, category, quantity, checked))
+        addToCart: (cart, product, category, quantity, checked) => {
+            dispatch(actions.addToCart(cart, product, category, quantity, checked))
         }
     }
 }
 
 
-export default connect( mapStateToProps, mapDispatchToProps)(ProductDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
 
 
 

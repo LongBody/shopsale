@@ -11,6 +11,10 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { callApi } from '../../utils/callApi'
 import { createFilterOptions } from "@material-ui/lab";
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import image1 from '../../image/category/hang_quoc_te.png'
+import image2 from '../../image/category/thiet_bi_dien_tu.png'
+import image3 from '../../image/popular/dong-ho.png'
 import '../../scss/product.scss'
 const OPTIONS_LIMIT = 7;
 const defaultFilterOptions = createFilterOptions();
@@ -89,26 +93,52 @@ function SearchLayout(props) {
     const [redirect, setRedirect] = useState(false);
     const [tags, setTags] = useState([])
 
-    let arrayTag = ["đồng hồ", "thiết bị điện tử", "hàng quốc tế"]
+    let arrayTag = [
+        {
+            "image": image1,
+            "title": "đồng hồ"
+        }
+        , {
+            "image": image2,
+            "title": "thiết bị điện tử"
+        },
+        {
+            "image": image3,
+            "title": "hàng quốc tế"
+        }
+    ]
 
-    const fetchData = async() => {
-        const callApiData = await callApi("product/").then(async(response) => {
+    const fetchData = async () => {
+        const callApiData = await callApi("product/").then(async (response) => {
             let data = await response.data
             return data
         })
 
         callApiData.map(item => {
-            arrayTag.push(item.title)
+            arrayTag.push({
+                image: item.imageUrl,
+                title: item.title
+            })
         })
 
         setTags(arrayTag)
+    }
+
+    function imageProduct(product) {
+        let image = ""
+        tags.map(item => {
+            if (item.title === product) {
+                image = item.image
+            }
+        })
+        return image
     }
 
     useEffect(() => {
         fetchData()
     }, []);
 
-    const handleSubmit = async(evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
         setRedirect(true)
     }
@@ -132,63 +162,82 @@ function SearchLayout(props) {
     return (
 
 
-        <div style = {
+        <div style={
             { width: "80%" }
         } >
-        <div className = { classes.search }
-        style = { styleSearchField } >
-        <form onSubmit = { handleSubmit } >
-        <Autocomplete id = "custom-input-demo"
-        options = { tags }
-        size = "small"
-        freeSolo filterOptions = { filterOptions }
-        onSelect = {
-            (event) => handleTag(event, 'tags')
-        }
-        renderInput = {
-            (params) => ( <div ref = { params.InputProps.ref }
-                style = {
-                    { width: "100%" }
-                } >
-                <InputBase placeholder = "Tìm kiếm sản phẩm ..."
-                classes = {
-                    {
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                    }
-                }
-                style = { styleSearchField }
-                inputProps = {
-                    { 'aria-label': 'search' }
-                } {...params.inputProps }
-                />
+            <div className={classes.search}
+                style={styleSearchField} >
+                <form onSubmit={handleSubmit} >
+                    <Autocomplete id="custom-input-demo"
 
-                </div>
-            )
-        }
-        /> <Button variant = "contained"
-        style = { btnSearch }
-        className = "btn-search"
-        onClick = { handleSubmit } >
-        <div className = { classes.searchIcon } >
-        <SearchIcon style = {
-            { color: "aqua" , }
-        }
-        /> </div> </Button> </form>
-        
-         </div> 
-         <div className="search__keyword__below__searchField" style={{marginLeft:18 , marginTop:5, color:"#d3d3d3"}}>
-         <Link to="/Tai nghe" style={{color:"#d3d3d3", marginRight:13 , fontFamily:"sans-serif", fontSize:13}}>Tai nghe</Link>
-         <Link to="/sneaker" style={{color:"#d3d3d3", marginRight:13 , fontFamily:"sans-serif", fontSize:13}}>giày sneaker</Link>
-         <Link to="/ao" style={{color:"#d3d3d3", marginRight:13 , fontFamily:"sans-serif", fontSize:13}}>áo nữ</Link>
-         <Link to="/sua rua mat" style={{color:"#d3d3d3", marginRight:13 , fontFamily:"sans-serif", fontSize:13}}>sữa rửa mặt</Link>
-         <Link to="/dien thoai" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>điện thoại</Link>
-         <Link to="/bia" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>Bia</Link>
-         <Link to="/dong ho" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>đồng hồ</Link>
-         <Link to="/coca" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>Coca-Cola</Link>
-         <Link to="/loa" style={{color:"#d3d3d3", marginRight:13, fontFamily:"sans-serif", fontSize:13}}>Loa bluetooth</Link>
+                        size="small"
+                        freeSolo filterOptions={filterOptions}
+                        onSelect={
+                            (event) => handleTag(event, 'tags')
+                        }
+
+
+                        renderOption={option => {
+                            console.log(option)
+                            return (
+                                <div style={{ display: "flex" }}>
+                                    <img src={imageProduct(option)} style={{ height: 25, paddingRight: 10, }} /> {/*Mock image, attribute in option*/}
+                                    <div style={{}}> {option}</div>
+                                </div>
+                            );
+                        }}
+                        options={tags.map(item => {
+                            return item.title
+                        })}
+                        renderInput={
+                            (params) => (
+                                <div ref={params.InputProps.ref}
+                                    style={
+                                        { width: "100%" }
+                                    } >
+
+                                    <InputBase placeholder="Tìm kiếm sản phẩm ..."
+                                        classes={
+                                            {
+                                                root: classes.inputRoot,
+                                                input: classes.inputInput,
+                                            }
+                                        }
+                                        style={styleSearchField}
+
+                                        inputProps={
+                                            { 'aria-label': 'search' }
+                                        } {...params}
+                                    >
+
+                                    </InputBase>
+
+                                </div>
+                            )
+                        }
+                    /> <Button variant="contained"
+                        style={btnSearch}
+                        className="btn-search"
+                        onClick={handleSubmit} >
+                        <div className={classes.searchIcon} >
+                            <SearchIcon style={
+                                { color: "aqua", }
+                            }
+                            /> </div> </Button> </form>
+
             </div>
-         </div>
+            <div className="search__keyword__below__searchField" style={{ marginLeft: 18, marginTop: 5, color: "#d3d3d3" }}>
+                <Link to="/Tai nghe" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>Tai nghe</Link>
+                <Link to="/sneaker" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>giày sneaker</Link>
+                <Link to="/ao" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>áo nữ</Link>
+                <Link to="/sua rua mat" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>sữa rửa mặt</Link>
+                <Link to="/dien thoai" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>điện thoại</Link>
+                <Link to="/bia" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>Bia</Link>
+                <Link to="/dong ho" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>đồng hồ</Link>
+                <Link to="/coca" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>Coca-Cola</Link>
+                <Link to="/loa" style={{ color: "#d3d3d3", marginRight: 13, fontFamily: "sans-serif", fontSize: 13 }}>Loa bluetooth</Link>
+            </div>
+        </div>
 
     );
 }

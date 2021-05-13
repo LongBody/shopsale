@@ -17,6 +17,7 @@ import MostPopular from '../body/MostPopularProduct'
 import '../../scss/app.scss'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { TITLE_SHOP_SALE } from '../../constants/config'
+import ScrollToTop from '../../hooks/scroll_to_top'
 function Home() {
 
 
@@ -50,10 +51,8 @@ function Home() {
 
   return (
     <div>
-
+      <ScrollToTop />
       <Header />
-
-
       <Container style={{ paddingTop: 150 }}>
       </Container>
 
