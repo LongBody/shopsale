@@ -41,7 +41,7 @@ function CartBody(props) {
 
     return (
 
-        <TableBody>
+        <TableBody style={{ paddingTop: 20 }}>
             <TableRow>
                 <TableCell align="left">
                     <Checkbox
@@ -66,10 +66,10 @@ function CartBody(props) {
                     {props.category === "FS" ?
 
                         <Link to={{ pathname: "/productFlashSale/" + props.id, query: { the: props.id } }} style={{ textDecoration: "none", display: "flex" }}>
-                           <span className="title__product__cart">{props.title}</span> 
+                            <span className="title__product__cart">{props.title}</span>
                         </Link> :
                         <Link to={{ pathname: "/product/" + props.id, query: { the: props.id } }} style={{ textDecoration: "none", display: "flex" }}>
-                            <span  className="title__product__cart">{props.title}</span>
+                            <span className="title__product__cart">{props.title}</span>
                         </Link>
                     }
 

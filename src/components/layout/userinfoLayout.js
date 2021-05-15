@@ -65,6 +65,9 @@ const useStyles = makeStyles((theme) => ({
         height: 100,
         paddingTop: '56.25%', // 16:9
     },
+    indicator: {
+        backgroundColor: 'white',
+    },
     expand: {
         transform: 'rotate(0deg)',
         marginLeft: 'auto',
@@ -156,7 +159,7 @@ function User() {
             <Container style={{ paddingTop: 140 }}>
                 <div className={classes.root}>
                     <AppBar position="static" style={{ backgroundColor: "#FFFFFF", color: "#00ACC1" }}>
-                        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+                        <Tabs TabIndicatorProps={{ style: { background: '#F44336' } }} value={value} onChange={handleChange} aria-label="simple tabs example" >
                             <Tab label="Tài Khoản" {...a11yProps(0)} />
                             <Tab label="Đơn Hàng" {...a11yProps(1)} />
                             <Tab label="Đánh Giá" {...a11yProps(2)} />
