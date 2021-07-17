@@ -1,6 +1,7 @@
     body {
         margin: 0px;
-        background-color: #f5f5f5
+        background-color: #f5f5f5;
+        font-family: sans-serif;
     }
     
     body::-webkit-scrollbar {
@@ -39,7 +40,11 @@
     }
     
     .allProduct {
-        color: #e79413
+        font-weight: bold;
+        -webkit-animation: my 700ms infinite;
+        -moz-animation: my 700ms infinite;
+        -o-animation: my 700ms infinite;
+        animation: my 700ms infinite;
     }
     
     .allProduct:hover {
@@ -55,6 +60,21 @@
     @media only screen and (max-width: 768px) {
         .banner__home {
             display: none !important;
+        }
+    }
+    
+    @media only screen and (max-width: 1100px) {
+        .cart__ui__small__screen {
+            display: block;
+        }
+        .cart__ui__large__screen {
+            display: none;
+        }
+    }
+    
+    @media only screen and (min-width: 1100px) {
+        .cart__ui__small__screen {
+            display: none;
         }
     }
     
@@ -119,5 +139,53 @@
         }
         to {
             opacity: 1;
+        }
+    }
+    
+    @-webkit-keyframes my {
+        0% {
+            color: rgb(245, 114, 36);
+        }
+        50% {
+            color: #fff;
+        }
+        100% {
+            color: rgb(245, 114, 36);
+        }
+    }
+    
+    @-moz-keyframes my {
+        0% {
+            color: rgb(245, 114, 36);
+        }
+        50% {
+            color: #fff;
+        }
+        100% {
+            color: rgb(245, 114, 36);
+        }
+    }
+    
+    @-o-keyframes my {
+        0% {
+            color: rgb(245, 114, 36);
+        }
+        50% {
+            color: #fff;
+        }
+        100% {
+            color: rgb(245, 114, 36);
+        }
+    }
+    
+    @keyframes my {
+        0% {
+            color: rgb(245, 114, 36);
+        }
+        50% {
+            color: #fff;
+        }
+        100% {
+            color: rgb(245, 114, 36);
         }
     }

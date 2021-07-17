@@ -94,8 +94,8 @@ function Home() {
         <Toolbar variant="dense" style={{ backgroundColor: "#FFF", marginTop: 70 }}>
           <h4 style={{ color: "rgb(0, 172, 193)" }}> TẤT CẢ SẢN PHẨM </h4>
           <Link to={{
-            pathname: '/shopsaleproduct/allproduct/' + 1,
-          }} className="allProduct" style={{ marginLeft: 10 }}> Xem Thêm <i class="fas fa-angle-double-right" style={{ fontSize: 13 }}></i></Link>
+            pathname: '/shopsaleproduct/products'
+          }} className="allProduct" style={{ marginLeft: 10 }}> Xem Thêm </Link>
         </Toolbar>
         <div style={{ backgroundColor: "rgb(0, 172, 193)", width: "100%", height: 2 }}></div>
       </Container>

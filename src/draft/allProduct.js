@@ -67,7 +67,6 @@ function Product() {
 
   const handleChangePage =async (event, value) => {
     setLoading(true)
-    // console.log(value)
     // setPage(value);
     // let callApiDataChangePage = await callApi("product/?pageSize=24&pageIndex="+value).then(async (response) => {
     //   let data = await response.data
@@ -92,7 +91,6 @@ function Product() {
   };
 
   const fetchData = async () => {
-    console.log(page)
   
       let callApiData =[]
       if(state){

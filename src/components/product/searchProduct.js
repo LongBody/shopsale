@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import ProductCard from './productCard'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import LoadingBar from 'react-top-loading-bar'
 import LogoLoading from "../loading/logoLoading";
 
 const StyleStar = {
@@ -45,14 +44,11 @@ function SearchProduct(props) {
     const [product, setProductSearch] = useState([])
     const [loading, setLoading] = useState("Loading...")
     const [noProduct, setNoProduct] = useState(false)
-    const ref = useRef(null)
-
     let result
     const fetchData = async () => {
         setNoProduct(false)
         // setLoading(true)
         const callApiData = await callApi("product/find/?search=" + props.match.params.keyword).then(async (response) => {
-            ref.current.complete()
             document.title = props.match.params.keyword; 
             let data = await response.data
             // let dataConvert={
@@ -78,7 +74,6 @@ function SearchProduct(props) {
     }
 
     useEffect(() => {
-        ref.current.continuousStart()
         fetchData()
     }, [props.location.pathname]);
 
@@ -105,7 +100,6 @@ function SearchProduct(props) {
 
         <div>
             <Header />
-            <LoadingBar color='#3f51b5' ref={ref} />
             <Container style={{ paddingTop: 145 }}>
                 {noProduct === true ? <div style={{ color: "red", display: "flex",  marginRight: "auto", marginLeft: "auto" }}>
                     <img style={{ height: 35, marginTop: 15, color: "red", marginRight: 8 }} src="https://www.flaticon.com/svg/static/icons/svg/1178/1178479.svg" />

@@ -1,0 +1,25 @@
+.product__infinite__flex__loading__container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0px;
+    .product__container {
+        box-sizing: border-box;
+        position: relative;
+        transition: 0.3s;
+        text-decoration: none;
+        margin: 4px;
+        cursor: pointer;
+        width: 40%;
+        flex: 0 1 calc(20% - 8px);
+        .product__image__container {
+            position: absolute;
+            top: 50%;
+            /* position the top  edge of the element at the middle of the parent */
+            left: 50%;
+            /* position the left edge of the element at the middle of the parent */
+            transform: translate(-50%, -50%);
+            /* This is a shorthand of
+                                                 translateX(-50%) and translateY(-50%) */
+        }
+    }
+}

@@ -1,21 +1,18 @@
 import React from 'react';
 import "./scss/app.scss"
 import { BrowserRouter} from "react-router-dom";
-import { HashRouter} from "react-router-dom";
 import Routes from './router'
-
+import history from "./utils/historyApp";
 
 
 function App() {
  
   return (
-    // <HashRouter basename='/'>
       <BrowserRouter> 
     <div className="App">
-      <Routes></Routes>  
+      <Routes  history={history}></Routes>  
     </div>
   </BrowserRouter> 
-    // {/* </HashRouter> */}
 
   );
 }

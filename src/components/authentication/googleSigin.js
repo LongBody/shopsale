@@ -22,18 +22,15 @@ export default function GoogleSignIn() {
             });
 
             if (checkEmail) {
-                console.log(checkEmail)
                 id = checkEmail.id;
                 location = checkEmail.location;
                 phone = checkEmail.phone
             } else {
                 let createUser = await signUpApi("sign-in/google-create-user/?email=" + response.profileObj.email + "&name=" + response.profileObj.name).then(async (response) => {
                     let data = await response.data;
-                    console.log(data)
                     return data;
                 });
                 id = createUser._id
-                console.log(id)
 
             }
 

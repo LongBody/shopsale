@@ -75,7 +75,6 @@ export default function SignUp() {
       if(password === confirmPassword){
         signUpApi(`sign-in/?email=${email}&password=${password}&firstName=${fName}&lastName=${lName}`).then(
           (response) => {
-            console.log(response.data.message)
             if(response.data.message === "Email has been register or maybe not correct"){
               SetMessageAlert("error")
             }

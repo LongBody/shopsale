@@ -26,7 +26,6 @@ export const fetchProductFS = () => {
 }
 
 export const fetchLoadMoreProduct = (pageIndex) => {
-    console.log(pageIndex)
     return (dispatch) => {
         callApi(`product/?pageIndex=${pageIndex}&pageSize=6`).then((response) => {
             dispatch({

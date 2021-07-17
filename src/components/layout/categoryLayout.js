@@ -26,7 +26,6 @@ function SearchProduct(props) {
             //     bio:data.bio,
             //     star:data.star
             // }
-            console.log(data)
             return data
         })
 
@@ -39,7 +38,7 @@ function SearchProduct(props) {
 
     useEffect(() => {    
        fetchData()
-    }, [props.location.params]);
+    }, [fetchData, props.location.params]);
 
 
     result = product.map((item, index) => {

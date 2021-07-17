@@ -74,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
     !password ? setCheckPassword(true) && setErrorMessage("") : setCheckPassword(false) && setErrorMessage("")
     if (email && password) {
       callApi("sign-in/?email=" + email + "&password=" + password).then(async (response) => {
-        console.log(response.data)
         if (response.data.message) {
           setErrorMessage(response.data.message)
         } else {

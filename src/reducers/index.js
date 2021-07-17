@@ -7,6 +7,7 @@ import signIn from '../reducers/sign-in'
 import keyword from '../reducers/search'
 import productSearchByKeyword from '../reducers/productSearchByKeyword'
 import productCheckout from '../reducers/productCheckout'
+import setLoadingCheckbox from '../reducers/setLoadingCheckbox'
 
 const myReducer = combineReducers({
     products,
@@ -16,7 +17,8 @@ const myReducer = combineReducers({
     signIn,
     keyword,
     productSearchByKeyword,
-    productCheckout
+    productCheckout,
+    setLoadingCheckbox
 })
 
 export default myReducer;

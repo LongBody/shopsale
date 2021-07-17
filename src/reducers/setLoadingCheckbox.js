@@ -1,11 +1,11 @@
 import * as types from "../constants/actionTypes";
 
-let initialState = ""
+let initialState = false;
 
 const myReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.PRODUCT_SEARCH_BY_KEYWORD:
-            return [...action.product];
+        case types.SET_LOADING_CHANGE_CHECKBOX:
+            return action.loading;
         default:
             return state;
     }

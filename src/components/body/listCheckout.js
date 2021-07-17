@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Container } from "@material-ui/core";
 import "../../scss/checkout.scss";
 import { connect } from 'react-redux'
-import convertPrice from '../../utils/convertPriceVND'
+import {convertPrice} from '../../utils/convertPriceVND'
 import numToVietnameseText from '../../utils/numToVietNamText'
 import * as actions from '../../actions/cartAction'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import swal from "sweetalert";
+import { withRouter } from "react-router-dom"
 
 function ListCheckout(props) {
   let user = JSON.parse(localStorage.getItem("userShopsale"));
@@ -70,7 +71,7 @@ function ListCheckout(props) {
     if (user) {
       props.fetchCartUser(user._id)
     }
-  }, []);
+  }, [props, user]);
 
   let result = props.cart.map((item, index) => {
     if (item.checked === true) {
@@ -158,4 +159,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListCheckout);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ListCheckout));

@@ -8,7 +8,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import convertPrice from '../../utils/convertPriceVND'
+import {convertPrice} from '../../utils/convertPriceVND'
 import { Link } from 'react-router-dom'
 const useStyles = makeStyles({
     root: {

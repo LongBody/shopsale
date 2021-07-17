@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as actions from '../../actions/cartAction'
-import convertPrice from '../../utils/convertPriceVND'
+import {convertPrice} from '../../utils/convertPriceVND'
 import { MSG_UPDATE_CART } from '../../constants/messageCart'
 import '../../scss/app.scss'
 const styleButton = {
@@ -36,7 +36,6 @@ function CartBody(props) {
         props.deleteProduct(props.cart, props)
     };
 
-    console.log(props)
 
 
     return (

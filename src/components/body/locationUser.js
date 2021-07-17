@@ -34,7 +34,6 @@ export default function LocationUser() {
        if(location !== null || phone !==null){
         await callApi('sign-in/update-location/?id='+user._id+"&location="+location+"&phone="+phone).then(async(res)=>{               
             await res.data
-            console.log(res.data)
          await localStorage.setItem('userShopsale',JSON.stringify( res.data))
         })
         setChangeInfo(false)
