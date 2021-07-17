@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.c46f9232.chunk.css",
-    "main.js": "/static/js/main.7d8e61ed.chunk.js",
-    "main.js.map": "/static/js/main.7d8e61ed.chunk.js.map",
+    "main.css": "/static/css/main.bfefbe78.chunk.css",
+    "main.js": "/static/js/main.4cede221.chunk.js",
+    "main.js.map": "/static/js/main.4cede221.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.83c3e0c4.js",
     "runtime-main.js.map": "/static/js/runtime-main.83c3e0c4.js.map",
-    "static/css/2.f9cb6ce5.chunk.css": "/static/css/2.f9cb6ce5.chunk.css",
-    "static/js/2.b6556089.chunk.js": "/static/js/2.b6556089.chunk.js",
-    "static/js/2.b6556089.chunk.js.map": "/static/js/2.b6556089.chunk.js.map",
+    "static/css/2.66d0d9be.chunk.css": "/static/css/2.66d0d9be.chunk.css",
+    "static/js/2.ae224b6e.chunk.js": "/static/js/2.ae224b6e.chunk.js",
+    "static/js/2.ae224b6e.chunk.js.map": "/static/js/2.ae224b6e.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.62741ffbb453848f755febdb892188c1.js": "/precache-manifest.62741ffbb453848f755febdb892188c1.js",
+    "precache-manifest.aafb9f280a4321246cc1fe8f958c3eb9.js": "/precache-manifest.aafb9f280a4321246cc1fe8f958c3eb9.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.f9cb6ce5.chunk.css.map": "/static/css/2.f9cb6ce5.chunk.css.map",
-    "static/css/main.c46f9232.chunk.css.map": "/static/css/main.c46f9232.chunk.css.map",
-    "static/js/2.b6556089.chunk.js.LICENSE.txt": "/static/js/2.b6556089.chunk.js.LICENSE.txt",
+    "static/css/2.66d0d9be.chunk.css.map": "/static/css/2.66d0d9be.chunk.css.map",
+    "static/css/main.bfefbe78.chunk.css.map": "/static/css/main.bfefbe78.chunk.css.map",
+    "static/js/2.ae224b6e.chunk.js.LICENSE.txt": "/static/js/2.ae224b6e.chunk.js.LICENSE.txt",
     "static/media/ao-nu.png": "/static/media/ao-nu.75ea42f9.png",
     "static/media/bach_hoa.png": "/static/media/bach_hoa.c432168e.png",
     "static/media/banner1.png": "/static/media/banner1.a78ea395.png",
@@ -29,6 +29,7 @@
     "static/media/dong-ho.png": "/static/media/dong-ho.86c294aa.png",
     "static/media/giay.png": "/static/media/giay.74ca517e.png",
     "static/media/hang_quoc_te.png": "/static/media/hang_quoc_te.9dba6fcf.png",
+    "static/media/logo_spin.gif": "/static/media/logo_spin.f8ad6ab5.gif",
     "static/media/may-anh.png": "/static/media/may-anh.ec14dd4f.png",
     "static/media/may_anh.png": "/static/media/may_anh.c3a48713.png",
     "static/media/nha_cua_doi_song.png": "/static/media/nha_cua_doi_song.1229a2e4.png",
@@ -43,9 +44,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.83c3e0c4.js",
-    "static/css/2.f9cb6ce5.chunk.css",
-    "static/js/2.b6556089.chunk.js",
-    "static/css/main.c46f9232.chunk.css",
-    "static/js/main.7d8e61ed.chunk.js"
+    "static/css/2.66d0d9be.chunk.css",
+    "static/js/2.ae224b6e.chunk.js",
+    "static/css/main.bfefbe78.chunk.css",
+    "static/js/main.4cede221.chunk.js"
   ]
 }
