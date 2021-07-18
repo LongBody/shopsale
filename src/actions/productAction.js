@@ -1,5 +1,5 @@
-import * as types from '../constants/actionTypes'
-import { callApi } from '../utils/callApi'
+import * as types from 'constants/actionTypes'
+import { callApi } from 'helpers/callApi'
 
 
 export const fetchProduct = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import '../../scss/dotTypingLoading.scss'
+import 'scss/dotTypingLoading.scss'
 
 export default function TypingDotLoading() {
   return (

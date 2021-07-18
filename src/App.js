@@ -1,8 +1,8 @@
 import React from 'react';
-import "./scss/app.scss"
+import "scss/app.scss"
 import { BrowserRouter} from "react-router-dom";
 import Routes from './router'
-import history from "./utils/historyApp";
+import history from "helpers/historyApp";
 
 
 function App() {

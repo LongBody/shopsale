@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import { Container } from '@material-ui/core';
-import '../../scss/checkout.scss'
+import 'scss/checkout.scss'
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import {callApi} from  '../../utils/callApi'
+import { TextField, Button } from '@material-ui/core';
+import {callApi} from  'helpers/callApi'
 import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({

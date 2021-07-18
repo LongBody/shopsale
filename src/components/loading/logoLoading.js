@@ -1,7 +1,6 @@
 import React from "react";
 import ReactLoading from "react-loading";
-import LogoLoadingImage from "../../image/logoWebSpiner.png";
-// import "./styles.css";
+import LogoLoadingImage from "image/logoWebSpiner.png";
 
 function Example() {
     return (

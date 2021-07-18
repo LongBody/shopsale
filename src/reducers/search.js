@@ -1,14 +1,14 @@
-import * as types from "../constants/actionTypes";
+import * as types from 'constants/actionTypes';
 
-let initialState = ""
+let initialState = '';
 
 const myReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case types.SEARCH_PRODUCT:
-            return action.keyword;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case types.SEARCH_PRODUCT:
+      return action.keyword;
+    default:
+      return state;
+  }
 };
 
 export default myReducer;

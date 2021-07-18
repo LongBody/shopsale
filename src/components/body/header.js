@@ -1,31 +1,31 @@
-import React, { useEffect } from "react";
-import { fade, makeStyles, withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import Tooltip from "@material-ui/core/Tooltip";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import { Container } from "@material-ui/core";
-import LogoWeb from "../../image/LogoWeb.png";
-import "../../scss/header.scss";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import SearchField from "../layout/searchLayout";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import * as actions from "../../actions/cartAction";
+import React, { useEffect } from 'react';
+import { alpha, makeStyles, withStyles } from '@material-ui/core/styles';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Badge,
+  Menu,
+  MenuItem,
+  Tooltip,
+  Container,
+  ClickAwayListener,
+} from '@material-ui/core';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import LogoWeb from 'image/LogoWeb.png';
+import 'scss/header.scss';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import SearchField from 'pages/searchLayout';
+import * as actions from 'actions/cartAction';
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
     backgroundColor: theme.palette.common.white,
-    color: "rgba(0, 0, 0, 0.87)",
+    color: 'rgba(0, 0, 0, 0.87)',
     boxShadow: theme.shadows[1],
     fontSize: 11,
   },
@@ -42,88 +42,88 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
     },
   },
   search: {
-    position: "relative",
+    position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
-      width: "auto",
+      width: 'auto',
     },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   inputRoot: {
-    color: "inherit",
+    color: 'inherit',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
     },
   },
   sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
     },
     paddingTop: 2,
   },
   sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none",
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
     },
   },
 }));
 
 const styleCart = {
   fontSize: 25,
-  color: "rgb(255, 255, 255)",
+  color: 'rgb(255, 255, 255)',
   marginLeft: 20,
   marginBottom: 18,
 };
 
 const styleAppBar = {
-  position: "fixed",
+  position: 'fixed',
   zIndex: 3,
-  backgroundColor: "#00acc1",
+  backgroundColor: '#00acc1',
   //   background: "rgb(2,0,36)",
   background:
-    "-moz-linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,172,193,1) 0%, rgba(0,172,193,1) 0%)",
+    '-moz-linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,172,193,1) 0%, rgba(0,172,193,1) 0%)',
   // background: "-webkit-linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,172,193,1) 0%, rgba(0,172,193,1) 0%"),
   // background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,172,193,1) 0%, rgba(0,172,193,1) 0%)",
   // filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00acc1",GradientType=1)",
 };
 
 const styleSearchField = {
-  width: "70%",
+  width: '70%',
 };
 
 function Header(props) {
-  let user = JSON.parse(localStorage.getItem("userShopsale"));
+  let user = JSON.parse(localStorage.getItem('userShopsale'));
 
   const [open, setOpen] = React.useState(false);
 
@@ -149,10 +149,10 @@ function Header(props) {
   };
 
   const handleLogout = async () => {
-    await localStorage.removeItem("userShopsale");
-    await localStorage.removeItem("cartProduct");
-    await setUserState("");
-    window.location.replace("https://shopsale.cf");
+    await localStorage.removeItem('userShopsale');
+    await localStorage.removeItem('cartProduct');
+    await setUserState('');
+    window.location.replace('https://shopsale.cf');
   };
 
   const handleMobileMenuClose = () => {
@@ -168,14 +168,14 @@ function Header(props) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = "primary-search-account-menu";
+  const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -184,30 +184,30 @@ function Header(props) {
           <MenuItem onClick={handleMenuClose}>Thông tin</MenuItem>
         </Link>
       ) : (
-        <Link to="/sign-in" style={{ color: "black" }}>
+        <Link to="/sign-in" style={{ color: 'black' }}>
           <MenuItem onClick={handleMenuClose}>Đăng Nhập</MenuItem>
         </Link>
       )}
       {userState ? (
-        <MenuItem onClick={() => handleLogout()} style={{ color: "red" }}>
+        <MenuItem onClick={() => handleLogout()} style={{ color: 'red' }}>
           Đăng Xuất
         </MenuItem>
       ) : (
-        <Link to="/sign-up" style={{ color: "black" }}>
+        <Link to="/sign-up" style={{ color: 'black' }}>
           <MenuItem onClick={handleMenuClose}>Đăng Kí</MenuItem>
         </Link>
       )}
     </Menu>
   );
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
+  const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
@@ -243,36 +243,36 @@ function Header(props) {
 
   let cardInfoItem = cart.map((item, index) => {
     return (
-      <div style={{ marginBottom: 5 }} className="item__card__header">
-        {item.category === "FS" ? (
+      <div key={index} style={{ marginBottom: 5 }} className="item__card__header">
+        {item.category === 'FS' ? (
           <Link
             to={{
-              pathname: "/productFlashSale/" + item.product.id,
+              pathname: '/productFlashSale/' + item.product.id,
               query: { the: item.product.id },
             }}
             key={index}
-            style={{ textDecoration: "none", display: "flex" }}
+            style={{ textDecoration: 'none', display: 'flex' }}
           >
             <img
               src={item.product.imageUrl}
-              style={{ width: 40, border: "1px solid #dadada" }}
+              style={{ width: 40, border: '1px solid #dadada' }}
             />
             <h3
               style={{
                 width: 200,
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                display: "inline-block",
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: 'inline-block',
                 marginLeft: 4,
-                color: "#535252",
+                color: '#535252',
               }}
             >
               {item.product.title}
             </h3>
             <h5
               style={{
-                color: "#696969",
+                color: '#696969',
                 marginLeft: 1,
                 marginRight: 3,
                 paddingRight: 3,
@@ -284,31 +284,31 @@ function Header(props) {
         ) : (
           <Link
             to={{
-              pathname: "/product/" + item.product.id,
+              pathname: '/product/' + item.product.id,
               query: { the: item.product.id },
             }}
-            style={{ textDecoration: "none", display: "flex" }}
+            style={{ textDecoration: 'none', display: 'flex' }}
           >
             <img
               src={item.product.imageUrl}
-              style={{ width: 40, border: "1px solid #dadada" }}
+              style={{ width: 40, border: '1px solid #dadada' }}
             />
             <h3
               style={{
                 width: 200,
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                display: "inline-block",
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: 'inline-block',
                 marginLeft: 4,
-                color: "#535252",
+                color: '#535252',
               }}
             >
               {item.product.title}
             </h3>
             <h5
               style={{
-                color: "#696969",
+                color: '#696969',
                 marginLeft: 1,
                 marginRight: 3,
                 paddingRight: 3,
@@ -334,8 +334,8 @@ function Header(props) {
                   marginTop: 30,
                   fontWeight: 600,
                   marginRight: 10,
-                  color: "black",
-                  fontSize: "13px !important",
+                  color: 'black',
+                  fontSize: '13px !important',
                 }}
               >
                 Kết Nối
@@ -349,7 +349,7 @@ function Header(props) {
                   style={{
                     fontSize: 20,
                     marginRight: 10,
-                    color: "#e79413 !important",
+                    color: '#e79413 !important',
                   }}
                 ></i>
               </a>
@@ -374,19 +374,19 @@ function Header(props) {
                   <MoreIcon />
                 </IconButton>
               </div>
-              <div className={classes.sectionDesktop + " disableHover"}>
+              <div className={classes.sectionDesktop + ' disableHover'}>
                 <ClickAwayListener onClickAway={handleTooltipClose}>
                   <LightTooltip
                     title={
                       <div style={{ padding: 5 }}>
-                        <div style={{ display: "flex" }}>
+                        <div style={{ display: 'flex' }}>
                           <img
                             src={LogoWeb}
                             style={{ width: 38 }}
                             alt="shopsale"
                           />
                           <h3 style={{ marginLeft: 5 }}>
-                            {" "}
+                            {' '}
                             Chào mừng bạn đến với Shopsale
                           </h3>
                         </div>
@@ -413,7 +413,7 @@ function Header(props) {
                       </button>
                     </Tooltip> */}
                     <IconButton
-                      style={{ backgroundColor: "transparent" }}
+                      style={{ backgroundColor: 'transparent' }}
                       className="top-header-hover"
                       aria-label="show 17 new notifications"
                       color="inherit"
@@ -427,8 +427,8 @@ function Header(props) {
                           fontSize: 13,
                           marginLeft: 14,
                           marginTop: 3,
-                          color: "black",
-                          fontWeight: "600",
+                          color: 'black',
+                          fontWeight: '600',
                         }}
                       >
                         Thông báo
@@ -444,7 +444,7 @@ function Header(props) {
                   onClick={handleProfileMenuOpen}
                   color="inherit"
                   className="top-header-hover"
-                  style={{ backgroundColor: "transparent" }}
+                  style={{ backgroundColor: 'transparent' }}
                 >
                   <span style={{ fontSize: 15, marginLeft: 5, marginTop: 3 }}>
                     {user ? (
@@ -482,7 +482,7 @@ function Header(props) {
                   cardInfoItem.length > 0 ? (
                     <div style={{ marginLeft: 5 }}>{cardInfoItem}</div>
                   ) : (
-                    "Chưa Có sản phẩm"
+                    'Chưa Có sản phẩm'
                   )
                 }
                 arrow

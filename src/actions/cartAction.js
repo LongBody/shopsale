@@ -1,6 +1,6 @@
 import * as types from "../constants/actionTypes";
 import swal from "sweetalert";
-import { callApiAddCart, callApi } from "../utils/callApi";
+import { callApiAddCart, callApi } from "helpers/callApi";
 
 let user = JSON.parse(localStorage.getItem("userShopsale"));
 let id;
