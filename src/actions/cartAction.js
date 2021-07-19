@@ -1,8 +1,8 @@
-import * as types from "../constants/actionTypes";
-import swal from "sweetalert";
-import { callApiAddCart, callApi } from "helpers/callApi";
+import * as types from '../constants/actionTypes';
+import swal from 'sweetalert';
+import { callApiAddCart, callApi } from 'helpers/callApi';
 
-let user = JSON.parse(localStorage.getItem("userShopsale"));
+let user = JSON.parse(localStorage.getItem('userShopsale'));
 let id;
 if (user) {
   id = user._id;
@@ -38,14 +38,14 @@ let findProductInCart = (cart, product) => {
 export const getCartUser = (idUser) => {
   return (dispatch) => {
     if (id) {
-      callApi("sign-in/get-cart/?id=" + id).then((response) => {
+      callApi('sign-in/get-cart/?id=' + id).then((response) => {
         dispatch({
           type: types.FETCH_CART,
           payload: response.data,
         });
       });
     } else {
-      callApi("sign-in/get-cart/?id=" + idUser).then((response) => {
+      callApi('sign-in/get-cart/?id=' + idUser).then((response) => {
         dispatch({
           type: types.FETCH_CART,
           payload: response.data,
@@ -57,7 +57,7 @@ export const getCartUser = (idUser) => {
 
 export const addToCart = (cart, product, category, quantity, checked) => {
   return async (dispatch) => {
-    let user = JSON.parse(localStorage.getItem("userShopsale"));
+    let user = JSON.parse(localStorage.getItem('userShopsale'));
     let cartCurrent = [];
 
     let idUserGet = user._id;
@@ -98,7 +98,7 @@ export const addToCart = (cart, product, category, quantity, checked) => {
 
 export const onUpdateQuantity = (cart, product, quantity) => {
   return async (dispatch) => {
-    let user = JSON.parse(localStorage.getItem("userShopsale"));
+    let user = JSON.parse(localStorage.getItem('userShopsale'));
     let idUserGet = user._id;
     let index = findProductInCart(cart, product);
 
@@ -127,15 +127,15 @@ export const onUpdateQuantity = (cart, product, quantity) => {
 
 export const deleteProductCart = (cart, product) => {
   return async (dispatch) => {
-    let user = JSON.parse(localStorage.getItem("userShopsale"));
+    let user = JSON.parse(localStorage.getItem('userShopsale'));
     let idUserGet = user._id;
     let index;
     let lengthState = cart.length;
 
     await swal({
-      title: "Bạn có chắc chắn muốn xoá sản phẩm này khỏi giỏ hàng?",
+      title: 'Bạn có chắc chắn muốn xoá sản phẩm này khỏi giỏ hàng?',
       text: product.title,
-      icon: "warning",
+      icon: 'warning',
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
@@ -148,13 +148,13 @@ export const deleteProductCart = (cart, product) => {
         }
 
         swal({
-          title: "Loading...",
+          title: 'Loading...',
         });
 
         callApiAddCart(idUserGet, cart).then(async (response) => {
           swal.stopLoading();
           swal.close();
-          swal("Thành Công!", "Đã Xoá Sản Phẩm Khỏi Giỏ Hàng!", "success");
+          swal('Thành Công!', 'Đã Xoá Sản Phẩm Khỏi Giỏ Hàng!', 'success');
           await response.data;
           dispatch({
             type: types.DELETE_PRODUCT_CART,
@@ -179,7 +179,7 @@ export const paymentCart = (cart) => {
     }
 
     if (count === lengthState) {
-      swal("Oops", "Bạn Chưa Có Sản Phẩm", "error");
+      swal('Oops', 'Bạn Chưa Có Sản Phẩm', 'error');
     } else {
       cart.map((item) => {
         if (item.checked === true) {
@@ -192,25 +192,25 @@ export const paymentCart = (cart) => {
           cart.splice(index, 1);
         }
       }
-      let user = JSON.parse(localStorage.getItem("userShopsale"));
+      let user = JSON.parse(localStorage.getItem('userShopsale'));
       let idUserGet = user._id;
       if (id) {
         callApiAddCart(id, cart).then(async (response) => {
           await response.data;
-          swal("Thành Công!", "Đã Thanh Toán!", "success");
           dispatch({
             type: types.PAYMENT_CART,
             payload: response.data,
           });
+          window.location.replace('https://shopsale.cf/payment/success');
         });
       } else {
         callApiAddCart(idUserGet, cart).then(async (response) => {
           await response.data;
-          swal("Thành Công!", "Đã Thanh Toán!", "success");
           dispatch({
             type: types.PAYMENT_CART,
             payload: response.data,
           });
+          window.location.replace('https://shopsale.cf/payment/success');
         });
       }
     }
@@ -233,7 +233,7 @@ export const setLoadingChangeCheckbox = (loading) => {
 
 export const handleChangeAllChecked = (checked, cart) => {
   return async (dispatch) => {
-    let user = JSON.parse(localStorage.getItem("userShopsale"));
+    let user = JSON.parse(localStorage.getItem('userShopsale'));
     let idUserGet = user._id;
     cart.map((item) => {
       if (checked === true) {
@@ -242,7 +242,7 @@ export const handleChangeAllChecked = (checked, cart) => {
         item.checked = true;
       }
     });
-    let  loading= false;
+    let loading = false;
     if (id) {
       callApiAddCart(id, cart).then(async (response) => {
         await response.data;
@@ -251,9 +251,9 @@ export const handleChangeAllChecked = (checked, cart) => {
           payload: response.data,
         });
         dispatch({
-            type: types.SET_LOADING_CHANGE_CHECKBOX,
-            loading,
-          });
+          type: types.SET_LOADING_CHANGE_CHECKBOX,
+          loading,
+        });
       });
     } else {
       callApiAddCart(idUserGet, cart).then(async (response) => {
@@ -274,7 +274,7 @@ export const handleChangeAllChecked = (checked, cart) => {
 
 export const handleChangeChecked = (cart, product) => {
   return async (dispatch) => {
-    let user = JSON.parse(localStorage.getItem("userShopsale"));
+    let user = JSON.parse(localStorage.getItem('userShopsale'));
     let idUserGet = user._id;
     let index = findProductInCart(cart, product);
     if (index !== -1) {

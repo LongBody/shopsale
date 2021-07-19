@@ -47,11 +47,15 @@ const stylePriceSale = {
 };
 
 const styleSale = {
-  marginLeft: 30,
   color: 'red',
   fontSize: 17,
   border: '1px solid red',
   padding: 3,
+  width: '100px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginLeft: 10,
 };
 
 const StyleStarNone = {
@@ -172,8 +176,11 @@ function ProductDetail(props) {
                   </span>
                 </h3>
                 <h1 style={stylePrice}>
-                  ₫{pro.price ? salePrice(pro.price, pro.sale) : ''}
-                  <span style={styleSale}>Giảm {pro.sale}%</span>
+                  <div style={{ display: 'flex' }}>
+                    ₫{pro.price ? salePrice(pro.price, pro.sale) : ''}
+                    <div style={styleSale}>Giảm {pro.sale}%</div>
+                  </div>
+
                   <div style={stylePriceSale}>₫{convertPrice(pro.price)}</div>
                 </h1>
 

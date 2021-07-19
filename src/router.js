@@ -13,6 +13,7 @@ import SearchProduct from 'modules/product/searchProduct'
 import CategoryLayout from 'pages/categoryLayout'
 import CheckoutLayout from 'pages/checkoutLayout'
 import AllProductInfiniteScrollLayout from 'pages/allProductInfiniteScrollLayout'
+import PaymentSuccessLayout from 'pages/paymentSuccessLayout'
 
 
 class Routes extends Component {
@@ -35,6 +36,7 @@ class Routes extends Component {
         <Route path="/payment/checkout" exact component={CheckoutLayout} ></Route>
         <Route path="/shopsaleproduct/allproduct/:page" exact component={AllProductChangePageLayout} ></Route>
         <Route path="/shopsaleproduct/products" exact component={AllProductInfiniteScrollLayout} ></Route>
+        <Route path="/payment/success" exact component={PaymentSuccessLayout} ></Route>
         <Route component={NotFound}></Route>
       </Switch>
     )
