@@ -63,21 +63,6 @@
         }
     }
     
-    @media only screen and (max-width: 1100px) {
-        .cart__ui__small__screen {
-            display: block;
-        }
-        .cart__ui__large__screen {
-            display: none;
-        }
-    }
-    
-    @media only screen and (min-width: 1100px) {
-        .cart__ui__small__screen {
-            display: none;
-        }
-    }
-    
     .swiper-pagination-bullet-active {
         background-color: #EE4D2D !important;
     }
@@ -97,14 +82,6 @@
     .swiper-button-next:hover {
         display: block;
         color: white!important;
-    }
-    
-    .title__product__cart {
-        color: black;
-    }
-    
-    .title__product__cart:hover {
-        color: rgb(110, 110, 110)!important;
     }
     
     .scroll-to-top {
