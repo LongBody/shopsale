@@ -1,0 +1,41 @@
+//paymentSuccessLayout
+.paymentSuccessLayout__container {
+    padding-top: 130px;
+    .paymentSuccessLayout__detail {
+        padding-top: 150px;
+        display: flex;
+        justify-content: center;
+        background-color: #fff;
+        padding: 30px 0px;
+        .fa-check-circle {
+            color: #4caf50;
+            font-size: 22px;
+        }
+        .paymentSuccessLayout__detail__title {
+            font-weight: bold;
+        }
+        .paymentSuccessLayout__detail__Button__backToHome {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            & button {
+                .fa-home {
+                    color: rgb(0, 172, 193);
+                    font-size: 18px;
+                }
+                padding: 10px;
+                color: rgb(0, 172, 193);
+                background-color: #fff;
+                border: 1px solid rgb(0, 172, 193);
+            }
+            & button:hover {
+                background-color: rgb(0, 172, 193);
+                color: #fff;
+                .fa-home {
+                    color: #fff;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
