@@ -15,7 +15,7 @@ class Product extends Component {
 
     let result = this.props.products.map((item, index)=> {
       return (
-        <Grid key={index} item xs={12} xs={6} sm={3} md={4} lg={2}>
+        <Grid key={index} item xs={6} sm={3} md={4} lg={2}>
           <ProductCard
             key ={index}
             id={item._id}

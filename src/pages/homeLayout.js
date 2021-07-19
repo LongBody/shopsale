@@ -48,7 +48,6 @@ function Home() {
       <ScrollToTop />
       <Header />
       <Container style={{ paddingTop: 150 }}>{''}</Container>
-
       <Container
         className="banner__home"
         style={{ paddingTop: 10, paddingBottom: 20, borderRadius: '5px' }}

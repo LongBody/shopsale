@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import LogoLoading from 'components/loading/logoLoading';
+import { withRouter } from "react-router-dom";
+import './style.scss';
 
 class ProductContainer extends Component {
   static contextTypes = {
@@ -40,9 +42,7 @@ class ProductContainer extends Component {
     });
 
     if (this.state.page > 8) {
-      window.location.replace(
-        'https://shopsale.cf/shopsaleproduct/allproduct/3',
-      );
+      this.props.history.push("/shopsaleproduct/allproduct/3")
     } else {
       this.props.fetchLoadMoreProduct(this.state.page);
     }
@@ -57,7 +57,7 @@ class ProductContainer extends Component {
       <div>
         <Products products={products}> </Products>
         <Container
-          style={{ justifyContent: 'center', marginTop: 30, display: 'flex' }}
+          className="productContainer__wrap"
         >
           {this.state.seeMore === 1 ? (
             <LogoLoading />
@@ -66,26 +66,10 @@ class ProductContainer extends Component {
               onClick={() => {
                 this.loadMoreProductOnClick();
               }}
-              style={{
-                width: 400,
-                height: 30,
-                border: '1px solid #00acc1',
-                paddingTop: 3,
-                paddingBottom: 3,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
+              className="productContainer__button__loadMore"
             >
-              <span
-                style={{
-                  color: '#00acc1',
-                  cursor: 'pointer',
-                  padding: 30,
-                  fontFamily: 'Roboto-Medium',
-                }}
-              >
-                Xem Thêm{' '}
+              <span className="productContainer__button__loadMore__text">
+                Xem Thêm
               </span>
             </a>
           )}
@@ -111,4 +95,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductContainer);
+export default connect(mapStateToProps, mapDispatchToProps)( withRouter(ProductContainer));

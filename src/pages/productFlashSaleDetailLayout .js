@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
+import ScrollToTop from 'hooks/scroll_to_top';
 import 'scss/app.scss';
 
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -120,6 +121,7 @@ function ProductDetail(props) {
 
   return (
     <div>
+      <ScrollToTop />
       <Header />
       <Container style={{ paddingTop: 145 }}>
         <div className={classes.root}>
@@ -242,7 +244,7 @@ function ProductDetail(props) {
 
   function buyNow(cart, prop, quantity, checked) {
     if (user) {
-      props.addToCart(cart, prop, '', quantity, checked);
+      props.addToCart(cart, pro, 'FS', quantity, checked);
       history.push('/cart');
       swal('Thành Công', 'Đã thêm vào giỏ hàng', 'success');
     } else {

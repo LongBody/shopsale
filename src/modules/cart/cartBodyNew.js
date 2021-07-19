@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import * as actions from "actions/cartAction";
 import {convertPrice} from "helpers/convertPriceVND";
 import {MSG_UPDATE_CART} from "constants/messageCart";
-import "scss/cart.scss";
 
 function CartBody(props) {
   const handleChange = () => {
@@ -18,8 +17,8 @@ function CartBody(props) {
   return (
     <div>
       <div className='cart__box__shadow'>
-        <div className='flex__container'>
-          <div className='cart__checkbox'>
+        <div className='flex__cart__item__container'>
+          <div className='cart__item__checkbox'>
             <div>
               <input
                 checked={props.checked}
@@ -29,7 +28,7 @@ function CartBody(props) {
               />
             </div>
           </div>
-          <div className='cart__image'>
+          <div className='cart__item__image'>
             {props.category === "FS" ? (
               <Link
                 to={{
@@ -50,7 +49,7 @@ function CartBody(props) {
               </Link>
             )}
           </div>
-          <div className='cart__title'>
+          <div className='cart__item__title'>
             {props.category === "FS" ? (
               <Link
                 to={{
@@ -71,8 +70,8 @@ function CartBody(props) {
               </Link>
             )}
           </div>
-          <div className='cart__price'>{convertPrice(props.price)}</div>
-          <div className='cart__action'>
+          <div className='cart__item__price'>₫{convertPrice(props.price)}</div>
+          <div className='cart__item__action'>
             <div
               className='cart__button cart__button__subtraction'
               onClick={() => {
@@ -89,10 +88,10 @@ function CartBody(props) {
               +
             </div>
           </div>
-          <div className='cart__sum'>
+          <div className='cart__item__sum'>
             ₫{convertPrice(props.price * props.quantity)}
           </div>
-          <div className='cart__delete'>
+          <div className='cart__item__delete'>
             <button className='cart__detele__button' onClick={deleteProduct}>
               <i className='fas fa-trash-alt'></i>
             </button>

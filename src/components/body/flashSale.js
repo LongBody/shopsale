@@ -5,13 +5,13 @@ import {
   makeStyles,
   CardActionArea,
   CardActions,
-  CardContent,
   CardMedia,
   Typography,
 } from '@material-ui/core';
 import { convertPrice } from 'helpers/convertPriceVND';
 import { Link } from 'react-router-dom';
 import 'scss/app.scss';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const useStyles = makeStyles({
   root: {
@@ -33,7 +33,14 @@ const StyleMedia = {
 
 const StyleContent = {
   marginTop: '10px',
+  padding: '5px',
 };
+
+const StyleContentTitle = {
+  height: '30px',
+};
+
+
 
 const StyleStar = {
   color: '#fc9d0a',
@@ -57,9 +64,9 @@ function salePrice(price, sale) {
 function FlashSale(props) {
   const classes = useStyles();
 
-  let result = props.products.map((item , index) => {
+  let result = props.products.map((item, index) => {
     return (
-      <Grid item xs={12} sm={6} md={6} lg={2} key={index}>
+      <Grid item xs={6} sm={3} md={4} lg={2} key={index}>
         <Link
           to={{
             pathname: 'productFlashSale/' + item._id,
@@ -69,27 +76,20 @@ function FlashSale(props) {
         >
           <Card className={classes.root}>
             <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                title={item.title}
-                style={StyleMedia}
-                image={item.imageUrl}
-              >
-                {/* <img src={item.imageUrl} style={Style} /> */}
+              <CardMedia>
+                <LazyLoadImage
+                  effect="blur"
+                  src={item.imageUrl}
+                  style={{ width: '100%', height: 200 }}
+                  alt={item.title}
+                />
               </CardMedia>
-              <CardContent style={StyleContent}>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                  style={StyleTitle}
-                >
-                  {item.title}
-                </Typography>
+              <div style={StyleContent}>
+                <div style={StyleContentTitle}>{item.title}</div>
                 <Typography variant="body2" color="secondary" component="p">
                   ₫{salePrice(item.price, item.sale)}
                 </Typography>
-              </CardContent>
+              </div>
               <CardActions>
                 <span style={{ color: 'grey', textDecoration: 'line-through' }}>
                   ₫{convertPrice(item.price)}{' '}
@@ -114,7 +114,7 @@ function FlashSale(props) {
           height: 2,
         }}
       ></div>
-      <Grid container spacing={1} >
+      <Grid container spacing={1}>
         {result}
       </Grid>
     </div>

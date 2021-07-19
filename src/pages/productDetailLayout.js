@@ -95,7 +95,7 @@ function ProductDetail(props) {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData, props.match.params.id]);
+  }, [props.match.params.id]);
 
   function newRow(text) {
     let result = text.split('\n');

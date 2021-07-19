@@ -19,9 +19,8 @@ import { convertPrice } from 'helpers/convertPriceVND';
 import { MSG_YOUR_CART } from 'constants/messageCart';
 import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
-import 'scss/app.scss';
-import 'scss/cart.scss';
 import TypingDotLoading from 'components/loading/dotTyping';
+import './style.scss';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,13 +45,13 @@ const styleButton = {
   color: 'white',
   marginRight: '65px',
   marginTop: '10px',
+  maxHeight: '36px',
 };
-
 
 function subtotal(items) {
   let sum = 0;
- const sumProduct =  items.map((item) => {
-   return sum += item.props.price * item.props.quantity;
+  const sumProduct = items.map((item) => {
+    return (sum += item.props.price * item.props.quantity);
   });
   let sumVnd = convertPrice(sumProduct);
   return sumVnd;
@@ -194,63 +193,8 @@ function Cart(props) {
       </Modal>
       <Container className="paddingTopFixed" />
       <Container style={{ paddingTop: 40 }}>
-        <TableContainer className="cart__ui__small__screen" component={Paper}>
-          <Table className={classes.table} aria-label="spanning table">
-            <TableHead>
-              <TableRow>
-                <TableCell></TableCell>
-                <TableCell>Sản Phẩm</TableCell>
-                <TableCell>Desc</TableCell>
-                <TableCell align="left">Giá</TableCell>
-                <TableCell align="left">Số Lượng</TableCell>
-                <TableCell align="center">Tổng</TableCell>
-                <TableCell align="center">Thao Tác</TableCell>
-                <TableCell align="left"></TableCell>
-              </TableRow>
-            </TableHead>
-
-            {result ? result : ''}
-
-            {props.children ? (
-              <TableRow>
-                <TableCell rowSpan={3}></TableCell>
-                <TableCell rowSpan={3}></TableCell>
-                <TableCell
-                  colSpan={0}
-                  style={{ fontWeight: 500, fontSize: 20 }}
-                >
-                  Tổng tiền :
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: 500, fontSize: 21, color: '#f94e2f' }}
-                >
-                  ₫
-                  {props.cart.checked
-                    ? subtotal(props.children)
-                    : subtotalUnChecked(props.children, props.cart)}
-                </TableCell>
-                <TableCell align="center">
-                  {/* <Button  variant="contained" style={styleButton} onClick={()=>{props.paymentCard()}}> Thanh Toán</Button> */}
-                  <Button
-                    variant="contained"
-                    style={styleButton}
-                    onClick={() => {
-                      checkoutProductButton(props.cart);
-                    }}
-                  >
-                    {' '}
-                    MUA HÀNG
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ) : (
-              ''
-            )}
-          </Table>
-        </TableContainer>
-        <div className="cart__ui__large__screen">
-          <div class="flex__container cart__header">
+        <div>
+          <div class="flex__container">
             <div class="cart__product__checked">
               <input
                 type="checkbox"
@@ -260,42 +204,32 @@ function Cart(props) {
                 checked={checkinputCheckAllProduct(props)}
                 style={{ transform: 'scale(1.4)' }}
               />
+              <span className="cart__main__header">Giỏ hàng của bạn</span>
             </div>
-            <div class="cart__image ">Sản Phẩm</div>
-            <div class="cart__title__header cart__header__text cart__header__text__product"></div>
-            <div class="cart__header__price cart__header__text">Đơn Giá</div>
+            <div class="cart__image">Sản Phẩm</div>
+            <div class="cart__title "></div>
+            <div class="cart__price cart__header__text">Đơn Giá</div>
             <div class="cart__action cart__header__text">Số Lượng</div>
-            <div class="cart__header__total">Số Tiền</div>
+            <div class="cart__sum">Số Tiền</div>
             <div class="cart__delete cart__header__text">Thao tác</div>
           </div>
           {result2 ? result2 : ''}
           <div className="cart__footer__wrap">
-            <div style={{ padding: 20, float: 'right', display: 'flex' }}>
-              <div
-                align="left"
-                style={{
-                  fontSize: 18,
-                  fontWeight: 'bold',
-                  color: '#f94e2f',
-                  marginRight: 40,
-                  marginTop: 20,
-                }}
-              >
-                <span style={{ color: 'gray' }}>Tổng thanh toán :</span> ₫
+            <div className="cart__footer__detail">
+              <div className="cart__footer__detail__total">
+                <span className="cart__footer__detail__total__title" >Tổng thanh toán :</span> ₫
                 {props.children
                   ? subtotalUnChecked(props.children, props.cart)
                   : 0}
               </div>
-              <Button
-                variant="contained"
-                style={styleButton}
+              <button
+                className="cart__footer__detail__button"
                 onClick={() => {
                   checkoutProductButton(props.cart);
                 }}
               >
-                {' '}
                 MUA HÀNG
-              </Button>
+              </button>
             </div>
           </div>
         </div>

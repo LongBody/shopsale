@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import * as actions from 'actions/cartAction';
 import { convertPrice } from 'helpers/convertPriceVND';
 import { MSG_UPDATE_CART } from 'constants/messageCart';
-import 'scss/app.scss';
 
 const styleButton = {
   padding: 0,

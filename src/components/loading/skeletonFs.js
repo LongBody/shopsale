@@ -8,7 +8,7 @@ export default function SkeletonLoading() {
   let result = [];
   for (let i = 0; i < skeleton.length; i++) {
     result.push(
-      <Grid item xs={2} xs={12} sm={3} md={6} lg={2}  key={i}>
+      <Grid item xs={6} sm={3} md={6} lg={2}  key={i}>
         <Skeleton variant="rect" width={194} height={220} animation="wave" />
         <Skeleton
           variant="rect"

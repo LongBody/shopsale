@@ -474,7 +474,7 @@ function Header(props) {
             <SearchField />
             {/* <div className={classes.grow} /> */}
 
-            <Link to="/cart">
+            <Link className="cart__header__icon" to="/cart">
               <LightTooltip
                 classes={{ tooltip: classes.customWidth }}
                 interactive
