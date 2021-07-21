@@ -11,7 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Alert from '@material-ui/lab/Alert';
 import { signUpApi } from 'helpers/callApi';
-import LogoWeb from 'image/brand.png';
+import LogoWeb from 'image/LogoWeb.png';
+import 'modules/authentication/style.scss';
 
 function Copyright() {
   return (
@@ -33,16 +34,35 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  cssLabel: {
+    color: 'rgb(0, 172, 193)  !important',
+    fontSize: 14,
+  },
+
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: `rgb(0, 172, 193) !important`,
+      color: 'rgb(0, 172, 193)  !important',
+    },
+  },
+
+  cssFocused: {},
+
+  notchedOutline: {
+    borderWidth: '1px',
+    color: '#e0e0e0!important',
+    borderColor: '#e0e0e0 !important',
+  },
   avatar: {
     margin: theme.spacing(0),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: 'rgb(0, 172, 193) !important',
   },
 }));
 
@@ -97,143 +117,234 @@ export default function SignUp() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <img src={LogoWeb} style={{ width: '100%', padding: 5 }} />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                size="small"
-                value={fName}
-                onChange={(e) => setFName(e.target.value)}
-              />
-              {checkFName ? <Alert severity="error">First Name!</Alert> : ''}
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                size="small"
-                value={lName}
-                onChange={(e) => setLName(e.target.value)}
-              />
-              {checkLName ? <Alert severity="error">Last Name!</Alert> : ''}
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                size="small"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {checkEmail ? (
-                <Alert severity="error" size="small">
-                  Missing Email!
-                </Alert>
-              ) : (
-                ''
-              )}
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                size="small"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {checkPassword ? (
-                <Alert severity="error">Missing Password!</Alert>
-              ) : (
-                ''
-              )}
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Confirm Password"
-                type="password"
-                id="ComfirmPassword"
-                autoComplete="current-password"
-                size="small"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-              {checkConfirmPassword ? (
-                <Alert severity="error">Missing ConFirm Password!</Alert>
-              ) : (
-                ''
-              )}
-            </Grid>
-            <Grid item xs={12}>
-              {checkPasswordAndConfirmPassword ? (
-                <Alert severity="error">Password Not Match!</Alert>
-              ) : (
-                ''
-              )}
-              {checkSignUpSuccess ? (
-                <Alert severity={messageAlert}>{checkSignUpSuccess}</Alert>
-              ) : (
-                ''
-              )}
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
+    <div className="sign__up__container">
+      <Container component="main" maxWidth="xs">
+        <div className={classes.paper}>
+          <div
+            style={{ backgroundColor: '#fff', borderRadius: 8, padding: 10 }}
           >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/sign-in" variant="body2">
-                Already have an account? Sign in
+            <div className="sign__up__item__detail">
+              <Link href="/">
+                <img src={LogoWeb} className="sign__up__item__detail__image" />
               </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
+              <form className={classes.form} noValidate onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      autoComplete="fname"
+                      name="firstName"
+                      variant="outlined"
+                      required
+                      fullWidth
+                      id="firstName"
+                      label="First Name"
+                      autoFocus
+                      size="small"
+                      value={fName}
+                      onChange={(e) => setFName(e.target.value)}
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.cssLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.cssOutlinedInput,
+                          focused: classes.cssFocused,
+                          notchedOutline: classes.notchedOutline,
+                        },
+                        inputMode: 'numeric',
+                      }}
+                    />
+                    {checkFName ? (
+                      <Alert severity="error">First Name!</Alert>
+                    ) : (
+                      ''
+                    )}
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      id="lastName"
+                      label="Last Name"
+                      name="lastName"
+                      autoComplete="lname"
+                      size="small"
+                      value={lName}
+                      onChange={(e) => setLName(e.target.value)}
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.cssLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.cssOutlinedInput,
+                          focused: classes.cssFocused,
+                          notchedOutline: classes.notchedOutline,
+                        },
+                        inputMode: 'numeric',
+                      }}
+                    />
+                    {checkLName ? (
+                      <Alert severity="error">Last Name!</Alert>
+                    ) : (
+                      ''
+                    )}
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      size="small"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.cssLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.cssOutlinedInput,
+                          focused: classes.cssFocused,
+                          notchedOutline: classes.notchedOutline,
+                        },
+                        inputMode: 'numeric',
+                      }}
+                    />
+                    {checkEmail ? (
+                      <Alert severity="error" size="small">
+                        Missing Email!
+                      </Alert>
+                    ) : (
+                      ''
+                    )}
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      name="password"
+                      label="Password"
+                      type="password"
+                      id="password"
+                      autoComplete="current-password"
+                      size="small"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.cssLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.cssOutlinedInput,
+                          focused: classes.cssFocused,
+                          notchedOutline: classes.notchedOutline,
+                        },
+                        inputMode: 'numeric',
+                      }}
+                    />
+                    {checkPassword ? (
+                      <Alert severity="error">Missing Password!</Alert>
+                    ) : (
+                      ''
+                    )}
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      name="password"
+                      label="Confirm Password"
+                      type="password"
+                      id="ComfirmPassword"
+                      autoComplete="current-password"
+                      size="small"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.cssLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.cssOutlinedInput,
+                          focused: classes.cssFocused,
+                          notchedOutline: classes.notchedOutline,
+                        },
+                        inputMode: 'numeric',
+                      }}
+                    />
+                    {checkConfirmPassword ? (
+                      <Alert severity="error">Missing ConFirm Password!</Alert>
+                    ) : (
+                      ''
+                    )}
+                  </Grid>
+                  <Grid item xs={12}>
+                    {checkPasswordAndConfirmPassword ? (
+                      <Alert severity="error">Password Not Match!</Alert>
+                    ) : (
+                      ''
+                    )}
+                    {checkSignUpSuccess ? (
+                      <Alert severity={messageAlert}>
+                        {checkSignUpSuccess}
+                      </Alert>
+                    ) : (
+                      ''
+                    )}
+                  </Grid>
+                </Grid>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Sign Up
+                </Button>
+                <Grid container justifyContent="flex-end">
+                  <Grid item>
+                    <Link
+                      href="/sign-in"
+                      variant="body2"
+                      style={{
+                        fontSize: 13,
+                        color: 'rgb(0, 172, 193)',
+                      }}
+                    >
+                      Already have an account? Sign in
+                    </Link>
+                  </Grid>
+                </Grid>
+                <Box mt={5}>
+                  <Copyright />
+                </Box>
+              </form>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </div>
   );
 }

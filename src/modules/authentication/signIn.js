@@ -12,10 +12,11 @@ import Container from '@material-ui/core/Container';
 import Alert from '@material-ui/lab/Alert';
 import { callApi } from 'helpers/callApi';
 import { Redirect } from 'react-router-dom';
-import LogoWeb from 'image/brand.png';
+import LogoWeb from 'image/LogoWeb.png';
 import SignInGoogle from './googleSigin';
 import { connect } from 'react-redux';
 import * as actions from 'actions/cartAction';
+import 'modules/authentication/style.scss';
 
 function Copyright() {
   return (
@@ -32,21 +33,41 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    // marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: 'rgb(0, 172, 193)',
+  },
+  cssLabel: {
+    color: 'rgb(0, 172, 193)  !important',
+    fontSize: 14,
+  },
+
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: `rgb(0, 172, 193) !important`,
+      color: 'rgb(0, 172, 193)  !important',
+    },
+  },
+
+  cssFocused: {},
+
+  notchedOutline: {
+    borderWidth: '1px',
+    color: '#e0e0e0!important',
+    borderColor: '#e0e0e0 !important',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: 'rgb(0, 172, 193) !important',
   },
 }));
 
@@ -100,100 +121,153 @@ function SignIn(props) {
     }
   } else {
     return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <img src={LogoWeb} style={{ width: '100%', padding: 5 }} />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <form className={classes.form} noValidate onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              label="Email Address"
-              name="email"
-              type="text"
-              autoFocus
-              size="small"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+      <div className="sign__in__container">
+        <Container
+          component="main"
+          maxWidth="xs"
+          style={{ display: 'flex', padding: 20 }}
+        >
+          <div
+            style={{ backgroundColor: '#fff', borderRadius: 8, padding: 10 }}
+          >
+            <div className="sign__in__item__detail">
+              <Link href="/">
+                <img src={LogoWeb} className="sign__in__item__detail__image" />
+              </Link>
+              <form className={classes.form} noValidate onSubmit={handleSubmit}>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  label="Email Address"
+                  name="email"
+                  type="text"
+                  autoFocus
+                  size="small"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.cssLabel,
+                      focused: classes.cssFocused,
+                    },
+                  }}
+                  InputProps={{
+                    classes: {
+                      root: classes.cssOutlinedInput,
+                      focused: classes.cssFocused,
+                      notchedOutline: classes.notchedOutline,
+                    },
+                    inputMode: 'numeric',
+                  }}
+                />
 
-            {checkEmail ? (
-              <Alert severity="error" size="small">
-                Missing Email!
-              </Alert>
-            ) : (
-              ''
-            )}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="text"
-              type="password"
-              size="small"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {checkPassword ? (
-              <Alert severity="error" size="small">
-                Missing Password!
-              </Alert>
-            ) : (
-              ''
-            )}
-            {ErrorMessage ? (
-              <Alert severity="error" size="small">
-                {ErrorMessage}
-              </Alert>
-            ) : (
-              ''
-            )}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
+                {checkEmail ? (
+                  <Alert severity="error" size="small">
+                    Missing Email!
+                  </Alert>
+                ) : (
+                  ''
+                )}
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="text"
+                  type="password"
+                  size="small"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.cssLabel,
+                      focused: classes.cssFocused,
+                    },
+                  }}
+                  InputProps={{
+                    classes: {
+                      root: classes.cssOutlinedInput,
+                      focused: classes.cssFocused,
+                      notchedOutline: classes.notchedOutline,
+                    },
+                    inputMode: 'numeric',
+                  }}
+                />
+                {checkPassword ? (
+                  <Alert severity="error" size="small">
+                    Missing Password!
+                  </Alert>
+                ) : (
+                  ''
+                )}
+                {ErrorMessage ? (
+                  <Alert severity="error" size="small">
+                    {ErrorMessage}
+                  </Alert>
+                ) : (
+                  ''
+                )}
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Sign In
+                </Button>
 
-            <div
-              style={{ textAlign: 'center', marginBottom: 10, color: 'gray' }}
-            >
-              Hoặc Sử Dụng
+                <div
+                  style={{
+                    textAlign: 'center',
+                    marginBottom: 10,
+                    fontSize: 13,
+                    color: 'gray',
+                  }}
+                >
+                  Hoặc Sử Dụng
+                </div>
+
+                <SignInGoogle />
+
+                <Grid container>
+                  <Grid item xs>
+                    <Link
+                      href="#"
+                      variant="body2"
+                      style={{
+                        fontSize: 13,
+                        color: 'rgb(0, 172, 193)',
+                      }}
+                    >
+                      Forgot password?
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Link
+                      href="/sign-up"
+                      variant="body2"
+                      style={{
+                        fontSize: 13,
+                        color: 'rgb(0, 172, 193)',
+                      }}
+                    >
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
+                </Grid>
+                <Box mt={8}>
+                  <Copyright />
+                </Box>
+              </form>
             </div>
-
-            <SignInGoogle />
-
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/sign-up" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </form>
-        </div>
-        <Box mt={8}>
-          <Copyright />
-        </Box>
-      </Container>
+          </div>
+        </Container>
+      </div>
     );
   }
 }

@@ -1,0 +1,31 @@
+//Sign In
+.sign__in__container {
+    background-color: rgb(0, 172, 193);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sign__in__item__detail {
+        padding: 20px;
+        background-color: "#fff" !important;
+        .sign__in__item__detail__image {
+            height: 70px;
+        }
+    }
+}
+
+//Sign Up
+.sign__up__container {
+    background-color: rgb(0, 172, 193);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sign__up__item__detail {
+        padding: 20px;
+        background-color: "#fff" !important;
+        .sign__up__item__detail__image {
+            height: 70px;
+        }
+    }
+}

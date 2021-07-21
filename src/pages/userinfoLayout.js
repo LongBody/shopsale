@@ -16,6 +16,7 @@ import {
   Tabs,
   Box,
   Tab,
+  TextareaAutosize,
 } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -184,7 +185,7 @@ function User() {
           </AppBar>
           <TabPanel value={value} index={0}>
             <div className="user__info__wrapper">
-              <Card className="user__info__card">
+              {/* <Card className="user__info__card">
                 <CardHeader
                   avatar={
                     user.imageUrl ? (
@@ -198,10 +199,12 @@ function User() {
                   title={user.fullName}
                   subheader={user.email}
                 />
-              </Card>
+              </Card> */}
 
               <div style={{ marginLeft: 50 }}>
                 <h2>Thông tin:</h2>
+                <div>Tên Đăng Nhập : {user.fullName}</div>
+                <div>Email : {user.email}</div>
                 <TextField
                   id="outlined-basic"
                   value={
@@ -215,6 +218,17 @@ function User() {
                   variant="outlined"
                 />
                 <div style={{ width: 10, height: 10 }}></div>
+                <TextareaAutosize
+                  aria-label="minimum height"
+                  minRows={4}
+                  value={
+                    user.location === 'null' || user.location === ''
+                      ? 'Chưa có địa chỉ'
+                      : location
+                  }
+                  onInput={(e) => setLocation(e.target.value)}
+                  placeholder="Minimum 3 rows"
+                />
                 <TextField
                   id="outlined-basic"
                   value={
