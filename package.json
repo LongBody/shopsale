@@ -15,7 +15,7 @@
         "@types/react-lazy-load-image-component": "^1.5.2",
         "@types/react-router-dom": "^5.3.3",
         "@types/react-slick": "^0.23.8",
-        "axios": "^0.19.2",
+        "axios": "^0.21.2",
         "css-loader": "^5.2.7",
         "gh-pages": "^3.1.0",
         "react": "^16.13.1",
