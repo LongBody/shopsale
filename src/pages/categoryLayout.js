@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useRef} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from 'components/body/header'
 import 'scss/app.scss'
 import { callApi } from 'helpers/callApi'
@@ -10,7 +10,7 @@ import ProductCard from 'modules/product/productCard'
 
 function SearchProduct(props) {
  
-    let user = JSON.parse(localStorage.getItem("user"));
+    // let user = JSON.parse(localStorage.getItem("user"));
     const [product, setProductSearch] = useState([])
     let result 
     const fetchData = async () => {
@@ -43,7 +43,7 @@ function SearchProduct(props) {
 
     result = product.map((item, index) => {
         return (
-            <Grid item xs={12} xs={10} sm={10} md={6} lg={2}>
+            <Grid item xs={12} sm={10} md={6} lg={2}>
                 <ProductCard
                     key={index}
                     id={item._id}

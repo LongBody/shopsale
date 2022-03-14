@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container } from '@material-ui/core';
-import Header from 'components/body/headerCheckout';
+import Header from 'components/body/header-checkout'
 import Footer from 'components/body/footer';
 import ProductRandom from 'modules/product/productRandom';
 import { Link } from 'react-router-dom';

@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 import { createStore, applyMiddleware } from 'redux';
-import myReducer from './reducers/index.js';
+import myReducer from './reducers/index.ts';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 

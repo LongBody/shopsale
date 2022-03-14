@@ -17,6 +17,7 @@ import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 import ScrollToTop from 'hooks/scroll_to_top';
+import {DEFAULT_APP_CLOUNDINARY} from 'constants/config'
 import 'scss/app.scss';
 
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -153,11 +154,11 @@ function ProductDetail(props) {
           className="responsive-image"
         >
           {pro ? (
-            <Grid container spacing={2} xs={12} sm={8} md={12} lg={12}>
-              <Grid item xs={12} xs={10} sm={10} md={6} lg={4}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={10} md={6} lg={4}>
                 <img src={pro.imageUrl} style={styleImage} />
               </Grid>
-              <Grid item xs={12} xs={10} sm={10} md={6} lg={6}>
+              <Grid item xs={12}sm={10} md={6} lg={6}>
                 <h2>{pro.title}</h2>
                 <h3>
                   <span
@@ -188,8 +189,9 @@ function ProductDetail(props) {
                   Vận Chuyển :
                   <span style={{ marginLeft: 10 }}>
                     <img
-                      src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/9d21899f3344277e34d40bfc08f60bc7.png"
+                      src={`${DEFAULT_APP_CLOUNDINARY}/free_ship_obof9t.png`}
                       style={{ height: 20, marginRight: 10 }}
+                      alt="free_ship"
                     />
                     Miễn Phí Vận Chuyển cho đơn hàng từ ₫50.000 (giảm tối đa
                     ₫25.000); Miễn Phí Vận Chuyển cho đơn hàng từ ₫300.000 (giảm
@@ -218,7 +220,7 @@ function ProductDetail(props) {
                   </Button>
                 </div>
               </Grid>
-              <Grid item xs={12} xs={10} sm={10} md={6} lg={4}>
+              <Grid item xs={12} sm={10} md={6} lg={4}>
                 <div style={{ marginTop: 50 }}>
                   <h4>CHI TIẾT SẢN PHẨM</h4>
                   {bioAsync ? newRow(pro.bio) : 'Loading'}

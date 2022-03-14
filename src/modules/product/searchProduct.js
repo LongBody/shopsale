@@ -5,6 +5,7 @@ import { Container, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import ProductCard from './productCard';
 import LogoLoading from 'components/loading/logoLoading';
+import {DEFAULT_APP_CLOUNDINARY} from 'constants/config'
 import 'scss/app.scss';
 
 function SearchProduct(props) {
@@ -13,41 +14,41 @@ function SearchProduct(props) {
   const [loading, setLoading] = useState('Loading...');
   const [noProduct, setNoProduct] = useState(false);
   let result;
-  const fetchData = async () => {
-    setNoProduct(false);
-    // setLoading(true)
-    const callApiData = await callApi(
-      'product/find/?search=' + props.match.params.keyword,
-    ).then(async (response) => {
-      document.title = props.match.params.keyword;
-      let data = await response.data;
-      // let dataConvert={
-      //     id:data._id,
-      //     title:data.title,
-      //     price:data.price,
-      //     imageUrl:data.imageUrl,
-      //     bio:data.bio,
-      //     star:data.star
-      // }
-      return data;
-    });
-
-    if (callApiData.length > 0) {
-      setProductSearch(callApiData);
-    } else {
-      setProductSearch([]);
-      setLoading('');
-      setNoProduct(true);
-    }
-  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      setNoProduct(false);
+      // setLoading(true)
+      const callApiData = await callApi(
+        'product/find/?search=' + props.match.params.keyword,
+      ).then(async (response) => {
+        document.title = props.match.params.keyword;
+        let data = await response.data;
+        // let dataConvert={
+        //     id:data._id,
+        //     title:data.title,
+        //     price:data.price,
+        //     imageUrl:data.imageUrl,
+        //     bio:data.bio,
+        //     star:data.star
+        // }
+        return data;
+      });
+
+      if (callApiData.length > 0) {
+        setProductSearch(callApiData);
+      } else {
+        setProductSearch([]);
+        setLoading('');
+        setNoProduct(true);
+      }
+    };
     fetchData();
   }, [props.location.pathname]);
 
   result = product.map((item, index) => {
     return (
-      <Grid item xs={12} xs={12} sm={10} md={6} lg={2}>
+      <Grid item xs={12} sm={10} md={6} lg={2}>
         <ProductCard
           key={index}
           id={item._id}
@@ -76,14 +77,15 @@ function SearchProduct(props) {
           >
             <img
               style={{
-                height: 35,
+                height: 100,
                 marginTop: 15,
                 color: 'red',
                 marginRight: 8,
               }}
-              src="https://www.flaticon.com/svg/static/icons/svg/1178/1178479.svg"
+              alt="shopsalevn"
+              src={`${DEFAULT_APP_CLOUNDINARY}/cart_not_found_vjb6ml.png`}
             />
-            <h2>Không Có Sản Phẩm</h2>
+            <h2 style={{ marginTop: 30, marginLeft: 20 }}>Không Có Sản Phẩm</h2>
           </div>
         ) : (
           ''

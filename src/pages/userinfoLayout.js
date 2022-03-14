@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/body/header';
+import Header from 'components/body/header';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Card,
-  CardHeader,
   CardContent,
   CardActions,
-  Avatar,
   IconButton,
   Typography,
   Button,
@@ -87,7 +84,6 @@ const useStyles = makeStyles((theme) => ({
 
 function User() {
   let user = JSON.parse(localStorage.getItem('userShopsale'));
-  let avatar = user.fullName.charAt(0).toUpperCase();
   const [location, setLocation] = useState(user.location);
   const [phone, setPhone] = useState(user.phone);
 

@@ -1,19 +1,18 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
   CardActionArea,
   CardActions,
   CardContent,
-  Button,
+  Tooltip,
   Typography,
 } from '@material-ui/core';
-import { convertPrice } from 'helpers/convertPriceVND';
+import { makeStyles } from '@material-ui/core/styles';
 import * as actions from 'actions/cartAction';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { convertPrice } from 'helpers/convertPriceVND';
+import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import 'scss/product.scss';
 
 const useStyles = makeStyles({
@@ -29,11 +28,7 @@ const useStyles = makeStyles({
 });
 
 const StyleTitle = {
-  height: 50,
-};
-
-const StyleMedia = {
-  height: 180,
+  // height: 50,
 };
 
 const StyleContent = {
@@ -67,45 +62,55 @@ function ProductCard(props) {
       >
         <Card className={classes.root}>
           <CardActionArea>
-            <LazyLoadImage
-              effect="blur"
-              src={props.imageUrl}
-              style={{ width: '100%', height: 180 }}
-              alt={props.title}
-            />
+            <Tooltip title={props.title} placement="bottom">
+              <LazyLoadImage
+                effect="blur"
+                src={props.imageUrl}
+                style={{ width: '100%', height: 180, marginTop:5 }}
+                alt={props.title}
+              />
+            </Tooltip>
             <CardContent style={StyleContent}>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                className="title__product__wrapper"
-                component="p"
-                style={StyleTitle}
-              >
-                {props.title}
-              </Typography>
+              <Tooltip title={props.title} placement="bottom-end">
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  className="title__product__wrapper"
+                  component="p"
+                  style={StyleTitle}
+                >
+                  {props.title}
+                </Typography>
+              </Tooltip>
               <Typography variant="body2" color="secondary" component="p">
                 ₫{convertPrice(props.price)}
                 <span>{showRating(props.star)}</span>
               </Typography>
             </CardContent>
             <CardActions>
-              <Link
-                to="/"
-                onClick={handleClickNotLink}
-                style={{ textDecoration: 'none' }}
-              >
-                <Button
-                  size="small"
-                  color="primary"
-                  variant="outlined"
-                  onClick={() => {
-                    addToCart(props.cart, props, 1, true);
-                  }}
+              <div>
+                <div
+                  onClick={handleClickNotLink}
+                  style={{ textDecoration: 'none' }}
                 >
-                  Add Cart
-                </Button>
-              </Link>
-
+                  <div
+                    style={{
+                      border: '1px solid #00acc1',
+                      padding: '5px 8px',
+                      borderRadius: 5,
+                      fontSize: 13,
+                      fontWeight: 'bold',
+                      color: '#00acc1',
+                      marginRight: 5,
+                    }}
+                    onClick={() => {
+                      addToCart(props.cart, props, 1, true);
+                    }}
+                  >
+                    Add Cart
+                  </div>
+                </div>
+              </div>
               <span style={{ color: 'grey' }}>Đã bán {props.quantity}</span>
             </CardActions>
           </CardActionArea>

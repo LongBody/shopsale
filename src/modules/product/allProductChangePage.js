@@ -1,19 +1,13 @@
-import React, { useEffect, useState, createRef } from 'react';
+import { Container, FormControl, Grid, InputLabel, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Grid,
-  Container,
-  InputLabel,
-  FormControl,
-  Select,
-} from '@material-ui/core';
-import ProductCard from './productCard';
-import { callApi } from 'helpers/callApi';
-import Header from 'components/body/header';
 import Pagination from '@material-ui/lab/Pagination';
 import Footer from 'components/body/footer';
+import Header from 'components/body/header';
+import { callApi } from 'helpers/callApi';
+import React, { createRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import 'scss/app.scss';
+import ProductCard from './productCard';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -46,38 +40,19 @@ function Product(props) {
     setState(event.target.value);
   };
 
-  const fetchData = async () => {
-    setLoading(true);
-    setState('');
-    let callApiData = await callApi(
-      'product/?pageSize=24&pageIndex=' + props.match.params.page,
-    ).then(async (response) => {
-      let data = await response.data;
-      return data;
-    });
-    setProduct(callApiData);
-    setLoading(false);
-  };
-
-  const fetchDataSort = async () => {
-    setLoading(true);
-
-    let callApiData = [];
-    if (state === 'desc') {
-      callApiData = product.sort(function (a, b) {
-        return b.price - a.price;
-      });
-      setProduct([...callApiData]);
-    } else if (state === 'asc') {
-      callApiData = product.sort(function (a, b) {
-        return a.price - b.price;
-      });
-      setProduct([...callApiData]);
-    }
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      setState('');
+      let callApiData = await callApi(
+        'product/?pageSize=24&pageIndex=' + props.match.params.page,
+      ).then(async (response) => {
+        let data = await response.data;
+        return data;
+      });
+      setProduct(callApiData);
+      setLoading(false);
+    };
     let pageParams = parseInt(props.match.params.page);
     setPage(pageParams);
     fetchData();
@@ -88,12 +63,29 @@ function Product(props) {
   };
 
   useEffect(() => {
+    const fetchDataSort = async () => {
+      setLoading(true);
+
+      let callApiData = [];
+      if (state === 'desc') {
+        callApiData = product.sort(function (a, b) {
+          return b.price - a.price;
+        });
+        setProduct([...callApiData]);
+      } else if (state === 'asc') {
+        callApiData = product.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        setProduct([...callApiData]);
+      }
+      setLoading(false);
+    };
     fetchDataSort();
   }, [state]);
 
-  let result = product.map((item, index) => {
+  let result = product.map((item) => {
     return (
-      <Grid item xs={12} xs={6} sm={3} md={4} lg={2} key={Math.random()}>
+      <Grid item xs={12} sm={3} md={4} lg={2} key={Math.random()}>
         <ProductCard
           key={Math.random()}
           id={item._id}
@@ -167,7 +159,7 @@ function Product(props) {
         </Grid>
         {result.length > 0 ? (
           <Pagination
-            count={8}
+            count={9}
             color="primary"
             shape="rounded"
             page={page}

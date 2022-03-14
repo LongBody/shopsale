@@ -2,6 +2,17 @@
     padding-top: 100px;
 }
 
+.title__product__wrapper {
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    height: 40px;/* Fallback for non-webkit */
+}
+
 @media only screen and (max-width: 768px) {
     .title__product__wrapper {
         text-overflow: ellipsis;
@@ -9,9 +20,11 @@
         overflow: hidden;
         // width: 100px; // some width
     }
+
     .search__keyword__below__searchField {
         display: none;
     }
+
     .service__first {
         margin-top: 30px;
     }

@@ -6,9 +6,9 @@ import 'scss/app.scss'
 
 class Product extends Component {
 
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
 

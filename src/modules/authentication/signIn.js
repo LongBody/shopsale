@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
@@ -132,7 +130,7 @@ function SignIn(props) {
           >
             <div className="sign__in__item__detail">
               <Link href="/">
-                <img src={LogoWeb} className="sign__in__item__detail__image" />
+                <img src={LogoWeb} className="sign__in__item__detail__image" alt='shopsalevn' />
               </Link>
               <form className={classes.form} noValidate onSubmit={handleSubmit}>
                 <TextField
@@ -177,7 +175,6 @@ function SignIn(props) {
                   fullWidth
                   name="password"
                   label="Password"
-                  type="text"
                   type="password"
                   size="small"
                   value={password}

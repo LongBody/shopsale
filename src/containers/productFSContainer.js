@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProductFS } from 'actions/productAction';
-import FlashSale from 'components/body/flashSale';
+import ProductFlashSale from 'components/body/product-flashsale/index';
 import SkeletonFs from 'components/loading/skeletonFs';
 import { bindActionCreators } from 'redux';
 
 class ProductFSContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     this.props.fetchProductFS();
@@ -20,7 +20,7 @@ class ProductFSContainer extends Component {
 
     return (
       <div>
-        <FlashSale products={productFS}> </FlashSale>
+        <ProductFlashSale products={productFS}/>
       </div>
     );
   }

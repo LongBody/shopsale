@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import HomePage from 'pages/homeLayout'
-import NotFound from 'components/another/notFound'
+import NotFound from 'components/body/not-found'
 import CartLayout from 'pages/cartLayout'
 import ProductLayout from 'pages/productDetailLayout'
 import ProductFlashSaleLayout from 'pages/productFlashSaleDetailLayout '
@@ -17,9 +17,9 @@ import PaymentSuccessLayout from 'pages/paymentSuccessLayout'
 
 
 class Routes extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   render() {
     return (

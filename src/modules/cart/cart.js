@@ -1,17 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Table,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Container,
-  Button,
-  Modal,
-} from '@material-ui/core';
-import CartBody from './cartBody';
+import { Container, Modal } from '@material-ui/core';
 import CartBodyNew from './cartBodyNew';
 import { connect } from 'react-redux';
 import * as actions from 'actions/cartAction';
@@ -40,22 +29,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const styleButton = {
-  background: '#00acc1',
-  color: 'white',
-  marginRight: '65px',
-  marginTop: '10px',
-  maxHeight: '36px',
-};
-
-function subtotal(items) {
-  let sum = 0;
-  const sumProduct = items.map((item) => {
-    return (sum += item.props.price * item.props.quantity);
-  });
-  let sumVnd = convertPrice(sumProduct);
-  return sumVnd;
-}
+// function subtotal(items) {
+//   let sum = 0;
+//   const sumProduct = items.map((item) => {
+//     return (sum += item.props.price * item.props.quantity);
+//   });
+//   let sumVnd = convertPrice(sumProduct);
+//   return sumVnd;
+// }
 
 function getModalStyle() {
   const top = 50;
@@ -75,7 +56,7 @@ function subtotalUnChecked(items, itemUnChecked) {
     sum += item.props.price * item.props.quantity;
   });
 
-  items.map((item) => {
+  items.map((item) =>  {
     if (item.props.checked === false) {
       sumUnCheck += item.props.price * item.props.quantity;
     }
@@ -98,8 +79,8 @@ function Cart(props) {
     </div>
   );
 
-  let result;
-  let result2;
+  // let result;
+  let resultCart;
 
   const handleChange = (checked, cart) => {
     setOpen(true);
@@ -121,21 +102,21 @@ function Cart(props) {
   }, [props.setLoadingCheckbox]);
 
   if (props.cart) {
-    result = props.cart.map((item, index) => {
-      return (
-        <CartBody
-          key={index}
-          id={item.product.id}
-          imageUrl={item.product.imageUrl}
-          title={item.product.title}
-          price={item.product.price}
-          quantity={item.quantity}
-          checked={item.checked}
-          category={item.category}
-        ></CartBody>
-      );
-    });
-    result2 = props.cart.map((item, index) => {
+    // result = props.cart.map((item, index) => {
+    //   return (
+    //     <CartBody
+    //       key={index}
+    //       id={item.product.id}
+    //       imageUrl={item.product.imageUrl}
+    //       title={item.product.title}
+    //       price={item.product.price}
+    //       quantity={item.quantity}
+    //       checked={item.checked}
+    //       category={item.category}
+    //     ></CartBody>
+    //   );
+    // });
+    resultCart = props.cart.map((item, index) => {
       return (
         <CartBodyNew
           key={index}
@@ -194,8 +175,8 @@ function Cart(props) {
       <Container className="paddingTopFixed" />
       <Container style={{ paddingTop: 40 }}>
         <div>
-          <div class="flex__container">
-            <div class="cart__product__checked">
+          <div className="flex__container">
+            <div className="cart__product__checked">
               <input
                 type="checkbox"
                 onClick={() =>
@@ -206,18 +187,21 @@ function Cart(props) {
               />
               <span className="cart__main__header">Giỏ hàng của bạn</span>
             </div>
-            <div class="cart__image">Sản Phẩm</div>
-            <div class="cart__title "></div>
-            <div class="cart__price cart__header__text">Đơn Giá</div>
-            <div class="cart__action cart__header__text">Số Lượng</div>
-            <div class="cart__sum">Số Tiền</div>
-            <div class="cart__delete cart__header__text">Thao tác</div>
+            <div className="cart__image">Sản Phẩm</div>
+            <div className="cart__title "></div>
+            <div className="cart__price cart__header__text">Đơn Giá</div>
+            <div className="cart__action cart__header__text">Số Lượng</div>
+            <div className="cart__sum">Số Tiền</div>
+            <div className="cart__delete cart__header__text">Thao tác</div>
           </div>
-          {result2 ? result2 : ''}
+          {resultCart ? resultCart : ''}
           <div className="cart__footer__wrap">
             <div className="cart__footer__detail">
               <div className="cart__footer__detail__total">
-                <span className="cart__footer__detail__total__title" >Tổng thanh toán :</span> ₫
+                <span className="cart__footer__detail__total__title">
+                  Tổng thanh toán :
+                </span>{' '}
+                ₫
                 {props.children
                   ? subtotalUnChecked(props.children, props.cart)
                   : 0}

@@ -1,9 +1,9 @@
-import React from "react";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import * as actions from "actions/cartAction";
-import {convertPrice} from "helpers/convertPriceVND";
-import {MSG_UPDATE_CART} from "constants/messageCart";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import * as actions from 'actions/cartAction';
+import { convertPrice } from 'helpers/convertPriceVND';
+import { MSG_UPDATE_CART } from 'constants/messageCart';
 
 function CartBody(props) {
   const handleChange = () => {
@@ -16,90 +16,96 @@ function CartBody(props) {
 
   return (
     <div>
-      <div className='cart__box__shadow'>
-        <div className='flex__cart__item__container'>
-          <div className='cart__item__checkbox'>
+      <div className="cart__box__shadow">
+        <div className="flex__cart__item__container">
+          <div className="cart__item__checkbox">
             <div>
               <input
                 checked={props.checked}
                 onChange={handleChange}
-                type='checkbox'
-                style={{transform: "scale(1.4)", marginTop: 25}}
+                type="checkbox"
+                style={{ transform: 'scale(1.4)', marginTop: 25 }}
               />
             </div>
           </div>
-          <div className='cart__item__image'>
-            {props.category === "FS" ? (
+          <div className="cart__item__image">
+            {props.category === 'FS' ? (
               <Link
                 to={{
-                  pathname: "/productFlashSale/" + props.id,
-                  query: {the: props.id},
+                  pathname: '/productFlashSale/' + props.id,
+                  query: { the: props.id },
                 }}
-                style={{textDecoration: "none", display: "flex"}}>
-                <img src={props.imageUrl} />
+                style={{ textDecoration: 'none', display: 'flex' }}
+              >
+                <img src={props.imageUrl} alt="shopsalevn" />
               </Link>
             ) : (
               <Link
                 to={{
-                  pathname: "/product/" + props.id,
-                  query: {the: props.id},
+                  pathname: '/product/' + props.id,
+                  query: { the: props.id },
                 }}
-                style={{textDecoration: "none", display: "flex"}}>
-                <img src={props.imageUrl} />
+                style={{ textDecoration: 'none', display: 'flex' }}
+              >
+                <img src={props.imageUrl} alt="shopsalevn" />
               </Link>
             )}
           </div>
-          <div className='cart__item__title'>
-            {props.category === "FS" ? (
+          <div className="cart__item__title">
+            {props.category === 'FS' ? (
               <Link
                 to={{
-                  pathname: "/productFlashSale/" + props.id,
-                  query: {the: props.id},
+                  pathname: '/productFlashSale/' + props.id,
+                  query: { the: props.id },
                 }}
-                style={{textDecoration: "none", display: "flex"}}>
-                <span className='title__product__cart'>{props.title}</span>
+                style={{ textDecoration: 'none', display: 'flex' }}
+              >
+                <span className="title__product__cart">{props.title}</span>
               </Link>
             ) : (
               <Link
                 to={{
-                  pathname: "/product/" + props.id,
-                  query: {the: props.id},
+                  pathname: '/product/' + props.id,
+                  query: { the: props.id },
                 }}
-                style={{textDecoration: "none", display: "flex"}}>
-                <span className='title__product__cart'>{props.title}</span>
+                style={{ textDecoration: 'none', display: 'flex' }}
+              >
+                <span className="title__product__cart">{props.title}</span>
               </Link>
             )}
           </div>
-          <div className='cart__item__price'>₫{convertPrice(props.price)}</div>
-          <div className='cart__item__action'>
+          <div className="cart__item__price">₫{convertPrice(props.price)}</div>
+          <div className="cart__item__action">
             <div
-              className='cart__button cart__button__subtraction'
+              className="cart__button cart__button__subtraction"
               onClick={() => {
                 props.onUpdateQuantity(props.cart, props, props.quantity - 1);
-              }}>
+              }}
+            >
               -
             </div>
-            <div className='cart__quantity'>{props.quantity}</div>
+            <div className="cart__quantity">{props.quantity}</div>
             <div
-              className='cart__button'
+              className="cart__button"
               onClick={() => {
                 props.onUpdateQuantity(props.cart, props, props.quantity + 1);
-              }}>
+              }}
+            >
               +
             </div>
           </div>
-          <div className='cart__item__sum'>
+          <div className="cart__item__sum">
             ₫{convertPrice(props.price * props.quantity)}
           </div>
-          <div className='cart__item__delete'>
-            <button className='cart__detele__button' onClick={deleteProduct}>
-              <i className='fas fa-trash-alt'></i>
+          <div className="cart__item__delete">
+            <button className="cart__detele__button" onClick={deleteProduct}>
+              <i className="fas fa-trash-alt"></i>
             </button>
           </div>
         </div>
-        <div className='description__supply'>
-          <i className='fas fa-truck'></i>
-          <span className='description__supply__text'>
+        <div className="description__supply">
+          <i className="fas fa-truck"></i>
+          <span className="description__supply__text">
             Miễn Phí Vận Chuyển cho đơn hàng từ ₫50.000 (giảm tối đa ₫25.000);
             Miễn Phí Vận Chuyển cho đơn hàng từ ₫300.000 (giảm tối đa ₫70.000)
           </span>

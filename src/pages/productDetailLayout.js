@@ -19,6 +19,7 @@ import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 import ScrollToTop from 'hooks/scroll_to_top';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ProductRandom from 'modules/product/productRandom';
 import 'scss/app.scss';
 
 const StyleStar = {
@@ -67,33 +68,32 @@ function ProductDetail(props) {
 
   const [bioAsync, setBioAsync] = useState(false);
 
-  const fetchData = async () => {
-    if (props.match.params.id) {
-      const callApiData = await callApi(
-        'product/' + props.match.params.id,
-      ).then(async (response) => {
-        let data = await response.data;
-        let dataConvert = {
-          id: data._id,
-          title: data.title,
-          price: data.price,
-          imageUrl: data.imageUrl,
-          bio: data.bio,
-          star: data.star,
-          quantity: data.quantity,
-          categories: data.categories,
-        };
-        document.title = dataConvert.title + ' | Shopsale Việt Nam';
-
-        return dataConvert;
-      });
-
-      setPro(callApiData);
-      setBioAsync(true);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      if (props.match.params.id) {
+        const callApiData = await callApi(
+          'product/' + props.match.params.id,
+        ).then(async (response) => {
+          let data = await response.data;
+          let dataConvert = {
+            id: data._id,
+            title: data.title,
+            price: data.price,
+            imageUrl: data.imageUrl,
+            bio: data.bio,
+            star: data.star,
+            quantity: data.quantity,
+            categories: data.categories,
+          };
+          document.title = dataConvert.title + ' | Shopsale Việt Nam';
+
+          return dataConvert;
+        });
+
+        setPro(callApiData);
+        setBioAsync(true);
+      }
+    };
     fetchData();
   }, [props.match.params.id]);
 
@@ -115,14 +115,18 @@ function ProductDetail(props) {
             aria-label="breadcrumb"
           >
             <Link
-              style={{ fontSize: '15px', color: '#05a' }}
+              style={{
+                fontSize: '15px',
+                color: 'rgb(0, 172, 193 ',
+                fontWeight: 'bold',
+              }}
               color="inherit"
               to="/"
             >
               Shopsale
             </Link>
             <Link
-              style={{ fontSize: '15px', color: 'rgba(0, 0, 0, 0.87)' }}
+              style={{ fontSize: '15px', color: '#e79413' }}
               color="inherit"
               to={{ pathname: '/' + pro.categories }}
             >
@@ -144,8 +148,8 @@ function ProductDetail(props) {
         >
           {pro ? (
             <Grid container spacing={2}>
-              <Grid item xs={12}  sm={10} md={6} lg={5}>
-                <img src={pro.imageUrl} style={styleImage}  alt=""/>
+              <Grid item xs={12} sm={10} md={6} lg={5}>
+                <img src={pro.imageUrl} style={styleImage} alt="" />
               </Grid>
               <Grid item xs={12} sm={10} md={6} lg={6}>
                 <h2>{pro.title}</h2>
@@ -213,6 +217,7 @@ function ProductDetail(props) {
           )}
         </div>
       </Container>
+      <ProductRandom />
       {pro.price ? <Footer /> : ''}
     </div>
   );

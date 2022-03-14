@@ -1,0 +1,64 @@
+.container__layout {
+    display: flex;
+    width: 100%;
+
+
+    .earphone__container {
+        background-color: #ffffff;
+        border: 1px solid #f1f1f1;
+        padding: 20px;
+        max-width: 220px;
+        display: block;
+
+        &:hover>.earphone__title {
+            color: rgb(0, 172, 193) !important;
+        }
+
+        &:hover .earphone__image {
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+        }
+
+        &:hover>.earphone__apple__logo__container .earphone__apple__logo {
+            color: #fb6e2e;
+        }
+
+        .earphone__apple__logo__container {
+            display: flex;
+            justify-content: flex-end;
+
+            .earphone__apple__logo {
+                color: black;
+                font-size: 20px;
+
+            }
+        }
+
+        .earphone__image {
+            width: 100%;
+            height: 240px;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: .3s ease-in-out;
+            transition: .3s ease-in-out;
+        }
+
+        .earphone__title {
+            padding-top: 10px;
+            color: #333 !important;
+            padding-bottom: 10px;
+        }
+
+        .earphone__price {
+            color: black;
+            padding-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .earphone__quantity {
+            color: #7c7a7a;
+            font-size: 15px;
+            padding-bottom: 10px;
+        }
+    }
+}

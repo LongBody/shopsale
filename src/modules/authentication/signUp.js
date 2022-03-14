@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
@@ -125,7 +123,7 @@ export default function SignUp() {
           >
             <div className="sign__up__item__detail">
               <Link href="/">
-                <img src={LogoWeb} className="sign__up__item__detail__image" />
+                <img src={LogoWeb} className="sign__up__item__detail__image"  alt='shopsalevn'/>
               </Link>
               <form className={classes.form} noValidate onSubmit={handleSubmit}>
                 <Grid container spacing={2}>

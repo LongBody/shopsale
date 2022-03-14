@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+import * as types from 'constants/actionTypes';
 import swal from 'sweetalert';
 import { callApiAddCart, callApi } from 'helpers/callApi';
 

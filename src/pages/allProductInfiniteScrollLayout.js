@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Header from "components/body/header";
-import { Container } from "@material-ui/core";
-import Footer from "components/body/footer";
-import { Link } from "react-router-dom";
-import "scss/allproductInfiniteScroll.scss";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { TITLE_SHOP_SALE } from "constants/config";
-import ScrollToTop from "hooks/scroll_to_top";
-import { callApi } from "helpers/callApi";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { convertPrice } from "helpers/convertPriceVND";
-import SkeletonLoadingInfiniteScroll from "components/loading/skeletonInfiniteScroll";
+import { Container } from '@material-ui/core';
+import Footer from 'components/body/footer';
+import Header from 'components/body/header';
+import SkeletonLoadingInfiniteScroll from 'components/loading/skeletonInfiniteScroll';
+import { TITLE_SHOP_SALE } from 'constants/config';
+import { callApi } from 'helpers/callApi';
+import { convertPrice } from 'helpers/convertPriceVND';
+import ScrollToTop from 'hooks/scroll_to_top';
+import React, { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Link } from 'react-router-dom';
+import 'scss/allproductInfiniteScroll.scss';
 
 function AllProductInfiniteScrollLayout() {
   useEffect(() => {
@@ -24,7 +24,7 @@ function AllProductInfiniteScrollLayout() {
     let pageNext = page + 1;
     setPage(pageNext);
     let callApiData = await callApi(
-      "product/?pageSize=25&pageIndex=" + pageNext
+      'product/?pageSize=25&pageIndex=' + pageNext,
     ).then(async (response) => {
       let data = await response.data;
       return data;
@@ -40,15 +40,15 @@ function AllProductInfiniteScrollLayout() {
     return (
       <div className="product__container">
         <Link
-          to={{ pathname: "/product/" + item._id, query: { the: item._id } }}
-          style={{ textDecoration: "none" }}
+          to={{ pathname: '/product/' + item._id, query: { the: item._id } }}
+          style={{ textDecoration: 'none' }}
         >
           <div className="product__header">
             <LazyLoadImage
               effect="blur"
               src={item.imageUrl}
               alt=""
-              style={{ height: "200px"}}
+              style={{ height: '200px' }}
             />
           </div>
           <div className="product__body">
@@ -74,7 +74,7 @@ function AllProductInfiniteScrollLayout() {
 
       <Container
         className="banner__home"
-        style={{ paddingTop: 10, paddingBottom: 20, borderRadius: "5px" }}
+        style={{ paddingTop: 10, paddingBottom: 20, borderRadius: '5px' }}
       >
         <InfiniteScroll
           dataLength={products.length}
@@ -83,7 +83,7 @@ function AllProductInfiniteScrollLayout() {
           loader={<SkeletonLoadingInfiniteScroll />}
         >
           <div className="product__infinite__flex__container">
-            {products ? result : ""}
+            {products ? result : ''}
           </div>
         </InfiniteScroll>
       </Container>

@@ -3,18 +3,19 @@ import { Container, Grid, Toolbar } from '@material-ui/core';
 import ProductsContainer from 'containers/productContainers';
 import ProductFSContainer from 'containers/productFSContainer';
 import Header from 'components/body/header';
-import Carousel from 'components/another/carousel';
+import ProductCategory from 'components/body/product-category/index';
 import Footer from 'components/body/footer';
 import Countdown from 'react-countdown';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
 import image from 'image/saledienthoai.png';
 import { Link } from 'react-router-dom';
-import Banner from 'components/another/banner';
-import ServiceBar from 'components/body/serviceBar';
-import MostPopular from 'components/body/MostPopularProduct';
+import Banner from 'components/body/banner';
+import ServiceBar from 'components/body/service-bar';
+import MostPopularProduct from 'components/body/product-most-popular';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { TITLE_SHOP_SALE } from 'constants/config';
 import ScrollToTop from 'hooks/scroll_to_top';
+import ProductAppleMacbookLayout from 'components/body/product-apple-macbook';
 import 'scss/app.scss';
 
 function Home() {
@@ -92,7 +93,24 @@ function Home() {
       </Container>
 
       <Container style={{ paddingTop: 40 }}>
-        <Carousel />
+        <ProductCategory />
+      </Container>
+
+      <Container style={{ paddingTop: 20 }}>
+        <Toolbar
+          variant="dense"
+          style={{ backgroundColor: '#FFF', marginTop: 70 }}
+        >
+          <h4 style={{ color: 'rgb(0, 172, 193)' }}>
+            {' '}
+            <i
+              className="fab fa-apple earphone__apple__logo"
+              style={{ marginRight: 5 }}
+            ></i>{' '}
+            APPLE MACBOOK
+          </h4>
+        </Toolbar>
+        <ProductAppleMacbookLayout />
       </Container>
 
       <Container>
@@ -153,7 +171,7 @@ function Home() {
         ></div>
       </Container>
 
-      <MostPopular />
+      <MostPopularProduct />
 
       <div className="scroll-to-top">
         {isVisible && (
