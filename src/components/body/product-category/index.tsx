@@ -1,14 +1,11 @@
-import React from 'react';
-import Slider from 'react-slick';
 import { Toolbar } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'components/body/product-category/style.scss';
+import { productCategory, settings } from 'components/body/product-category/template';
+import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
 
-import {
-  settings,
-  productCategory,
-} from 'components/body/product-category/template';
 
 type Props = {
   title: string;

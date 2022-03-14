@@ -201,7 +201,7 @@ export const paymentCart = (cart) => {
             type: types.PAYMENT_CART,
             payload: response.data,
           });
-          window.location.replace('https://shopsale.cf/payment/success');
+          window.location.replace('https://shopsalevn.cf/payment/success');
         });
       } else {
         callApiAddCart(idUserGet, cart).then(async (response) => {
@@ -210,7 +210,7 @@ export const paymentCart = (cart) => {
             type: types.PAYMENT_CART,
             payload: response.data,
           });
-          window.location.replace('https://shopsale.cf/payment/success');
+          window.location.replace('https://shopsalevn.cf/payment/success');
         });
       }
     }

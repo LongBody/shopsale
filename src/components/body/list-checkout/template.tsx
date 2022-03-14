@@ -8,6 +8,7 @@ export const subtotalUnChecked = (items: any) => {
     if (item.checked === true) {
       sum += item.product.price * item.quantity;
     }
+    return null;
   });
 
   let sumVnd = convertPrice(sum);
@@ -22,6 +23,7 @@ export const priceNumberToVietnameseText = (items: any) => {
     if (item.checked === true) {
       sum += item.product.price * item.quantity;
     }
+    return null;
   });
 
   let sumVnd = numToVietnameseText(sum);

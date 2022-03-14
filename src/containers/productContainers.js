@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import LogoLoading from 'components/loading/logoLoading';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import './style.scss';
 
 class ProductContainer extends Component {
@@ -29,7 +29,7 @@ class ProductContainer extends Component {
 
   componentWillReceiveProps() {
     this.setState({
-      seeMore: (this.state.seeMore -= 1),
+      seeMore: (this.state.seeMore - 1),
     });
   }
 
@@ -37,12 +37,12 @@ class ProductContainer extends Component {
 
   loadMoreProductOnClick() {
     this.setState({
-      page: (this.state.page += 1),
-      seeMore: (this.state.seeMore += 1),
+      page: (this.state.page + 1),
+      seeMore: (this.state.seeMore + 1),
     });
 
     if (this.state.page > 8) {
-      this.props.history.push("/shopsaleproduct/allproduct/3")
+      this.props.history.push('/shopsaleproduct/allproduct/3');
     } else {
       this.props.fetchLoadMoreProduct(this.state.page);
     }
@@ -56,13 +56,11 @@ class ProductContainer extends Component {
     return (
       <div>
         <Products products={products}> </Products>
-        <Container
-          className="productContainer__wrap"
-        >
+        <Container className="productContainer__wrap">
           {this.state.seeMore === 1 ? (
             <LogoLoading />
           ) : (
-            <a
+            <p
               onClick={() => {
                 this.loadMoreProductOnClick();
               }}
@@ -71,7 +69,7 @@ class ProductContainer extends Component {
               <span className="productContainer__button__loadMore__text">
                 Xem Thêm
               </span>
-            </a>
+            </p>
           )}
 
           <div ref={this.myRef}></div>
@@ -95,4 +93,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)( withRouter(ProductContainer));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withRouter(ProductContainer));

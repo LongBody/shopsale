@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
 import { Container, Grid, Toolbar } from '@material-ui/core';
+import FlashOnIcon from '@material-ui/icons/FlashOn';
+import Banner from 'components/body/banner';
+import Footer from 'components/body/footer';
+import Header from 'components/body/header';
+import ProductAppleMacbookLayout from 'components/body/product-apple-macbook';
+import ProductPhoneAccessories from 'components/body/product-phone-accessories';
+import ProductCategory from 'components/body/product-category/index';
+import MostPopularProduct from 'components/body/product-most-popular';
+import ServiceBar from 'components/body/service-bar';
+import { TITLE_SHOP_SALE } from 'constants/config';
 import ProductsContainer from 'containers/productContainers';
 import ProductFSContainer from 'containers/productFSContainer';
-import Header from 'components/body/header';
-import ProductCategory from 'components/body/product-category/index';
-import Footer from 'components/body/footer';
-import Countdown from 'react-countdown';
-import FlashOnIcon from '@material-ui/icons/FlashOn';
-import image from 'image/saledienthoai.png';
-import { Link } from 'react-router-dom';
-import Banner from 'components/body/banner';
-import ServiceBar from 'components/body/service-bar';
-import MostPopularProduct from 'components/body/product-most-popular';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { TITLE_SHOP_SALE } from 'constants/config';
 import ScrollToTop from 'hooks/scroll_to_top';
-import ProductAppleMacbookLayout from 'components/body/product-apple-macbook';
+import image from 'image/saledienthoai.png';
+import React, { useEffect, useState } from 'react';
+import Countdown from 'react-countdown';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Link } from 'react-router-dom';
 import 'scss/app.scss';
 
 function Home() {
@@ -107,7 +108,7 @@ function Home() {
               className="fab fa-apple earphone__apple__logo"
               style={{ marginRight: 5 }}
             ></i>{' '}
-            APPLE MACBOOK
+            MAC
           </h4>
         </Toolbar>
         <ProductAppleMacbookLayout />
@@ -140,6 +141,16 @@ function Home() {
       </Container>
 
       <ServiceBar />
+
+      <Container style={{ paddingTop: 20 }}>
+        <Toolbar
+          variant="dense"
+          style={{ backgroundColor: '#FFF', marginTop: 70 }}
+        >
+          <h4 style={{ color: 'rgb(0, 172, 193)' }}>PHỤ KIỆN NỔI BẬT NHẤT</h4>
+        </Toolbar>
+        <ProductPhoneAccessories />
+      </Container>
 
       <Container>
         <Toolbar

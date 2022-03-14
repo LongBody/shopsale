@@ -130,7 +130,7 @@ const ListCheckout: React.FC<any> = (props: any) => {
                   paymentCartFunc(props.cart);
                 }}
                 variant="contained"
-                style={{ backgroundColor: '#00ACC1 ', color: 'white' }}
+                style={{ backgroundColor: '#00ACC1 ', color: 'white'}}
               >
                 THANH TOÁN
               </Button>

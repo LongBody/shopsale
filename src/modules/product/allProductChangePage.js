@@ -81,7 +81,7 @@ function Product(props) {
       setLoading(false);
     };
     fetchDataSort();
-  }, [state]);
+  }, [state, product]);
 
   let result = product.map((item) => {
     return (

@@ -1,26 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { convertPrice } from 'helpers/convertPriceVND';
-import { Link } from 'react-router-dom';
-import 'scss/app.scss';
-import Slider from 'react-slick';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { callApi } from 'helpers/callApi';
-import 'components/body/product-apple-macbook/style.scss';
-import { showRating } from 'components/body/product-apple-macbook/template';
-import { settings } from 'components/body/product-apple-macbook/template';
 import { Tooltip } from '@material-ui/core';
+import 'components/body/product-apple-macbook/style.scss';
+import {
+  settings,
+  showRating,
+} from 'components/body/product-apple-macbook/template';
+import { callApi } from 'helpers/callApi';
+import { convertPrice } from 'helpers/convertPriceVND';
+import React, { useEffect, useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
+import 'components/body/product-phone-accessories/style.scss';
 
-const ProductAppleMacbookLayout: React.FC<any> = () => {
+const ProductPhoneAccessories: React.FC<any> = () => {
   const [product, setProduct] = useState([]);
+
+  const CallApiVar = 'Phụ Kiện Điện Tử';
 
   useEffect(() => {
     const fetchData = async () => {
-      let callApiData = await callApi('product/find/?search=macApple').then(
-        async (response: any) => {
-          let data = await response.data;
-          return data;
-        },
-      );
+      let callApiData = await callApi(
+        `product/find/?search=${CallApiVar}`,
+      ).then(async (response: any) => {
+        let data = await response.data;
+        return data;
+      });
       setProduct(callApiData);
     };
     fetchData();
@@ -35,9 +39,8 @@ const ProductAppleMacbookLayout: React.FC<any> = () => {
         }}
         style={{ textDecoration: 'none', width: '100%' }}
       >
-        <div className="product__infinite__flex__container earphone__container">
+        <div className="product__infinite__flex__container phone__accessories__container">
           <div className="earphone__apple__logo__container">
-            <i className="fab fa-apple earphone__apple__logo"></i>
           </div>
           <div>
             <LazyLoadImage
@@ -78,4 +81,4 @@ const ProductAppleMacbookLayout: React.FC<any> = () => {
   );
 };
 
-export default ProductAppleMacbookLayout;
+export default ProductPhoneAccessories;

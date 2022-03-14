@@ -24,7 +24,7 @@ export default function PaymentSuccessLayout() {
               </span>
               <div className="paymentSuccessLayout__detail__Button__backToHome">
                 <Link to={{ pathname: '/' }} style={{ textDecoration: 'none' }}>
-                  <button>
+                  <button style={{borderRadius : 5, cursor : "pointer"}}>
                     <i class="fas fa-home"></i> Trang chủ
                   </button>
                 </Link>

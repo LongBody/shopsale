@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 import TypingDotLoading from 'components/loading/dotTyping';
 import './style.scss';
+import ButtonShine from 'components/core/button-shine-hover';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,10 +57,11 @@ function subtotalUnChecked(items, itemUnChecked) {
     sum += item.props.price * item.props.quantity;
   });
 
-  items.map((item) =>  {
+  items.map((item) => {
     if (item.props.checked === false) {
       sumUnCheck += item.props.price * item.props.quantity;
     }
+    return null;
   });
 
   let sumVnd = convertPrice(sum - sumUnCheck);
@@ -156,6 +158,7 @@ function Cart(props) {
       if (item.checked === true) {
         count++;
       }
+      return null;
     });
     if (count === productCheckedLength) {
       return true;
@@ -206,14 +209,12 @@ function Cart(props) {
                   ? subtotalUnChecked(props.children, props.cart)
                   : 0}
               </div>
-              <button
-                className="cart__footer__detail__button"
+              <ButtonShine
+                title="MUA HÀNG"
                 onClick={() => {
                   checkoutProductButton(props.cart);
                 }}
-              >
-                MUA HÀNG
-              </button>
+              />
             </div>
           </div>
         </div>

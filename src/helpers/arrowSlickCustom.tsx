@@ -15,7 +15,7 @@ export const ArrowPrev: React.FC<ArrowProps> = ({
   <button
     style={{
       ...style,
-      backgroundColor: '#d9d9d9',
+      backgroundColor: '#e7e7e7',
       zIndex: 10,
       height: 50,
       width: 30,
@@ -42,7 +42,7 @@ export const ArrowNext: React.FC<ArrowProps> = ({
   <button
     style={{
       ...style,
-      backgroundColor: '#d9d9d9',
+      backgroundColor: '#e7e7e7',
       zIndex: 10,
       height: 50,
       width: 30,
