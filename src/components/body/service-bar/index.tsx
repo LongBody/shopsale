@@ -13,7 +13,7 @@ const ServiceBar: React.FC<any> = () => {
           <Grid container spacing={4}>
             {serviceBar?.map((item: any, key: any) => {
               return (
-                <Grid item xs={12} sm={3} md={4} lg={2}>
+                <Grid item xs={12} sm={3} md={4} lg={2} key={key}>
                   <div className="service__first">
                     <i
                       className={item?.icon}

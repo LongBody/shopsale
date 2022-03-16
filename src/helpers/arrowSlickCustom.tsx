@@ -12,7 +12,7 @@ export const ArrowPrev: React.FC<ArrowProps> = ({
   className,
   onClick,
 }) => (
-  <button
+  <div
     style={{
       ...style,
       backgroundColor: '#e7e7e7',
@@ -28,10 +28,10 @@ export const ArrowPrev: React.FC<ArrowProps> = ({
   >
     <img
       src={`${DEFAULT_APP_CLOUNDINARY}/arrow_left-512_ltcdlv.webp`}
-      style={{ height: 20 }}
+      style={{ height: 20, position: 'absolute', left: 5, top: 15 }}
       alt="arrow_left"
     />
-  </button>
+  </div>
 );
 
 export const ArrowNext: React.FC<ArrowProps> = ({
@@ -39,7 +39,7 @@ export const ArrowNext: React.FC<ArrowProps> = ({
   className,
   onClick,
 }) => (
-  <button
+  <div
     style={{
       ...style,
       backgroundColor: '#e7e7e7',
@@ -55,8 +55,10 @@ export const ArrowNext: React.FC<ArrowProps> = ({
   >
     <img
       src={`${DEFAULT_APP_CLOUNDINARY}/arrow_right-512_qzua1r.webp`}
-      style={{ height: 20 }}
+      style={{ height: 20, position: 'absolute', left: 6 }}
       alt="arrow_left"
+      onClick={onClick}
+      className={className}
     />
-  </button>
+  </div>
 );

@@ -82,7 +82,7 @@ export const settings = {
   // infinite: true,
   speed: 500,
   slidesToShow: 8,
-  slidesToScroll: 4,
+  slidesToScroll: 3,
   initialSlide: 0,
   nextArrow: <ArrowNext />,
   prevArrow: <ArrowPrev />,

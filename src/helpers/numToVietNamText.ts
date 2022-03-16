@@ -75,13 +75,14 @@ export function formatnumber(nStr:any) {
   return x1 + x2;
 }
 
-export default function to_vietnamese(str:any) {
-  // var str = parseInt(str) + '';
-  //str=fixCurrency(a,1000);
+export default function to_vietnamese(value:any) {
+  var str = value + ""
   var i = 0;
   var arr = [];
-  var index = str.length;
+  var index = str?.length;
   var result = [];
+
+  
   if (index === 0 || str === 'NaN') return '';
   var string = '';
 
